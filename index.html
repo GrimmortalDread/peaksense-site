@@ -2,17 +2,452 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PeakSense</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PeakSense — Turn your VODs into posts</title>
+<meta name="description" content="PeakSense finds the best moments in your gameplay recordings, edits them into vertical clips, and posts them to YouTube and TikTok for you.">
+<link rel="icon" type="image/png" href="/peaksense-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  body { background:#150c24; color:#ece8f5; font-family:'Segoe UI',sans-serif; max-width:700px; margin:60px auto; padding:0 20px; line-height:1.6; }
-  h1 { color:#2dff6b; letter-spacing:2px; }
-  a { color:#2dff6b; }
+  :root {
+    --bg: #0d0716;
+    --panel: #1f1433;
+    --panel-2: #150c24;
+    --line: #3c2b57;
+    --text: #ece8f5;
+    --muted: #a08cc4;
+    --green: #2dff6b;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .display {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+  a { color: inherit; }
+  img, video, iframe { max-width: 100%; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---- Nav ---- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(13, 7, 22, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo img { width: 30px; height: 30px; display: block; }
+  .logo span { color: var(--green); }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--green);
+    color: #0d0716;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    padding: 88px 0 100px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 46px;
+    line-height: 1.12;
+    max-width: 15ch;
+  }
+  .hero p.lede {
+    font-family: 'Inter', sans-serif;
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 46ch;
+    margin: 22px 0 32px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green);
+    color: #0d0716;
+    padding: 13px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary {
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 13px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--muted); }
+
+  /* fanned clip stack */
+  .clip-stack {
+    position: relative;
+    height: 460px;
+  }
+  .clip-frame {
+    position: absolute;
+    width: 190px;
+    aspect-ratio: 9/16;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 4px solid var(--panel);
+    background: #000;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(24px);
+    animation: rise 0.7s ease forwards;
+  }
+  .clip-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+  .clip-frame.c1 { left: 8%;  top: 40px;  transform: rotate(-7deg) translateY(24px); z-index: 1; animation-delay: 0.05s; }
+  .clip-frame.c2 { left: 34%; top: 0;     transform: rotate(2deg)  translateY(24px); z-index: 2; animation-delay: 0.18s; }
+  .clip-frame.c3 { left: 60%; top: 46px;  transform: rotate(9deg)  translateY(24px); z-index: 1; animation-delay: 0.3s; }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+  }
+  .clip-frame.c1 { --r: -7deg; }
+  .clip-frame.c2 { --r: 2deg; }
+  .clip-frame.c3 { --r: 9deg; }
+  @media (prefers-reduced-motion: reduce) {
+    .clip-frame { animation: none; opacity: 1; transform: none !important; }
+  }
+
+  /* ---- How it works ---- */
+  .section { padding: 90px 0; border-top: 1px solid var(--line); }
+  .section-head { max-width: 54ch; margin-bottom: 56px; }
+  .section-head .kicker { color: var(--green); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+  .section-head h2 { font-size: 32px; }
+  .section-head p { color: var(--muted); font-size: 16px; margin-top: 14px; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .step { border-top: 1px solid var(--line); padding-top: 18px; }
+  .step .num {
+    font-family: 'Chakra Petch', sans-serif;
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .step h3 { font-size: 18px; margin-top: 10px; }
+  .step p { color: var(--muted); font-size: 14.5px; margin-top: 8px; }
+
+  /* ---- Showcase ---- */
+  .showcase-row {
+    display: flex;
+    gap: 26px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .showcase-frame {
+    width: 220px;
+    aspect-ratio: 9/16;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 5px solid var(--panel);
+    background: #000;
+  }
+  .showcase-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+  /* ---- Features (alternating rows) ---- */
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 48px 0;
+  }
+  .feature-row:not(:last-child) { border-bottom: 1px solid var(--line); }
+  .feature-row.reverse .feature-copy { order: 2; }
+  .feature-copy .tag {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--green);
+    border: 1px solid rgba(45,255,107,0.35);
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+  .feature-copy h3 { font-size: 24px; margin-bottom: 12px; }
+  .feature-copy p { color: var(--muted); font-size: 15.5px; }
+  .feature-visual {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px;
+    font-family: 'Inter', monospace;
+  }
+  .mock-line { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+  .mock-line:last-child { border-bottom: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .bar-track { flex: 1; height: 6px; background: var(--panel-2); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--green); border-radius: 4px; }
+
+  /* ---- Platforms ---- */
+  .platform-strip {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  /* ---- CTA band ---- */
+  .cta-band {
+    text-align: center;
+    padding: 90px 0;
+  }
+  .cta-band h2 { font-size: 30px; max-width: 22ch; margin: 0 auto 16px; }
+  .cta-band p { color: var(--muted); max-width: 46ch; margin: 0 auto 30px; }
+
+  /* ---- Footer ---- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .foot-links { display: flex; gap: 24px; font-size: 13.5px; color: var(--muted); }
+  footer .foot-links a:hover { color: var(--text); }
+  footer .copyright { font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; padding-top: 48px; }
+    .hero h1 { font-size: 34px; max-width: none; }
+    .clip-stack { height: 340px; margin-top: 20px; }
+    .clip-frame { width: 140px; }
+    .clip-frame.c1 { left: 4%; top: 30px; }
+    .clip-frame.c2 { left: 32%; top: 0; }
+    .clip-frame.c3 { left: 60%; top: 40px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .feature-row, .feature-row.reverse { grid-template-columns: 1fr; }
+    .feature-row.reverse .feature-copy { order: 0; }
+    .nav-links { display: none; }
+  }
 </style>
 </head>
 <body>
-  <h1>PEAKSENSE</h1>
-  <p>PeakSense is a personal desktop application used by a content creator to process their own stream recordings. It downloads video the user already owns from platforms they connect (such as YouTube and Twitch), analyzes it entirely on the user's own computer using speech transcription and audio analysis, and produces short highlight clips. The user can then choose to publish those clips to their own connected social media accounts.</p>
-  <p>All processing happens locally on the user's own device. PeakSense does not operate any central server that stores or transmits user video content.</p>
-  <p><a href="terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><img src="/peaksense-icon.png" alt="">PEAKSENSE</span></div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#examples">Examples</a>
+      <a href="#features">Features</a>
+    </div>
+    <a class="nav-cta" href="mailto:support@peaksense.net">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap" style="display:contents;">
+    <div>
+      <div class="hero-eyebrow">FOR STREAMERS &amp; GAMEPLAY CREATORS</div>
+      <h1>Your best gameplay moments, cut and posted while you sleep.</h1>
+      <p class="lede">PeakSense watches your recordings, finds the moments worth sharing, edits them into vertical clips, and publishes them to YouTube and TikTok — so your channel keeps growing between streams.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="mailto:support@peaksense.net">Get in touch</a>
+        <a class="btn-secondary" href="#examples">See real clips</a>
+      </div>
+    </div>
+    <div class="clip-stack">
+      <div class="clip-frame c1"><iframe src="https://www.youtube.com/embed/DQlAziMwH_g?start=0&end=70&controls=0&rel=0" title="PeakSense example clip" allow="encrypted-media" loading="lazy"></iframe></div>
+      <div class="clip-frame c2"><iframe src="https://www.youtube.com/embed/aoa159x4tQw?start=0&end=70&controls=0&rel=0" title="PeakSense example clip" allow="encrypted-media" loading="lazy"></iframe></div>
+      <div class="clip-frame c3"><iframe src="https://www.youtube.com/embed/LNZYCPjTCiI?start=0&end=70&controls=0&rel=0" title="PeakSense example clip" allow="encrypted-media" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">HOW IT WORKS</div>
+      <h2>From raw recording to posted clip, four steps.</h2>
+      <p>No editing timeline, no manual cropping, no remembering to hit publish.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Record</h3>
+        <p>Keep streaming or recording like normal — PeakSense picks up your VODs automatically.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Detect</h3>
+        <p>It scans the footage for the moments most likely to land — kills, clutches, reactions, chat spikes.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Edit</h3>
+        <p>Each moment is trimmed and reframed for vertical formats, with facecam layout handled for you.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h3>Post</h3>
+        <p>Review it, or let your posting schedule take over — clips go out to YouTube and TikTok on their own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="examples">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">EXAMPLES</div>
+      <h2>Clips PeakSense has actually put out.</h2>
+      <p>No mockups — this is footage it found, cut, and posted on its own.</p>
+    </div>
+    <div class="showcase-row">
+      <div class="showcase-frame"><iframe src="https://www.youtube.com/embed/DQlAziMwH_g?start=0&end=70&rel=0" title="PeakSense example clip 1" loading="lazy"></iframe></div>
+      <div class="showcase-frame"><iframe src="https://www.youtube.com/embed/aoa159x4tQw?start=0&end=70&rel=0" title="PeakSense example clip 2" loading="lazy"></iframe></div>
+      <div class="showcase-frame"><iframe src="https://www.youtube.com/embed/LNZYCPjTCiI?start=0&end=70&rel=0" title="PeakSense example clip 3" loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">FEATURES</div>
+      <h2>Built around a stream schedule, not a video editor.</h2>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-copy">
+        <div class="tag">Highlight detection</div>
+        <h3>It finds the moment, not just the loud part.</h3>
+        <p>PeakSense looks at gameplay events and chat activity together, so a highlight is picked because something actually happened — not just because the volume spiked.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="mock-line"><span class="dot"></span> 02:14:08 — Ace clutch <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+        <div class="mock-line"><span class="dot"></span> 02:31:44 — Chat spike <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+        <div class="mock-line"><span class="dot"></span> 03:02:19 — Big reaction <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-copy">
+        <div class="tag">Auto reframe</div>
+        <h3>Landscape gameplay, reframed for vertical.</h3>
+        <p>Facecam and action are detected and laid out for 9:16 automatically, so a clip built for a monitor still reads clearly on a phone.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="mock-line"><span class="dot"></span> Aspect: 16:9 → 9:16</div>
+        <div class="mock-line"><span class="dot"></span> Facecam: detected, placed top</div>
+        <div class="mock-line"><span class="dot"></span> Encode: NVENC, ready to post</div>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-copy">
+        <div class="tag">Scheduled posting</div>
+        <h3>Set a posting schedule once, forget about it.</h3>
+        <p>Queue clips as they're made and pick days and times to post — PeakSense publishes them for you, in order, without you opening the app.</p>
+      </div>
+      <div class="feature-visual">
+        <div class="mock-line"><span class="dot"></span> Mon / Wed / Fri</div>
+        <div class="mock-line"><span class="dot"></span> 9:00 AM · 6:00 PM</div>
+        <div class="mock-line"><span class="dot"></span> 3 clips queued</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:36px;">
+      <div class="kicker">WORKS WITH</div>
+    </div>
+    <div class="platform-strip">
+      <span>YouTube</span>
+      <span>TikTok</span>
+      <span>Twitch</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Stop clipping your own highlights.</h2>
+    <p>PeakSense runs on your own machine and posts under your own accounts — you stay in control of what goes out.</p>
+    <a class="btn-primary" href="mailto:support@peaksense.net">Get in touch</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="copyright">© 2026 PeakSense</div>
+    <div class="foot-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:support@peaksense.net">support@peaksense.net</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
