@@ -6,9 +6,9 @@
 <title>PeakSense — AI-Powered Stream Highlight Detection &amp; Clipping</title>
 <meta name="description" content="PeakSense finds the best moments in your streams, cuts them, reframes them for Shorts/TikTok/Reels, burns subtitles, and auto-posts — all locally on your PC. No cloud uploads, no per-clip credits, no watermarks.">
 <meta property="og:title" content="PeakSense — AI Stream Highlight Detection &amp; Clipping">
-<meta property="og:description" content="Local AI. Unlimited clips. Facecam-top layouts. Burned subtitles. Auto-posting. Everything the cloud tools charge for — running on your hardware.">
+<meta property="og:description" content="Local AI. Unlimited clips. Facecam-top layouts. Burned subtitles. Auto-posting.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/png" href="/peaksense-icon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dff6b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2,16 6,14 10,17 14,10 18,12 22,6'/%3E%3Ccircle cx='22' cy='6' r='1.5' fill='%232dff6b' stroke='none'/%3E%3C/svg%3E">
 <style>
   :root {
     --bg: #0d0716;
@@ -71,7 +71,7 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    padding: 100px 0 80px;
+    padding: 80px 0 60px;
     text-align: center;
     overflow: hidden;
   }
@@ -81,6 +81,25 @@
     background: radial-gradient(ellipse at 50% 0%, rgba(45,255,107,0.12) 0%, transparent 60%);
     pointer-events: none;
   }
+
+  /* Large SVG logo mark — sits above the wordmark */
+  .hero-logo-mark {
+    display: block;
+    margin: 0 auto 32px;
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 0 24px rgba(45,255,107,0.35));
+  }
+
+  /* The big peak-line graphic */
+  .hero-peak {
+    display: block;
+    margin: 0 auto 20px;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+  }
+
   .hero-badge {
     display: inline-block;
     border: 1px solid var(--green);
@@ -102,8 +121,17 @@
     font-size: clamp(16px, 2vw, 20px);
     color: var(--muted);
     max-width: 720px;
-    margin: 0 auto 36px;
+    margin: 0 auto 20px;
   }
+  .hero-tagline {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .hero-tagline .sep { opacity: 0.5; padding: 0 8px; }
   .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
@@ -121,6 +149,34 @@
     color: var(--muted); font-size: 13px;
   }
   .hero-proof strong { color: var(--text); display: block; font-size: 22px; font-weight: 800; }
+
+  /* ---------- VIDEO DEMO ---------- */
+  .video-demo {
+    padding: 20px 0 80px;
+  }
+  .video-demo-frame {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(45,255,107,0.08);
+  }
+  .video-demo-frame video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .video-demo-caption {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 16px;
+    letter-spacing: 0.5px;
+  }
+  .video-demo-caption strong { color: var(--green); }
 
   /* ---------- SECTION ---------- */
   section { padding: 80px 0; }
@@ -172,18 +228,13 @@
     padding: 3px 10px; border-radius: 100px;
   }
 
-  /* ---------- COMPARISON TABLE ---------- */
+  /* ---------- COMPARISON ---------- */
   .compare-scroll { overflow-x: auto; margin-top: 8px; }
   table.compare {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 720px;
-    font-size: 14px;
+    width: 100%; border-collapse: collapse; min-width: 720px; font-size: 14px;
   }
   table.compare th, table.compare td {
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
+    padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border);
   }
   table.compare thead th {
     font-size: 12px; font-weight: 700; letter-spacing: 1px;
@@ -245,7 +296,7 @@
   .platform-pill:hover { border-color: var(--green); box-shadow: 0 0 16px var(--green-glow); text-decoration: none; }
   .platform-pill svg { width: 18px; height: 18px; }
 
-  /* ---------- CTA BANNER ---------- */
+  /* ---------- CTA ---------- */
   .cta-banner {
     background: linear-gradient(135deg, #1f1433, #2a1b47);
     border: 1px solid var(--border);
@@ -291,10 +342,7 @@
     transition: transform 0.2s;
   }
   details[open] summary::after { transform: rotate(45deg); }
-  details p {
-    padding: 0 22px 20px;
-    color: var(--muted); font-size: 14px; line-height: 1.7;
-  }
+  details p { padding: 0 22px 20px; color: var(--muted); font-size: 14px; line-height: 1.7; }
 
   /* ---------- FOOTER ---------- */
   footer {
@@ -364,17 +412,51 @@
 <!-- ================= HERO ================= -->
 <header class="hero">
   <div class="wrap">
+
+    <!-- Large brand mark — the new SVG logo, scaled up -->
+    <svg class="hero-logo-mark" viewBox="0 0 24 24" fill="none" stroke="#2dff6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="2,16 6,14 10,17 14,10 18,12 22,6"/>
+      <circle cx="22" cy="6" r="1.5" fill="#2dff6b" stroke="none"/>
+    </svg>
+
+    <!-- The big peak line — same shape as the dashboard logo, wider aspect -->
+    <svg class="hero-peak" viewBox="0 0 680 200" role="img" aria-hidden="true">
+      <polyline points="20,150 70,130 130,155 190,120 250,140 330,90 380,110 460,60 530,80 600,30"
+                fill="none" stroke="#2dff6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="20"  cy="150" r="4" fill="#2dff6b"/>
+      <circle cx="70"  cy="130" r="4" fill="#2dff6b"/>
+      <circle cx="130" cy="155" r="4" fill="#2dff6b"/>
+      <circle cx="190" cy="120" r="4" fill="#2dff6b"/>
+      <circle cx="250" cy="140" r="4" fill="#2dff6b"/>
+      <circle cx="330" cy="90"  r="4" fill="#2dff6b"/>
+      <circle cx="380" cy="110" r="4" fill="#2dff6b"/>
+      <circle cx="460" cy="60"  r="4" fill="#2dff6b"/>
+      <circle cx="530" cy="80"  r="4" fill="#2dff6b"/>
+      <circle cx="600" cy="30"  r="10" fill="none" stroke="#2dff6b" stroke-width="2"/>
+      <circle cx="600" cy="30"  r="5"  fill="#2dff6b"/>
+    </svg>
+
     <div class="hero-badge">Local AI · No cloud uploads · Unlimited clips</div>
-    <h1>Your streams.<br>Your highlights.<br><span class="accent">Your hardware.</span></h1>
+
+    <h1>
+      <span style="color: var(--text);">PEAK</span><span class="accent">SENSE</span>
+    </h1>
+
+    <div class="hero-tagline">
+      Find Top Moments <span class="sep">·</span> Highlight Engine <span class="sep">·</span> Grimmortal Dread
+    </div>
+
     <p class="sub">
       PeakSense watches your VODs, finds the moments that matter, cuts them,
       reframes them for Shorts &amp; Reels, burns subtitles, and auto-posts —
       all on your own PC. No per-clip credits. No watermarks. No 720p paywall.
     </p>
+
     <div class="hero-actions">
       <a href="https://peaksense.net/dashboard" class="btn btn-primary">Start Clipping Free →</a>
-      <a href="#how" class="btn btn-ghost">See how it works</a>
+      <a href="#demo" class="btn btn-ghost">Watch the demo</a>
     </div>
+
     <div class="hero-proof">
       <div><strong>100%</strong>Local processing</div>
       <div><strong>∞</strong>Clips, no credits</div>
@@ -383,6 +465,26 @@
     </div>
   </div>
 </header>
+
+<!-- ================= VIDEO DEMO ================= -->
+<section class="video-demo" id="demo">
+  <div class="wrap">
+    <div class="video-demo-frame fade-up">
+      <!--
+        Replace the <source> below with your actual demo video.
+        Drop the file at: assets/peaksense-demo.mp4
+        (or change the src to any path/URL you prefer)
+      -->
+      <video controls preload="metadata" playsinline>
+        <source src="assets/peaksense-demo.mp4" type="video/mp4">
+        Your browser doesn't support HTML5 video.
+      </video>
+    </div>
+    <p class="video-demo-caption fade-up">
+      <strong>▶ Watch PeakSense work:</strong> drop in a VOD, watch it detect, clip, reframe, and burn subtitles — all locally.
+    </p>
+  </div>
+</section>
 
 <!-- ================= FEATURES ================= -->
 <section id="features">
@@ -482,93 +584,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Processing location</td>
-            <td class="hl yes">Your PC (local)</td>
-            <td class="no">Cloud</td>
-            <td class="no">Cloud</td>
-            <td class="no">Cloud</td>
-            <td class="no">Cloud</td>
-          </tr>
-          <tr>
-            <td>Unlimited clips</td>
-            <td class="hl yes">✓ No credits</td>
-            <td class="no">✗ Minute caps</td>
-            <td class="partial">Limited by tier</td>
-            <td class="no">✗ Minute caps</td>
-            <td class="no">✗ Minute caps</td>
-          </tr>
-          <tr>
-            <td>Watermark-free exports</td>
-            <td class="hl yes">✓ Always</td>
-            <td class="partial">Paid only</td>
-            <td class="partial">Paid only</td>
-            <td class="partial">Paid only</td>
-            <td class="partial">Paid only</td>
-          </tr>
-          <tr>
-            <td>Facecam-top layout</td>
-            <td class="hl yes">✓ 3 zoom presets</td>
-            <td class="partial">Basic reframe</td>
-            <td class="partial">Auto reframe</td>
-            <td class="no">✗</td>
-            <td class="partial">Basic reframe</td>
-          </tr>
-          <tr>
-            <td>Burned subtitles w/ preview</td>
-            <td class="hl yes">✓ Live preview</td>
-            <td class="partial">Cloud preview</td>
-            <td class="partial">Cloud preview</td>
-            <td class="partial">Cloud preview</td>
-            <td class="partial">Cloud preview</td>
-          </tr>
-          <tr>
-            <td>Speaker diarization</td>
-            <td class="hl yes">✓ Included</td>
-            <td class="no">✗</td>
-            <td class="no">✗</td>
-            <td class="partial">Talker detection</td>
-            <td class="no">✗</td>
-          </tr>
-          <tr>
-            <td>Montage builder</td>
-            <td class="hl yes">✓ + music/intros</td>
-            <td class="partial">Basic stitch</td>
-            <td class="yes">✓</td>
-            <td class="no">✗</td>
-            <td class="partial">Basic stitch</td>
-          </tr>
-          <tr>
-            <td>Auto-posting schedule</td>
-            <td class="hl yes">✓ YT / TikTok / Twitch</td>
-            <td class="partial">YT only</td>
-            <td class="partial">YT only</td>
-            <td class="no">✗</td>
-            <td class="partial">Some platforms</td>
-          </tr>
-          <tr>
-            <td>Data privacy</td>
-            <td class="hl yes">✓ Never uploaded</td>
-            <td class="no">Cloud storage</td>
-            <td class="no">Cloud storage</td>
-            <td class="no">Cloud storage</td>
-            <td class="no">Cloud storage</td>
-          </tr>
-          <tr>
-            <td>Price</td>
-            <td class="hl yes">Free (self-hosted)</td>
-            <td>$15–29/mo</td>
-            <td>Free tier + paid</td>
-            <td>$29/mo</td>
-            <td>$14–39/mo</td>
-          </tr>
+          <tr><td>Processing location</td><td class="hl yes">Your PC (local)</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="no">Cloud</td></tr>
+          <tr><td>Unlimited clips</td><td class="hl yes">✓ No credits</td><td class="no">✗ Minute caps</td><td class="partial">Limited by tier</td><td class="no">✗ Minute caps</td><td class="no">✗ Minute caps</td></tr>
+          <tr><td>Watermark-free exports</td><td class="hl yes">✓ Always</td><td class="partial">Paid only</td><td class="partial">Paid only</td><td class="partial">Paid only</td><td class="partial">Paid only</td></tr>
+          <tr><td>Facecam-top layout</td><td class="hl yes">✓ 3 zoom presets</td><td class="partial">Basic reframe</td><td class="partial">Auto reframe</td><td class="no">✗</td><td class="partial">Basic reframe</td></tr>
+          <tr><td>Burned subtitles w/ preview</td><td class="hl yes">✓ Live preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td></tr>
+          <tr><td>Speaker diarization</td><td class="hl yes">✓ Included</td><td class="no">✗</td><td class="no">✗</td><td class="partial">Talker detection</td><td class="no">✗</td></tr>
+          <tr><td>Montage builder</td><td class="hl yes">✓ + music/intros</td><td class="partial">Basic stitch</td><td class="yes">✓</td><td class="no">✗</td><td class="partial">Basic stitch</td></tr>
+          <tr><td>Auto-posting schedule</td><td class="hl yes">✓ YT / TikTok / Twitch</td><td class="partial">YT only</td><td class="partial">YT only</td><td class="no">✗</td><td class="partial">Some platforms</td></tr>
+          <tr><td>Data privacy</td><td class="hl yes">✓ Never uploaded</td><td class="no">Cloud storage</td><td class="no">Cloud storage</td><td class="no">Cloud storage</td><td class="no">Cloud storage</td></tr>
+          <tr><td>Price</td><td class="hl yes">Free (self-hosted)</td><td>$15–29/mo</td><td>Free tier + paid</td><td>$29/mo</td><td>$14–39/mo</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ================= HOW IT WORKS ================= -->
+<!-- ================= HOW ================= -->
 <section id="how">
   <div class="wrap">
     <div class="section-head fade-up">
@@ -577,18 +609,9 @@
       <p>Drop a URL, pick your settings, and let PeakSense do the rest. No uploads, no queues, no waiting on someone else's server.</p>
     </div>
     <div class="steps">
-      <div class="step fade-up">
-        <h3>Paste your VOD URL</h3>
-        <p>YouTube, Twitch, or a direct link. PeakSense downloads it locally at up to 1440p.</p>
-      </div>
-      <div class="step fade-up">
-        <h3>Pick your signals</h3>
-        <p>Choose detection sources — hype phrases, loud moments, chat spikes, AI scoring, speaker diarization — and your reframe/ratio preset.</p>
-      </div>
-      <div class="step fade-up">
-        <h3>Render, review, post</h3>
-        <p>PeakSense cuts clips, reframes them, burns subtitles, and queues them for auto-posting on the schedule you set.</p>
-      </div>
+      <div class="step fade-up"><h3>Paste your VOD URL</h3><p>YouTube, Twitch, or a direct link. PeakSense downloads it locally at up to 1440p.</p></div>
+      <div class="step fade-up"><h3>Pick your signals</h3><p>Choose detection sources — hype phrases, loud moments, chat spikes, AI scoring, speaker diarization — and your reframe/ratio preset.</p></div>
+      <div class="step fade-up"><h3>Render, review, post</h3><p>PeakSense cuts clips, reframes them, burns subtitles, and queues them for auto-posting on the schedule you set.</p></div>
     </div>
     <div class="platform-row fade-up">
       <a class="platform-pill" href="#">
@@ -630,30 +653,12 @@
       <h2>Everything you need to know</h2>
     </div>
     <div class="faq">
-      <details>
-        <summary>Does PeakSense upload my videos anywhere?</summary>
-        <p>No. Every step — download, transcription, detection, rendering, and subtitling — runs locally on your machine. The only network calls are to the platforms you're actively downloading from or posting to, and to HuggingFace if you enable speaker diarization.</p>
-      </details>
-      <details>
-        <summary>What GPU do I need?</summary>
-        <p>PeakSense falls back to CPU rendering and CPU transcription automatically, so it runs on anything. If you have an NVIDIA GPU, it'll use CUDA for Whisper and NVENC for rendering, which is dramatically faster. AMD and Intel GPUs work through their respective encoders (QSV/AMF).</p>
-      </details>
-      <details>
-        <summary>Do I need an API key for the AI detection?</summary>
-        <p>No. PeakSense uses Ollama for local LLM scoring — you run the model yourself. There's no OpenAI key, no Anthropic key, no per-token billing. If you'd rather not use AI scoring at all, the loudness, hype-phrase, chat, and trigger-phrase detectors work independently.</p>
-      </details>
-      <details>
-        <summary>How is this different from Opus Clip or Eklipse?</summary>
-        <p>Three things: (1) it runs locally, so your footage never leaves your PC; (2) it has no clip credits — you can process as many VODs as your hardware can handle; and (3) it includes facecam-top layouts, speaker diarization, and a full montage builder that most cloud tools either gate behind paid tiers or don't offer at all.</p>
-      </details>
-      <details>
-        <summary>Can I schedule posts to multiple platforms?</summary>
-        <p>Yes. PeakSense has a posting scheduler where you set days and times. Clips are assigned to the next available slot in ranking order and posted automatically. YouTube and TikTok are supported today, with Twitch clip creation built in for live streams.</p>
-      </details>
-      <details>
-        <summary>Is there a free tier?</summary>
-        <p>PeakSense is self-hosted — there's no metered tier at all. You install it, point it at your hardware, and use it as much as you want. The only costs are whatever you already pay for your GPU and electricity.</p>
-      </details>
+      <details><summary>Does PeakSense upload my videos anywhere?</summary><p>No. Every step — download, transcription, detection, rendering, and subtitling — runs locally on your machine. The only network calls are to the platforms you're actively downloading from or posting to, and to HuggingFace if you enable speaker diarization.</p></details>
+      <details><summary>What GPU do I need?</summary><p>PeakSense falls back to CPU rendering and CPU transcription automatically, so it runs on anything. If you have an NVIDIA GPU, it'll use CUDA for Whisper and NVENC for rendering, which is dramatically faster. AMD and Intel GPUs work through their respective encoders (QSV/AMF).</p></details>
+      <details><summary>Do I need an API key for the AI detection?</summary><p>No. PeakSense uses Ollama for local LLM scoring — you run the model yourself. There's no OpenAI key, no Anthropic key, no per-token billing. If you'd rather not use AI scoring at all, the loudness, hype-phrase, chat, and trigger-phrase detectors work independently.</p></details>
+      <details><summary>How is this different from Opus Clip or Eklipse?</summary><p>Three things: (1) it runs locally, so your footage never leaves your PC; (2) it has no clip credits — you can process as many VODs as your hardware can handle; and (3) it includes facecam-top layouts, speaker diarization, and a full montage builder that most cloud tools either gate behind paid tiers or don't offer at all.</p></details>
+      <details><summary>Can I schedule posts to multiple platforms?</summary><p>Yes. PeakSense has a posting scheduler where you set days and times. Clips are assigned to the next available slot in ranking order and posted automatically. YouTube and TikTok are supported today, with Twitch clip creation built in for live streams.</p></details>
+      <details><summary>Is there a free tier?</summary><p>PeakSense is self-hosted — there's no metered tier at all. You install it, point it at your hardware, and use it as much as you want.</p></details>
     </div>
   </div>
 </section>
@@ -706,7 +711,6 @@
 </footer>
 
 <script>
-  // Intersection Observer for fade-up animations
   document.addEventListener('DOMContentLoaded', function() {
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
@@ -716,10 +720,7 @@
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.fade-up').forEach(function(el) {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
   });
 </script>
 
