@@ -2,473 +2,726 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PeakSense — Turn your VODs into posts</title>
-<meta name="description" content="PeakSense finds the best moments in your gameplay recordings, edits them into vertical clips, and posts them to YouTube and TikTok for you.">
-<link rel="icon" type="image/png" href="/peaksense-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PeakSense — AI-Powered Stream Highlight Detection &amp; Clipping</title>
+<meta name="description" content="PeakSense finds the best moments in your streams, cuts them, reframes them for Shorts/TikTok/Reels, burns subtitles, and auto-posts — all locally on your PC. No cloud uploads, no per-clip credits, no watermarks.">
+<meta property="og:title" content="PeakSense — AI Stream Highlight Detection &amp; Clipping">
+<meta property="og:description" content="Local AI. Unlimited clips. Facecam-top layouts. Burned subtitles. Auto-posting. Everything the cloud tools charge for — running on your hardware.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="/assets/peaksense-icon.png">
 <style>
   :root {
     --bg: #0d0716;
+    --bg-2: #150c24;
     --panel: #1f1433;
-    --panel-2: #150c24;
-    --line: #3c2b57;
+    --border: #3c2b57;
+    --green: #2dff6b;
+    --green-glow: #2dff6b66;
     --text: #ece8f5;
     --muted: #a08cc4;
-    --green: #2dff6b;
+    --danger: #ff4d4d;
+    --maxw: 1200px;
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
   }
-  h1, h2, h3, .display {
-    font-family: 'Chakra Petch', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.2px;
-    margin: 0;
-  }
-  a { color: inherit; }
-  img, video, iframe { max-width: 100%; }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-  .wrap {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  /* ---- Nav ---- */
+  /* ---------- NAV ---------- */
   nav {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: rgba(13, 7, 22, 0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,7,22,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
   nav .wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     height: 64px;
   }
-  .logo {
-    font-family: 'Chakra Petch', sans-serif;
-    font-weight: 700;
-    font-size: 19px;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 800; letter-spacing: 1px; font-size: 18px;
   }
-  .logo img { width: 30px; height: 30px; display: block; }
-  .logo .accent { color: var(--green); }
-  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
-  .nav-links a:hover { color: var(--text); }
+  .nav-logo svg { width: 28px; height: 28px; }
+  .nav-logo .sense { color: var(--green); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a {
+    color: var(--muted); font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--green); text-decoration: none; }
   .nav-cta {
-    background: var(--green);
-    color: #0d0716;
-    padding: 9px 18px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
+    background: var(--green); color: var(--bg) !important;
+    padding: 8px 18px; border-radius: 100px;
+    font-weight: 700; font-size: 13px;
+    transition: box-shadow 0.15s, transform 0.15s;
   }
+  .nav-cta:hover { box-shadow: 0 0 20px var(--green-glow); transform: translateY(-1px); text-decoration: none; }
+  @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
 
-  /* ---- Hero ---- */
+  /* ---------- HERO ---------- */
   .hero {
-    padding: 88px 0 100px;
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 56px;
-    align-items: center;
+    position: relative;
+    padding: 100px 0 80px;
+    text-align: center;
+    overflow: hidden;
   }
-  .hero-eyebrow {
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(45,255,107,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--green);
     color: var(--green);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    margin-bottom: 18px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 100px;
+    margin-bottom: 24px;
   }
   .hero h1 {
-    font-size: 46px;
-    line-height: 1.12;
-    max-width: 15ch;
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
   }
-  .hero p.lede {
-    font-family: 'Inter', sans-serif;
+  .hero h1 .accent { color: var(--green); }
+  .hero p.sub {
+    font-size: clamp(16px, 2vw, 20px);
     color: var(--muted);
-    font-size: 17px;
-    max-width: 46ch;
-    margin: 22px 0 32px;
+    max-width: 720px;
+    margin: 0 auto 36px;
   }
-  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--green);
-    color: #0d0716;
-    padding: 13px 24px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    display: inline-block;
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 700; font-size: 15px;
+    border: none; cursor: pointer;
+    transition: box-shadow 0.15s, transform 0.15s;
   }
-  .btn-secondary {
-    border: 1px solid var(--line);
-    color: var(--text);
-    padding: 13px 24px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 15px;
-    text-decoration: none;
-    display: inline-block;
+  .btn-primary { background: var(--green); color: var(--bg); }
+  .btn-primary:hover { box-shadow: 0 0 30px var(--green-glow); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+  .hero-proof {
+    display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+    color: var(--muted); font-size: 13px;
   }
-  .btn-secondary:hover { border-color: var(--muted); }
+  .hero-proof strong { color: var(--text); display: block; font-size: 22px; font-weight: 800; }
 
-  /* fanned clip stack */
-  .clip-stack {
-    position: relative;
-    height: 460px;
+  /* ---------- SECTION ---------- */
+  section { padding: 80px 0; }
+  .section-head { text-align: center; margin-bottom: 56px; }
+  .section-head .kicker {
+    color: var(--green); font-size: 12px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 12px;
   }
-  .clip-frame {
-    position: absolute;
-    width: 190px;
-    aspect-ratio: 9/16;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 4px solid var(--panel);
-    background: #000;
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
-    opacity: 0;
-    transform: translateY(24px);
-    animation: rise 0.7s ease forwards;
-  }
-  .clip-frame iframe { width: 100%; height: 100%; border: none; display: block; }
-  .clip-frame.c1 { left: 8%;  top: 40px;  transform: rotate(-7deg) translateY(24px); z-index: 1; animation-delay: 0.05s; }
-  .clip-frame.c2 { left: 34%; top: 0;     transform: rotate(2deg)  translateY(24px); z-index: 2; animation-delay: 0.18s; }
-  .clip-frame.c3 { left: 60%; top: 46px;  transform: rotate(9deg)  translateY(24px); z-index: 1; animation-delay: 0.3s; }
-  @keyframes rise {
-    to { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
-  }
-  .clip-frame.c1 { --r: -7deg; }
-  .clip-frame.c2 { --r: 2deg; }
-  .clip-frame.c3 { --r: 9deg; }
-  @media (prefers-reduced-motion: reduce) {
-    .clip-frame { animation: none; opacity: 1; transform: none !important; }
-  }
-
-  /* ---- How it works ---- */
-  .section { padding: 90px 0; border-top: 1px solid var(--line); }
-  .section-head { max-width: 54ch; margin-bottom: 56px; }
-  .section-head .kicker { color: var(--green); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
-  .section-head h2 { font-size: 32px; }
-  .section-head p { color: var(--muted); font-size: 16px; margin-top: 14px; }
-
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
-  }
-  .step { border-top: 1px solid var(--line); padding-top: 18px; }
-  .step .num {
-    font-family: 'Chakra Petch', sans-serif;
-    color: var(--green);
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .step h3 { font-size: 18px; margin-top: 10px; }
-  .step p { color: var(--muted); font-size: 14.5px; margin-top: 8px; }
-
-  /* ---- Showcase ---- */
-  .showcase-row {
-    display: flex;
-    gap: 26px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .showcase-frame {
-    width: 220px;
-    aspect-ratio: 9/16;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 5px solid var(--panel);
-    background: #000;
-  }
-  .showcase-frame iframe { width: 100%; height: 100%; border: none; display: block; }
-
-  /* ---- Features (alternating rows) ---- */
-  .feature-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    padding: 48px 0;
-  }
-  .feature-row:not(:last-child) { border-bottom: 1px solid var(--line); }
-  .feature-row.reverse .feature-copy { order: 2; }
-  .feature-copy .tag {
-    display: inline-block;
-    font-size: 12px;
-    color: var(--green);
-    border: 1px solid rgba(45,255,107,0.35);
-    padding: 4px 10px;
-    border-radius: 100px;
+  .section-head h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800; letter-spacing: -0.5px;
     margin-bottom: 14px;
   }
-  .feature-copy h3 { font-size: 24px; margin-bottom: 12px; }
-  .feature-copy p { color: var(--muted); font-size: 15.5px; }
-  .feature-visual {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 22px;
-    font-family: 'Inter', monospace;
+  .section-head p {
+    color: var(--muted); font-size: 17px;
+    max-width: 640px; margin: 0 auto;
   }
-  .mock-line { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
-  .mock-line:last-child { border-bottom: none; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
-  .bar-track { flex: 1; height: 6px; background: var(--panel-2); border-radius: 4px; overflow: hidden; }
-  .bar-fill { height: 100%; background: var(--green); border-radius: 4px; }
 
-  /* ---- Platforms ---- */
-  .platform-strip {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-    color: var(--muted);
-    font-family: 'Chakra Petch', sans-serif;
-    font-size: 18px;
+  /* ---------- FEATURE GRID ---------- */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .feature-card:hover { border-color: var(--green); transform: translateY(-3px); }
+  .feature-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(45,255,107,0.1);
+    border: 1px solid rgba(45,255,107,0.3);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .feature-icon svg { width: 22px; height: 22px; stroke: var(--green); fill: none; stroke-width: 2; }
+  .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .feature-card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .feature-tag {
+    display: inline-block; margin-top: 14px;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(45,255,107,0.1); color: var(--green);
+    padding: 3px 10px; border-radius: 100px;
+  }
+
+  /* ---------- COMPARISON TABLE ---------- */
+  .compare-scroll { overflow-x: auto; margin-top: 8px; }
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    font-size: 14px;
+  }
+  table.compare th, table.compare td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  table.compare thead th {
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted);
+    border-bottom: 2px solid var(--border);
+  }
+  table.compare thead th.hl { color: var(--green); }
+  table.compare tbody tr:hover { background: rgba(255,255,255,0.02); }
+  table.compare td.hl {
+    background: rgba(45,255,107,0.05);
+    border-left: 3px solid var(--green);
     font-weight: 600;
   }
+  .yes { color: var(--green); font-weight: 700; }
+  .no { color: var(--danger); }
+  .partial { color: #ffb400; }
 
-  /* ---- CTA band ---- */
-  .cta-band {
+  /* ---------- STEPS ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    counter-reset: step;
+  }
+  .step {
+    position: relative;
+    padding: 28px 28px 28px 72px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute; left: 24px; top: 26px;
+    width: 32px; height: 32px;
+    background: var(--green); color: var(--bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 15px;
+  }
+  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: 14px; }
+
+  /* ---------- PLATFORM ROW ---------- */
+  .platform-row {
+    display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    margin-top: 32px;
+  }
+  .platform-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    font-size: 14px; font-weight: 600;
+    color: var(--text);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .platform-pill:hover { border-color: var(--green); box-shadow: 0 0 16px var(--green-glow); text-decoration: none; }
+  .platform-pill svg { width: 18px; height: 18px; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner {
+    background: linear-gradient(135deg, #1f1433, #2a1b47);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 56px 32px;
     text-align: center;
-    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
   }
-  .cta-band h2 { font-size: 30px; max-width: 22ch; margin: 0 auto 16px; }
-  .cta-band p { color: var(--muted); max-width: 46ch; margin: 0 auto 30px; }
+  .cta-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(45,255,107,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-banner h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; margin-bottom: 14px; }
+  .cta-banner p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto 32px; }
+  .cta-banner .btn { position: relative; z-index: 1; }
 
-  /* ---- Footer ---- */
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 760px; margin: 0 auto; }
+  details {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  details[open] { border-color: var(--green); }
+  summary {
+    padding: 18px 22px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    color: var(--green);
+    font-size: 20px; font-weight: 400;
+    transition: transform 0.2s;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p {
+    padding: 0 22px 20px;
+    color: var(--muted); font-size: 14px; line-height: 1.7;
+  }
+
+  /* ---------- FOOTER ---------- */
   footer {
-    border-top: 1px solid var(--line);
-    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    padding: 48px 0 32px;
+    margin-top: 40px;
   }
-  footer .wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
   }
-  footer .foot-links { display: flex; gap: 24px; font-size: 13.5px; color: var(--muted); }
-  footer .foot-links a:hover { color: var(--text); }
-  footer .copyright { font-size: 13px; color: var(--muted); }
+  @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer-brand p { color: var(--muted); font-size: 14px; max-width: 320px; margin-top: 12px; }
+  .footer-col h4 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block; color: var(--text); font-size: 14px;
+    padding: 5px 0; transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--green); text-decoration: none; }
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+    color: var(--muted); font-size: 13px;
+  }
+  .footer-bottom .socials { display: flex; gap: 16px; }
+  .footer-bottom .socials a { color: var(--muted); }
+  .footer-bottom .socials a:hover { color: var(--green); }
 
-  @media (max-width: 880px) {
-    .hero { grid-template-columns: 1fr; padding-top: 48px; }
-    .hero h1 { font-size: 34px; max-width: none; }
-    .clip-stack { height: 340px; margin-top: 20px; }
-    .clip-frame { width: 140px; }
-    .clip-frame.c1 { left: 4%; top: 30px; }
-    .clip-frame.c2 { left: 32%; top: 0; }
-    .clip-frame.c3 { left: 60%; top: 40px; }
-    .steps { grid-template-columns: 1fr 1fr; }
-    .feature-row, .feature-row.reverse { grid-template-columns: 1fr; }
-    .feature-row.reverse .feature-copy { order: 0; }
-    .nav-links { display: none; }
+  /* ---------- ANIMATIONS ---------- */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
+  .fade-up.visible { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
 
+<!-- ================= NAV ================= -->
 <nav>
   <div class="wrap">
-    <div class="logo"><img src="/peaksense-icon.png" alt=""><span>PEAK<span class="accent">SENSE</span></span></div>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#examples">Examples</a>
-      <a href="#features">Features</a>
+    <div class="nav-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2dff6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="2,16 6,14 10,17 14,10 18,12 22,6"/>
+        <circle cx="22" cy="6" r="1.5" fill="#2dff6b" stroke="none"/>
+      </svg>
+      <span>PEAK<span class="sense">SENSE</span></span>
     </div>
-    <a class="nav-cta" href="mailto:support@peaksense.net">Get in touch</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#compare">Compare</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://peaksense.net/dashboard" class="nav-cta">Open Dashboard →</a>
+    </div>
   </div>
 </nav>
 
+<!-- ================= HERO ================= -->
 <header class="hero">
-  <div class="wrap" style="display:contents;">
-    <div>
-      <div class="hero-eyebrow">FOR STREAMERS &amp; GAMEPLAY CREATORS</div>
-      <h1>Your best gameplay moments, cut and posted while you sleep.</h1>
-      <p class="lede">PeakSense watches your recordings, finds the moments worth sharing, edits them into vertical clips, and publishes them to YouTube and TikTok — so your channel keeps growing between streams.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="mailto:support@peaksense.net">Get in touch</a>
-        <a class="btn-secondary" href="#examples">See real clips</a>
-      </div>
+  <div class="wrap">
+    <div class="hero-badge">Local AI · No cloud uploads · Unlimited clips</div>
+    <h1>Your streams.<br>Your highlights.<br><span class="accent">Your hardware.</span></h1>
+    <p class="sub">
+      PeakSense watches your VODs, finds the moments that matter, cuts them,
+      reframes them for Shorts &amp; Reels, burns subtitles, and auto-posts —
+      all on your own PC. No per-clip credits. No watermarks. No 720p paywall.
+    </p>
+    <div class="hero-actions">
+      <a href="https://peaksense.net/dashboard" class="btn btn-primary">Start Clipping Free →</a>
+      <a href="#how" class="btn btn-ghost">See how it works</a>
     </div>
-    <div class="clip-stack">
-      <div class="clip-frame c1"><iframe src="https://www.youtube.com/embed/DQlAziMwH_g?start=0&end=70&controls=0&rel=0" title="PeakSense example clip" allow="encrypted-media" loading="lazy"></iframe></div>
-      <div class="clip-frame c2"><iframe src="https://www.youtube.com/embed/aoa159x4tQw?start=0&end=70&controls=0&rel=0" title="PeakSense example clip" allow="encrypted-media" loading="lazy"></iframe></div>
-      <div class="clip-frame c3"><iframe src="https://www.youtube.com/embed/LNZYCPjTCiI?start=0&end=70&controls=0&rel=0" title="PeakSense example clip" allow="encrypted-media" loading="lazy"></iframe></div>
+    <div class="hero-proof">
+      <div><strong>100%</strong>Local processing</div>
+      <div><strong>∞</strong>Clips, no credits</div>
+      <div><strong>9:16 / 1:1 / 4:5</strong>Auto-reframe</div>
+      <div><strong>0</strong>Watermarks</div>
     </div>
   </div>
 </header>
 
-<section class="section" id="how">
+<!-- ================= FEATURES ================= -->
+<section id="features">
   <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">HOW IT WORKS</div>
-      <h2>From raw recording to posted clip, four steps.</h2>
-      <p>No editing timeline, no manual cropping, no remembering to hit publish.</p>
+    <div class="section-head fade-up">
+      <div class="kicker">Everything the cloud tools charge for</div>
+      <h2>Built for streamers who ship clips daily</h2>
+      <p>PeakSense isn't a thin wrapper around an API. It's a full pipeline — from VOD download to published Short — running entirely on your machine.</p>
+    </div>
+    <div class="feature-grid">
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <h3>Multi-Signal Highlight Detection</h3>
+        <p>Loudness spikes, audio deltas, hype phrases, chat activity, keyword matches, and a local LLM all vote on what matters. Weighted merging ensures no single signal dominates.</p>
+        <span class="feature-tag">AI-Powered</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
+        <h3>Facecam-Top Layouts</h3>
+        <p>Three zoom presets put your webcam on top and gameplay underneath — the layout that wins on Shorts. PeakSense auto-detects your webcam region from the VOD, no manual cropping.</p>
+        <span class="feature-tag">Signature</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+        <h3>Burned Subtitles &amp; Captions</h3>
+        <p>Whisper transcribes locally, writes an SRT, and burns it in with your choice of font, size, color, outline, position, and bold. Preview it live before you render.</p>
+        <span class="feature-tag">Whisper</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <h3>Speaker Diarization</h3>
+        <p>Know who said what. Pyannote speaker diarization labels every segment so you can filter clips by speaker — perfect for co-streams and podcasts.</p>
+        <span class="feature-tag">Multi-speaker</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg></div>
+        <h3>Montage Maker</h3>
+        <p>Select multiple clips and stitch them into one video with intros, outros, background music, and burned subtitles. Great for weekly highlight reels.</p>
+        <span class="feature-tag">Batch</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+        <h3>Auto-Posting &amp; Scheduling</h3>
+        <p>Queue clips to post to YouTube, TikTok, and Twitch on a schedule you set. PeakSense renders, uploads, and marks them as posted — fully hands-free.</p>
+        <span class="feature-tag">Automation</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
+        <h3>Twitch Clip Bridge</h3>
+        <p>Create Twitch clips from your live dashboard, then send them straight through the PeakSense pipeline — reframe, subtitle, and post without leaving the app.</p>
+        <span class="feature-tag">Live</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Clip Deduplication</h3>
+        <p>Perceptual hashing prevents the same moment from being clipped twice across runs. Your library stays clean and your posted content stays unique.</p>
+        <span class="feature-tag">Smart</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Live Preview Editor</h3>
+        <p>See exactly what will render — real-time facecam compositing, burned-subtitle overlay synced to the playhead, trim timeline, and waveform scrubbing.</p>
+        <span class="feature-tag">Real-time</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARISON ================= -->
+<section id="compare">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="kicker">Why PeakSense</div>
+      <h2>Everything they gate, we give you free</h2>
+      <p>Cloud clippers charge per clip, cap your resolution, and watermark your exports. PeakSense runs on your GPU, so there's no meter to watch.</p>
+    </div>
+    <div class="compare-scroll fade-up">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="hl">PeakSense</th>
+            <th>Opus Clip</th>
+            <th>Eklipse</th>
+            <th>Vizard</th>
+            <th>Spikes / FragCut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Processing location</td>
+            <td class="hl yes">Your PC (local)</td>
+            <td class="no">Cloud</td>
+            <td class="no">Cloud</td>
+            <td class="no">Cloud</td>
+            <td class="no">Cloud</td>
+          </tr>
+          <tr>
+            <td>Unlimited clips</td>
+            <td class="hl yes">✓ No credits</td>
+            <td class="no">✗ Minute caps</td>
+            <td class="partial">Limited by tier</td>
+            <td class="no">✗ Minute caps</td>
+            <td class="no">✗ Minute caps</td>
+          </tr>
+          <tr>
+            <td>Watermark-free exports</td>
+            <td class="hl yes">✓ Always</td>
+            <td class="partial">Paid only</td>
+            <td class="partial">Paid only</td>
+            <td class="partial">Paid only</td>
+            <td class="partial">Paid only</td>
+          </tr>
+          <tr>
+            <td>Facecam-top layout</td>
+            <td class="hl yes">✓ 3 zoom presets</td>
+            <td class="partial">Basic reframe</td>
+            <td class="partial">Auto reframe</td>
+            <td class="no">✗</td>
+            <td class="partial">Basic reframe</td>
+          </tr>
+          <tr>
+            <td>Burned subtitles w/ preview</td>
+            <td class="hl yes">✓ Live preview</td>
+            <td class="partial">Cloud preview</td>
+            <td class="partial">Cloud preview</td>
+            <td class="partial">Cloud preview</td>
+            <td class="partial">Cloud preview</td>
+          </tr>
+          <tr>
+            <td>Speaker diarization</td>
+            <td class="hl yes">✓ Included</td>
+            <td class="no">✗</td>
+            <td class="no">✗</td>
+            <td class="partial">Talker detection</td>
+            <td class="no">✗</td>
+          </tr>
+          <tr>
+            <td>Montage builder</td>
+            <td class="hl yes">✓ + music/intros</td>
+            <td class="partial">Basic stitch</td>
+            <td class="yes">✓</td>
+            <td class="no">✗</td>
+            <td class="partial">Basic stitch</td>
+          </tr>
+          <tr>
+            <td>Auto-posting schedule</td>
+            <td class="hl yes">✓ YT / TikTok / Twitch</td>
+            <td class="partial">YT only</td>
+            <td class="partial">YT only</td>
+            <td class="no">✗</td>
+            <td class="partial">Some platforms</td>
+          </tr>
+          <tr>
+            <td>Data privacy</td>
+            <td class="hl yes">✓ Never uploaded</td>
+            <td class="no">Cloud storage</td>
+            <td class="no">Cloud storage</td>
+            <td class="no">Cloud storage</td>
+            <td class="no">Cloud storage</td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td class="hl yes">Free (self-hosted)</td>
+            <td>$15–29/mo</td>
+            <td>Free tier + paid</td>
+            <td>$29/mo</td>
+            <td>$14–39/mo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="kicker">Three steps, zero cloud</div>
+      <h2>From VOD to posted Short in minutes</h2>
+      <p>Drop a URL, pick your settings, and let PeakSense do the rest. No uploads, no queues, no waiting on someone else's server.</p>
     </div>
     <div class="steps">
-      <div class="step">
-        <div class="num">01</div>
-        <h3>Record</h3>
-        <p>Keep streaming or recording like normal — PeakSense picks up your VODs automatically.</p>
+      <div class="step fade-up">
+        <h3>Paste your VOD URL</h3>
+        <p>YouTube, Twitch, or a direct link. PeakSense downloads it locally at up to 1440p.</p>
       </div>
-      <div class="step">
-        <div class="num">02</div>
-        <h3>Detect</h3>
-        <p>It scans the footage for the moments most likely to land — kills, clutches, reactions, chat spikes.</p>
+      <div class="step fade-up">
+        <h3>Pick your signals</h3>
+        <p>Choose detection sources — hype phrases, loud moments, chat spikes, AI scoring, speaker diarization — and your reframe/ratio preset.</p>
       </div>
-      <div class="step">
-        <div class="num">03</div>
-        <h3>Edit</h3>
-        <p>Each moment is trimmed and reframed for vertical formats, with facecam layout handled for you.</p>
+      <div class="step fade-up">
+        <h3>Render, review, post</h3>
+        <p>PeakSense cuts clips, reframes them, burns subtitles, and queues them for auto-posting on the schedule you set.</p>
       </div>
-      <div class="step">
-        <div class="num">04</div>
-        <h3>Post</h3>
-        <p>Review it, or let your posting schedule take over — clips go out to YouTube and TikTok on their own.</p>
-      </div>
+    </div>
+    <div class="platform-row fade-up">
+      <a class="platform-pill" href="#">
+        <svg viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+        YouTube
+      </a>
+      <a class="platform-pill" href="#">
+        <svg viewBox="0 0 24 24" fill="#9146ff"><path d="M4.3 1L1 4.7v14.6h4.9V23h3.3l3.3-3.7h4.4L23 13.5V1H4.3zm16.5 11.6l-3.3 3.6h-4.9l-3.3 3.7v-3.7H5.5V3.2h15.3v9.4zM16.4 7v5.4h-2.2V7h2.2zm-5.5 0v5.4H8.7V7h2.2z"/></svg>
+        Twitch
+      </a>
+      <a class="platform-pill" href="#">
+        <svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.6 6.7a5.6 5.6 0 01-3.3-1.1 5.6 5.6 0 01-2-3.1h-3.1v13.2a2.7 2.7 0 11-2-2.6V9.9a5.9 5.9 0 105.1 5.8V9.3a8.7 8.7 0 005.3 1.8V7.9c0-.4 0-.7-.1-1 0-.1 0-.1.1-.2z"/></svg>
+        TikTok
+      </a>
+      <a class="platform-pill" href="#">
+        <svg viewBox="0 0 24 24" fill="#ffd21e"><text x="12" y="18" text-anchor="middle" font-size="16" font-family="sans-serif">🤗</text></svg>
+        HuggingFace
+      </a>
     </div>
   </div>
 </section>
 
-<section class="section" id="examples">
+<!-- ================= CTA ================= -->
+<section>
   <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">EXAMPLES</div>
-      <h2>Clips PeakSense has actually put out.</h2>
-      <p>No mockups — this is footage it found, cut, and posted on its own.</p>
-    </div>
-    <div class="showcase-row">
-      <div class="showcase-frame"><iframe src="https://www.youtube.com/embed/DQlAziMwH_g?start=0&end=70&rel=0" title="PeakSense example clip 1" loading="lazy"></iframe></div>
-      <div class="showcase-frame"><iframe src="https://www.youtube.com/embed/aoa159x4tQw?start=0&end=70&rel=0" title="PeakSense example clip 2" loading="lazy"></iframe></div>
-      <div class="showcase-frame"><iframe src="https://www.youtube.com/embed/LNZYCPjTCiI?start=0&end=70&rel=0" title="PeakSense example clip 3" loading="lazy"></iframe></div>
+    <div class="cta-banner fade-up">
+      <h2>Stop paying per clip.</h2>
+      <p>PeakSense runs on your hardware, uses your GPU, and never meters your output. Download it, point it at a VOD, and watch it work.</p>
+      <a href="https://peaksense.net/dashboard" class="btn btn-primary">Launch PeakSense →</a>
     </div>
   </div>
 </section>
 
-<section class="section" id="features">
+<!-- ================= FAQ ================= -->
+<section id="faq">
   <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">FEATURES</div>
-      <h2>Load a playlist and search through it's entirety for specific/themed moments using 'Keyword Clip Search'</h2>
+    <div class="section-head fade-up">
+      <div class="kicker">Questions</div>
+      <h2>Everything you need to know</h2>
     </div>
-
-    <div class="feature-row">
-      <div class="feature-copy">
-        <div class="tag">Highlight detection</div>
-        <h3>It finds the moment, not just the loud part.</h3>
-        <p>PeakSense looks at gameplay events and chat activity together, so a highlight is picked because something actually happened — not just because the volume spiked.</p>
-      </div>
-      <div class="feature-visual">
-        <div class="mock-line"><span class="dot"></span> 02:14:08 — Ace clutch <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
-        <div class="mock-line"><span class="dot"></span> 02:31:44 — Chat spike <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
-        <div class="mock-line"><span class="dot"></span> 03:02:19 — Big reaction <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
-      </div>
-    </div>
-
-    <div class="feature-row reverse">
-      <div class="feature-copy">
-        <div class="tag">Auto reframe</div>
-        <h3>Landscape gameplay, reframed for vertical.</h3>
-        <p>Facecam and action are detected and laid out for 9:16 automatically, so a clip built for a monitor still reads clearly on a phone.</p>
-      </div>
-      <div class="feature-visual">
-        <div class="mock-line"><span class="dot"></span> Aspect: 16:9 → 9:16</div>
-        <div class="mock-line"><span class="dot"></span> Facecam: detected, placed top</div>
-        <div class="mock-line"><span class="dot"></span> Encode: NVENC, ready to post</div>
-      </div>
-    </div>
-
-    <div class="feature-row">
-      <div class="feature-copy">
-        <div class="tag">Scheduled posting</div>
-        <h3>Set a posting schedule once, forget about it.</h3>
-        <p>Queue clips as they're made and pick days and times to post — PeakSense publishes them for you, in order, without you opening the app.</p>
-      </div>
-      <div class="feature-visual">
-        <div class="mock-line"><span class="dot"></span> Mon / Wed / Fri</div>
-        <div class="mock-line"><span class="dot"></span> 9:00 AM · 6:00 PM</div>
-        <div class="mock-line"><span class="dot"></span> 3 clips queued</div>
-      </div>
+    <div class="faq">
+      <details>
+        <summary>Does PeakSense upload my videos anywhere?</summary>
+        <p>No. Every step — download, transcription, detection, rendering, and subtitling — runs locally on your machine. The only network calls are to the platforms you're actively downloading from or posting to, and to HuggingFace if you enable speaker diarization.</p>
+      </details>
+      <details>
+        <summary>What GPU do I need?</summary>
+        <p>PeakSense falls back to CPU rendering and CPU transcription automatically, so it runs on anything. If you have an NVIDIA GPU, it'll use CUDA for Whisper and NVENC for rendering, which is dramatically faster. AMD and Intel GPUs work through their respective encoders (QSV/AMF).</p>
+      </details>
+      <details>
+        <summary>Do I need an API key for the AI detection?</summary>
+        <p>No. PeakSense uses Ollama for local LLM scoring — you run the model yourself. There's no OpenAI key, no Anthropic key, no per-token billing. If you'd rather not use AI scoring at all, the loudness, hype-phrase, chat, and trigger-phrase detectors work independently.</p>
+      </details>
+      <details>
+        <summary>How is this different from Opus Clip or Eklipse?</summary>
+        <p>Three things: (1) it runs locally, so your footage never leaves your PC; (2) it has no clip credits — you can process as many VODs as your hardware can handle; and (3) it includes facecam-top layouts, speaker diarization, and a full montage builder that most cloud tools either gate behind paid tiers or don't offer at all.</p>
+      </details>
+      <details>
+        <summary>Can I schedule posts to multiple platforms?</summary>
+        <p>Yes. PeakSense has a posting scheduler where you set days and times. Clips are assigned to the next available slot in ranking order and posted automatically. YouTube and TikTok are supported today, with Twitch clip creation built in for live streams.</p>
+      </details>
+      <details>
+        <summary>Is there a free tier?</summary>
+        <p>PeakSense is self-hosted — there's no metered tier at all. You install it, point it at your hardware, and use it as much as you want. The only costs are whatever you already pay for your GPU and electricity.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head" style="margin-bottom:36px;">
-      <div class="kicker">WORKS WITH</div>
-    </div>
-    <div class="platform-strip">
-      <span>YouTube</span>
-      <span>TikTok</span>
-      <span>Twitch</span>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="wrap">
-    <h2>Stop clipping your own highlights.</h2>
-    <p>PeakSense runs on your own machine and posts under your own accounts — you stay in control of what goes out.</p>
-    <a class="btn-primary" href="mailto:support@peaksense.net">Get in touch</a>
-  </div>
-</section>
-
+<!-- ================= FOOTER ================= -->
 <footer>
-  <div class="wrap" style="flex-direction:column; gap:36px;">
-    <svg width="260" viewBox="0 0 680 340" role="img" style="display:block;">
-      <title>PeakSense logo</title>
-      <desc>PeakSense wordmark with a rising line graph above it and the tagline Find top moments</desc>
-      <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 575,55 630,40" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="40" cy="185" r="4" fill="var(--green)"/>
-      <circle cx="75" cy="172" r="4" fill="var(--green)"/>
-      <circle cx="135" cy="193" r="4" fill="var(--green)"/>
-      <circle cx="175" cy="165" r="4" fill="var(--green)"/>
-      <circle cx="230" cy="178" r="4" fill="var(--green)"/>
-      <circle cx="310" cy="130" r="4" fill="var(--green)"/>
-      <circle cx="350" cy="145" r="4" fill="var(--green)"/>
-      <circle cx="430" cy="90" r="4" fill="var(--green)"/>
-      <circle cx="500" cy="105" r="4" fill="var(--green)"/>
-      <circle cx="575" cy="55" r="4" fill="var(--green)"/>
-      <circle cx="630" cy="40" r="10" fill="none" stroke="var(--green)" stroke-width="2"/>
-      <circle cx="630" cy="40" r="5" fill="var(--green)"/>
-      <text x="340" y="260" text-anchor="middle" font-size="64" font-weight="700" letter-spacing="4"><tspan fill="var(--text)">PEAK</tspan><tspan fill="var(--green)">SENSE</tspan></text>
-      <text x="340" y="310" text-anchor="middle" font-size="18" font-weight="500" letter-spacing="3" fill="var(--muted)">FIND TOP MOMENTS</text>
-    </svg>
-    <div class="wrap" style="padding:0; width:100%;">
-      <div class="copyright">© 2026 PeakSense</div>
-      <div class="foot-links">
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="mailto:support@peaksense.net">support@peaksense.net</a>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2dff6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="2,16 6,14 10,17 14,10 18,12 22,6"/>
+            <circle cx="22" cy="6" r="1.5" fill="#2dff6b" stroke="none"/>
+          </svg>
+          <span>PEAK<span class="sense">SENSE</span></span>
+        </div>
+        <p>AI-powered stream highlight detection, clipping, reframing, subtitling, and auto-posting — running entirely on your hardware.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#compare">Comparison</a>
+        <a href="#how">How it works</a>
+        <a href="https://peaksense.net/dashboard">Dashboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/GrimmortalDread/peaksense-site">GitHub</a>
+        <a href="#">Documentation</a>
+        <a href="#">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">License</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PeakSense. Built for streamers, by a streamer.</span>
+      <div class="socials">
+        <a href="#">Twitch</a>
+        <a href="#">YouTube</a>
+        <a href="https://github.com/GrimmortalDread/peaksense-site">GitHub</a>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  document.addEventListener('DOMContentLoaded', function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(function(el) {
+      observer.observe(el);
+    });
+  });
+</script>
 
 </body>
 </html>
