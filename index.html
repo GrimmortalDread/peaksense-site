@@ -8,7 +8,7 @@
 <meta property="og:title" content="PeakSense — AI Stream Highlight Detection &amp; Clipping">
 <meta property="og:description" content="Local AI. Unlimited clips. Facecam-top layouts. Burned subtitles. Auto-posting.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232dff6b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2,16 6,14 10,17 14,10 18,12 22,6'/%3E%3Ccircle cx='22' cy='6' r='1.5' fill='%232dff6b' stroke='none'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 680 340' fill='none' stroke='%232dff6b' stroke-width='24' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20'/%3E%3Ccircle cx='630' cy='20' r='40' fill='none' stroke='%232dff6b' stroke-width='16'/%3E%3Ccircle cx='630' cy='20' r='20' fill='%232dff6b' stroke='none'/%3E%3C/svg%3E">
 <style>
   :root {
     --bg: #0d0716;
@@ -50,7 +50,9 @@
     display: flex; align-items: center; gap: 10px;
     font-weight: 800; letter-spacing: 1px; font-size: 18px;
   }
-  .nav-logo svg { width: 28px; height: 28px; }
+  /* Peak line has a 2:1 aspect ratio (viewBox 680x340), so the SVG
+     is sized 2:1 to match — 44x22 fits the 64px nav bar nicely. */
+  .nav-logo svg { width: 44px; height: 22px; }
   .nav-logo .sense { color: var(--green); }
   .nav-links { display: flex; gap: 24px; align-items: center; }
   .nav-links a {
@@ -82,7 +84,7 @@
     pointer-events: none;
   }
 
-  /* The big peak line — same shape as the dashboard logo */
+  /* The big peak line — exact shape as the dashboard logo */
   .hero-peak {
     display: block;
     margin: 0 auto 20px;
@@ -306,6 +308,22 @@
   .cta-banner h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; margin-bottom: 14px; }
   .cta-banner p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto 32px; }
   .cta-banner .btn { position: relative; z-index: 1; }
+  .cta-note {
+    display: block;
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-note code {
+    background: rgba(255,255,255,0.06);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Menlo', monospace;
+    color: var(--green);
+  }
 
   /* ---------- FAQ ---------- */
   .faq { max-width: 760px; margin: 0 auto; }
@@ -384,9 +402,11 @@
 <nav>
   <div class="wrap">
     <div class="nav-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#2dff6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="2,16 6,14 10,17 14,10 18,12 22,6"/>
-        <circle cx="22" cy="6" r="1.5" fill="#2dff6b" stroke="none"/>
+      <!-- Peak line — exact same shape as the dashboard logo (viewBox 680x340) -->
+      <svg viewBox="0 0 680 340" fill="none" stroke="#2dff6b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"/>
+        <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
+        <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
       </svg>
       <span>PEAK<span class="sense">SENSE</span></span>
     </div>
@@ -395,7 +415,7 @@
       <a href="#compare">Compare</a>
       <a href="#how">How it works</a>
       <a href="#faq">FAQ</a>
-      <a href="https://peaksense.net/dashboard" class="nav-cta">Open Dashboard →</a>
+      <a href="http://localhost:8000/" class="nav-cta">Open Dashboard →</a>
     </div>
   </div>
 </nav>
@@ -404,21 +424,22 @@
 <header class="hero">
   <div class="wrap">
 
-    <!-- The big peak line — same shape as the dashboard logo, wider aspect -->
-    <svg class="hero-peak" viewBox="0 0 680 200" role="img" aria-hidden="true">
-      <polyline points="20,150 70,130 130,155 190,120 250,140 330,90 380,110 460,60 530,80 600,30"
+    <!-- Peak line — exact shape as the dashboard logo (viewBox 680x340) -->
+    <svg class="hero-peak" viewBox="0 0 680 340" role="img" aria-hidden="true">
+      <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"
                 fill="none" stroke="#2dff6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="20"  cy="150" r="4" fill="#2dff6b"/>
-      <circle cx="70"  cy="130" r="4" fill="#2dff6b"/>
-      <circle cx="130" cy="155" r="4" fill="#2dff6b"/>
-      <circle cx="190" cy="120" r="4" fill="#2dff6b"/>
-      <circle cx="250" cy="140" r="4" fill="#2dff6b"/>
-      <circle cx="330" cy="90"  r="4" fill="#2dff6b"/>
-      <circle cx="380" cy="110" r="4" fill="#2dff6b"/>
-      <circle cx="460" cy="60"  r="4" fill="#2dff6b"/>
-      <circle cx="530" cy="80"  r="4" fill="#2dff6b"/>
-      <circle cx="600" cy="30"  r="10" fill="none" stroke="#2dff6b" stroke-width="2"/>
-      <circle cx="600" cy="30"  r="5"  fill="#2dff6b"/>
+      <circle cx="40"  cy="185" r="4" fill="#2dff6b"/>
+      <circle cx="75"  cy="172" r="4" fill="#2dff6b"/>
+      <circle cx="135" cy="193" r="4" fill="#2dff6b"/>
+      <circle cx="175" cy="165" r="4" fill="#2dff6b"/>
+      <circle cx="230" cy="178" r="4" fill="#2dff6b"/>
+      <circle cx="310" cy="130" r="4" fill="#2dff6b"/>
+      <circle cx="350" cy="145" r="4" fill="#2dff6b"/>
+      <circle cx="430" cy="90"  r="4" fill="#2dff6b"/>
+      <circle cx="500" cy="105" r="4" fill="#2dff6b"/>
+      <circle cx="570" cy="70"  r="4" fill="#2dff6b"/>
+      <circle cx="630" cy="20"  r="10" fill="none" stroke="#2dff6b" stroke-width="2"/>
+      <circle cx="630" cy="20"  r="5"  fill="#2dff6b"/>
     </svg>
 
     <div class="hero-badge">Local AI · No cloud uploads · Unlimited clips</div>
@@ -438,7 +459,7 @@
     </p>
 
     <div class="hero-actions">
-      <a href="https://peaksense.net/dashboard" class="btn btn-primary">Start Clipping Free →</a>
+      <a href="http://localhost:8000/" class="btn btn-primary">Start Clipping Free →</a>
       <a href="#demo" class="btn btn-ghost">Watch the demo</a>
     </div>
 
@@ -456,12 +477,21 @@
   <div class="wrap">
     <div class="video-demo-frame fade-up">
       <!--
-        Replace the <source> below with your actual demo video.
-        Drop the file at: assets/peaksense-demo.mp4
-        (or change the src to any path/URL you prefer)
+        DEMO VIDEO
+        ----------
+        Currently pointed at a public-domain placeholder (Big Buck Bunny)
+        so this section is not dead. When you have your own demo:
+
+          1. Record it (screen capture of PeakSense doing a full pipeline run
+             works great — 30–90 seconds is plenty).
+          2. Drop the file at:  assets/peaksense-demo.mp4
+          3. Change the <source> src below to:  assets/peaksense-demo.mp4
+
+        If you'd rather not show a placeholder, delete this entire
+        <section class="video-demo"> block — the page reads fine without it.
       -->
       <video controls preload="metadata" playsinline>
-        <source src="assets/peaksense-demo.mp4" type="video/mp4">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
         Your browser doesn't support HTML5 video.
       </video>
     </div>
@@ -563,8 +593,7 @@
             <th>Feature</th>
             <th class="hl">PeakSense</th>
             <th>Nopus</th>
-            <th>Eclipse of the 
-              Broken Heart</th>
+            <th>Eclipse of the Broken Heart</th>
             <th>Midzard</th>
             <th>Yikes / GagCut</th>
           </tr>
@@ -626,7 +655,8 @@
     <div class="cta-banner fade-up">
       <h2>Stop paying per clip.</h2>
       <p>PeakSense runs on your hardware, uses your GPU, and never meters your output. Download it, point it at a VOD, and watch it work.</p>
-      <a href="https://peaksense.net/dashboard" class="btn btn-primary">Launch PeakSense →</a>
+      <a href="http://localhost:8000/" class="btn btn-primary">Launch PeakSense →</a>
+      <small class="cta-note">Runs locally — start PeakSense first, then open <code>http://localhost:8000</code></small>
     </div>
   </div>
 </section>
@@ -655,9 +685,11 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2dff6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="2,16 6,14 10,17 14,10 18,12 22,6"/>
-            <circle cx="22" cy="6" r="1.5" fill="#2dff6b" stroke="none"/>
+          <!-- Same peak line as the nav — matches the dashboard logo -->
+          <svg viewBox="0 0 680 340" fill="none" stroke="#2dff6b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"/>
+            <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
+            <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
           </svg>
           <span>PEAK<span class="sense">SENSE</span></span>
         </div>
@@ -668,7 +700,7 @@
         <a href="#features">Features</a>
         <a href="#compare">Comparison</a>
         <a href="#how">How it works</a>
-        <a href="https://peaksense.net/dashboard">Dashboard</a>
+        <a href="http://localhost:8000/">Dashboard</a>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
