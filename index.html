@@ -8,7 +8,7 @@
 <meta property="og:title" content="PeakSense — AI Stream Highlight Detection &amp; Clipping">
 <meta property="og:description" content="Local AI. Unlimited clips. Facecam-top layouts. Burned subtitles. Auto-posting.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 680 340' fill='none' stroke='%232dff6b' stroke-width='24' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20'/%3E%3Ccircle cx='630' cy='20' r='40' fill='none' stroke='%232dff6b' stroke-width='16'/%3E%3Ccircle cx='630' cy='20' r='20' fill='%232dff6b' stroke='none'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='280 0 400 200' fill='none' stroke='%232dff6b' stroke-width='30' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='310,130 350,145 430,90 500,105 570,70 630,20'/%3E%3Ccircle cx='630' cy='20' r='35' fill='none' stroke='%232dff6b' stroke-width='20'/%3E%3Ccircle cx='630' cy='20' r='20' fill='%232dff6b' stroke='none'/%3E%3C/svg%3E">
 <style>
   :root {
     --bg: #0d0716;
@@ -50,8 +50,8 @@
     display: flex; align-items: center; gap: 10px;
     font-weight: 800; letter-spacing: 1px; font-size: 18px;
   }
-  /* Peak line has a 2:1 aspect ratio (viewBox 680x340), so the SVG
-     is sized 2:1 to match — 44x22 fits the 64px nav bar nicely. */
+  /* The peak line uses a 2:1 viewBox (680x340), so the svg is sized 2:1
+     to keep the shape undistorted at nav scale. */
   .nav-logo svg { width: 44px; height: 22px; }
   .nav-logo .sense { color: var(--green); }
   .nav-links { display: flex; gap: 24px; align-items: center; }
@@ -73,7 +73,7 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    padding: 80px 0 60px;
+    padding: 60px 0 60px;
     text-align: center;
     overflow: hidden;
   }
@@ -84,10 +84,12 @@
     pointer-events: none;
   }
 
-  /* The big peak line — exact shape as the dashboard logo */
+  /* The big peak line — exact shape as the dashboard logo.
+     The viewBox is cropped to the content (y=0..210, x=20..660) so there
+     is no dead vertical space above or below the line. */
   .hero-peak {
     display: block;
-    margin: 0 auto 20px;
+    margin: 0 auto 8px;
     width: 100%;
     max-width: 900px;
     height: auto;
@@ -100,14 +102,14 @@
     font-size: 11px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase;
     padding: 6px 16px; border-radius: 100px;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
   }
   .hero h1 {
     font-size: clamp(36px, 6vw, 68px);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -1px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   .hero h1 .accent { color: var(--green); }
   .hero p.sub {
@@ -125,7 +127,21 @@
     margin-bottom: 36px;
   }
   .hero-tagline .sep { opacity: 0.5; padding: 0 8px; }
-  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .hero-actions-note {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 0 auto 40px;
+    max-width: 560px;
+    line-height: 1.5;
+  }
+  .hero-actions-note code {
+    background: rgba(255,255,255,0.06);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Menlo', monospace;
+    color: var(--green);
+  }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 14px 28px; border-radius: 8px;
@@ -415,7 +431,7 @@
       <a href="#compare">Compare</a>
       <a href="#how">How it works</a>
       <a href="#faq">FAQ</a>
-      <a href="http://localhost:8000/" class="nav-cta">Open Dashboard →</a>
+      <a href="http://localhost:8000/dashboard" class="nav-cta">Open Dashboard →</a>
     </div>
   </div>
 </nav>
@@ -424,8 +440,10 @@
 <header class="hero">
   <div class="wrap">
 
-    <!-- Peak line — exact shape as the dashboard logo (viewBox 680x340) -->
-    <svg class="hero-peak" viewBox="0 0 680 340" role="img" aria-hidden="true">
+    <!-- Peak line — exact same shape as the dashboard logo.
+         viewBox is cropped tight to the content (20 0 640 210) so there's
+         no dead space between the line and the PEAKSENSE wordmark. -->
+    <svg class="hero-peak" viewBox="20 0 640 210" role="img" aria-hidden="true">
       <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"
                 fill="none" stroke="#2dff6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="40"  cy="185" r="4" fill="#2dff6b"/>
@@ -459,9 +477,12 @@
     </p>
 
     <div class="hero-actions">
-      <a href="http://localhost:8000/" class="btn btn-primary">Start Clipping Free →</a>
+      <a href="http://localhost:8000/dashboard" class="btn btn-primary">Start Clipping Free →</a>
       <a href="#demo" class="btn btn-ghost">Watch the demo</a>
     </div>
+    <p class="hero-actions-note">
+      PeakSense runs on your own PC — make sure it's running first, then the dashboard opens at <code>http://localhost:8000</code>.
+    </p>
 
     <div class="hero-proof">
       <div><strong>100%</strong>Local processing</div>
@@ -655,7 +676,7 @@
     <div class="cta-banner fade-up">
       <h2>Stop paying per clip.</h2>
       <p>PeakSense runs on your hardware, uses your GPU, and never meters your output. Download it, point it at a VOD, and watch it work.</p>
-      <a href="http://localhost:8000/" class="btn btn-primary">Launch PeakSense →</a>
+      <a href="http://localhost:8000/dashboard" class="btn btn-primary">Launch PeakSense →</a>
       <small class="cta-note">Runs locally — start PeakSense first, then open <code>http://localhost:8000</code></small>
     </div>
   </div>
@@ -700,7 +721,7 @@
         <a href="#features">Features</a>
         <a href="#compare">Comparison</a>
         <a href="#how">How it works</a>
-        <a href="http://localhost:8000/">Dashboard</a>
+        <a href="http://localhost:8000/dashboard">Dashboard</a>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
