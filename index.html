@@ -247,6 +247,7 @@
   }
   table.compare th, table.compare td {
     padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border);
+    vertical-align: top;
   }
   table.compare thead th {
     font-size: 12px; font-weight: 700; letter-spacing: 1px;
@@ -263,6 +264,17 @@
   .yes { color: var(--green); font-weight: 700; }
   .no { color: var(--danger); }
   .partial { color: #ffb400; }
+  .row-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    letter-spacing: 0.2px;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  table.compare td.hl .row-sub { color: rgba(255,255,255,0.65); }
   .compare-note {
     text-align: center;
     color: var(--muted);
@@ -851,19 +863,33 @@
         </thead>
         <tbody>
           <tr><td>Where it runs</td><td class="hl yes">Your PC (local)</td><td class="no">Their cloud</td><td class="no">Their cloud</td><td class="no">Their cloud</td><td class="no">Their cloud</td></tr>
-          <tr><td>Clip limits</td><td class="hl yes">✓ Unlimited <span class="pro-tag">Pro</span></td><td class="no">✗ Minutes per month</td><td class="partial">Capped by tier</td><td class="no">✗ Minutes per month</td><td class="no">✗ Minutes per month</td></tr>
+          <tr><td>Clip limits</td><td class="hl yes">✓ Unlimited, no credits</td><td class="no">✗ Minutes per month</td><td class="partial">Capped by tier</td><td class="no">✗ Minutes per month</td><td class="no">✗ Minutes per month</td></tr>
           <tr><td>Watermark-free</td><td class="hl yes">✓ Always</td><td class="partial">Paid unlock</td><td class="partial">Paid unlock</td><td class="partial">Paid unlock</td><td class="partial">Paid unlock</td></tr>
           <tr><td>Facecam-top layout</td><td class="hl yes">✓ 3 zoom presets</td><td class="partial">Basic crop</td><td class="partial">Auto crop</td><td class="no">✗</td><td class="partial">Basic crop</td></tr>
           <tr><td>Captions with live preview</td><td class="hl yes">✓ Live preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td></tr>
           <tr><td>Speaker separation</td><td class="hl yes">✓ Included</td><td class="no">✗</td><td class="no">✗</td><td class="partial">Sometimes</td><td class="no">✗</td></tr>
           <tr><td>Montage with music &amp; intros</td><td class="hl yes">✓ Included</td><td class="partial">Basic stitch</td><td class="yes">✓</td><td class="no">✗</td><td class="partial">Basic stitch</td></tr>
-          <tr><td>Posts clips on a schedule</td><td class="hl yes">✓ YouTube, TikTok, Twitch <span class="pro-tag">Pro</span></td><td class="partial">YouTube only</td><td class="partial">YouTube only</td><td class="no">✗</td><td class="partial">Some platforms</td></tr>
-          <tr><td>Auto-captures moments while you're live</td><td class="hl yes">✓ Yes <span class="pro-tag">Pro</span></td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td></tr>
+          <tr>
+            <td>Scheduled auto-posting</td>
+            <td class="hl yes">✓ Free (manual) · Pro (autopilot)<br><span class="row-sub">YouTube, TikTok, Twitch</span></td>
+            <td class="partial">Paid only<br><span class="row-sub">Free tier can't post at all</span></td>
+            <td class="partial">Paid only<br><span class="row-sub">Free tier is manual</span></td>
+            <td class="yes">✓ Free<br><span class="row-sub">Up to 10 clips/day · 6 platforms</span></td>
+            <td class="no">✗ Not offered<br><span class="row-sub">Spikes: limited platforms · GagCut: manual only</span></td>
+          </tr>
+          <tr>
+            <td>Keeps posting after you close the tab</td>
+            <td class="hl yes">✓ Yes</td>
+            <td class="yes">✓ Yes</td>
+            <td class="partial">Unclear</td>
+            <td class="partial">Unclear</td>
+            <td class="no">✗ No</td>
+          </tr>
           <tr><td>Where your footage goes</td><td class="hl yes">✓ Never leaves your PC</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td></tr>
-          <tr><td>What it costs</td><td class="hl yes">Free · $69 Pro</td><td>$15–29/mo</td><td>Free tier + paid</td><td>$29/mo</td><td>$14–39/mo</td></tr>
+          <tr><td>What it costs</td><td class="hl yes">Free · $69 Pro (one-time)</td><td>$15–29/mo</td><td>Free tier + paid</td><td>$29/mo</td><td>$14–39/mo</td></tr>
         </tbody>
       </table>
-      <p class="compare-note">Features marked <span class="pro-tag">Pro</span> require a one-time PeakSense Pro license.</p>
+      <p class="compare-note">Auto-posting availability verified September 2026. Cloud tools change their feature tiers frequently — check their sites directly before switching.</p>
     </div>
   </div>
 </section>
