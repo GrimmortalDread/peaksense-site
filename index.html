@@ -21,9 +21,14 @@
     --muted: #a08cc4;
     --danger: #ff4d4d;
     --maxw: 1200px;
+    --yt: #ff4444;
+    --tw: #a970ff;
+    --tt-cyan: #00f2ea;
+    --tt-pink: #ff0050;
+    --hf: #ffd21e;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   body {
     background: var(--bg);
     color: var(--text);
@@ -50,11 +55,9 @@
     display: flex; align-items: center; gap: 10px;
     font-weight: 800; letter-spacing: 1px; font-size: 18px;
   }
-  /* The peak line uses a 2:1 viewBox (680x340), so the svg is sized 2:1
-     to keep the shape undistorted at nav scale. */
   .nav-logo svg { width: 44px; height: 22px; }
   .nav-logo .sense { color: var(--green); }
-  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links { display: flex; gap: 22px; align-items: center; }
   .nav-links a {
     color: var(--muted); font-size: 13px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.5px;
@@ -68,7 +71,7 @@
     transition: box-shadow 0.15s, transform 0.15s;
   }
   .nav-cta:hover { box-shadow: 0 0 20px var(--green-glow); transform: translateY(-1px); text-decoration: none; }
-  @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+  @media (max-width: 900px) { .nav-links a:not(.nav-cta) { display: none; } }
 
   /* ---------- HERO ---------- */
   .hero {
@@ -83,10 +86,6 @@
     background: radial-gradient(ellipse at 50% 0%, rgba(45,255,107,0.12) 0%, transparent 60%);
     pointer-events: none;
   }
-
-  /* The big peak line — exact shape as the dashboard logo.
-     The viewBox is cropped to the content (y=0..210, x=20..660) so there
-     is no dead vertical space above or below the line. */
   .hero-peak {
     display: block;
     margin: 0 auto 8px;
@@ -94,7 +93,6 @@
     max-width: 900px;
     height: auto;
   }
-
   .hero-badge {
     display: inline-block;
     border: 1px solid var(--green);
@@ -150,9 +148,9 @@
     transition: box-shadow 0.15s, transform 0.15s;
   }
   .btn-primary { background: var(--green); color: var(--bg); }
-  .btn-primary:hover { box-shadow: 0 0 30px var(--green-glow); transform: translateY(-2px); }
+  .btn-primary:hover { box-shadow: 0 0 30px var(--green-glow); transform: translateY(-2px); text-decoration: none; }
   .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
   .hero-proof {
     display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
     color: var(--muted); font-size: 13px;
@@ -160,9 +158,7 @@
   .hero-proof strong { color: var(--text); display: block; font-size: 22px; font-weight: 800; }
 
   /* ---------- VIDEO DEMO ---------- */
-  .video-demo {
-    padding: 20px 0 80px;
-  }
+  .video-demo { padding: 20px 0 80px; }
   .video-demo-frame {
     position: relative;
     max-width: 960px;
@@ -173,11 +169,7 @@
     background: #000;
     box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(45,255,107,0.08);
   }
-  .video-demo-frame video {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+  .video-demo-frame video { display: block; width: 100%; height: auto; }
   .video-demo-caption {
     text-align: center;
     color: var(--muted);
@@ -261,6 +253,251 @@
   .no { color: var(--danger); }
   .partial { color: #ffb400; }
 
+  /* ---------- PRO SECTION ---------- */
+  .pro-section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .pro-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(45,255,107,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .pro-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 900px) { .pro-grid { grid-template-columns: 1fr; } }
+
+  .pro-pitch .kicker {
+    color: var(--green); font-size: 12px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pro-pitch h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800; letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .pro-pitch > p {
+    color: var(--muted); font-size: 16px; margin-bottom: 28px;
+    max-width: 540px;
+  }
+  .pro-feature-list {
+    list-style: none; display: flex; flex-direction: column; gap: 14px;
+  }
+  .pro-feature-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .pro-feature-list .check {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(45,255,107,0.15);
+    border: 1px solid rgba(45,255,107,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .pro-feature-list .check svg {
+    width: 12px; height: 12px; stroke: var(--green); fill: none; stroke-width: 3;
+  }
+  .pro-feature-list strong {
+    display: block; font-size: 15px; font-weight: 700; margin-bottom: 2px;
+  }
+  .pro-feature-list span {
+    color: var(--muted); font-size: 14px; line-height: 1.55;
+  }
+
+  .pro-card {
+    background: linear-gradient(160deg, #1f1433 0%, #150c24 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 60px rgba(45,255,107,0.06);
+  }
+  .pro-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at top right, rgba(45,255,107,0.1), transparent 55%);
+    pointer-events: none;
+  }
+  .pro-card > * { position: relative; z-index: 1; }
+  .pro-badge {
+    display: inline-block;
+    background: var(--green); color: var(--bg);
+    font-size: 10px; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px;
+    margin-bottom: 18px;
+  }
+  .pro-card h3 {
+    font-size: 24px; font-weight: 800; letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+  .pro-card .pro-sub {
+    color: var(--muted); font-size: 14px; margin-bottom: 22px;
+  }
+  .pro-price {
+    display: flex; align-items: baseline; gap: 10px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 22px;
+  }
+  .pro-price .amount {
+    font-size: 52px; font-weight: 800; letter-spacing: -2px;
+    color: var(--text); line-height: 1;
+  }
+  .pro-price .period {
+    color: var(--muted); font-size: 13px; letter-spacing: 0.5px;
+  }
+  .pro-card-features {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 26px;
+  }
+  .pro-card-features li {
+    display: flex; gap: 10px; align-items: center;
+    color: var(--text); font-size: 14px;
+  }
+  .pro-card-features li svg {
+    width: 16px; height: 16px; stroke: var(--green); fill: none; stroke-width: 2.5; flex-shrink: 0;
+  }
+  .pro-card .btn { width: 100%; justify-content: center; }
+  .pro-card .pro-note {
+    text-align: center; color: var(--muted); font-size: 12px;
+    margin-top: 14px; letter-spacing: 0.3px;
+  }
+  .pro-card .pro-note code {
+    background: rgba(255,255,255,0.06);
+    padding: 1px 5px; border-radius: 3px;
+    font-family: 'Consolas', 'Menlo', monospace;
+    color: var(--green); font-size: 11px;
+  }
+
+  /* ---------- INTEGRATIONS ---------- */
+  .integrations-intro { padding-bottom: 20px; }
+  .integration {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+  .integration-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .integration.reverse .integration-grid { direction: rtl; }
+  .integration.reverse .integration-grid > * { direction: ltr; }
+  @media (max-width: 900px) {
+    .integration-grid,
+    .integration.reverse .integration-grid { grid-template-columns: 1fr; direction: ltr; }
+  }
+
+  .integration-brand {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .integration-mark {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid;
+  }
+  .integration-mark svg { width: 28px; height: 28px; }
+  .integration-brand .name {
+    font-size: 26px; font-weight: 800; letter-spacing: -0.4px;
+    line-height: 1.1;
+  }
+  .integration-brand .kind {
+    font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 700;
+  }
+  .integration h2 {
+    font-size: clamp(24px, 3.5vw, 34px);
+    font-weight: 800; letter-spacing: -0.4px;
+    margin-bottom: 14px;
+  }
+  .integration > .integration-grid > div > p.lede {
+    color: var(--muted); font-size: 16px; margin-bottom: 26px;
+  }
+  .integration-features {
+    list-style: none; display: flex; flex-direction: column; gap: 12px;
+  }
+  .integration-features li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 14px; color: var(--muted);
+  }
+  .integration-features li svg {
+    width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px;
+    stroke: currentColor; fill: none; stroke-width: 2.5;
+  }
+  .integration-features li strong {
+    color: var(--text); font-weight: 600;
+  }
+
+  .integration-visual {
+    background: linear-gradient(135deg, var(--panel), var(--bg-2));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    min-height: 280px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .integration-visual::before {
+    content: '';
+    position: absolute;
+    top: -30%; right: -20%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow, rgba(45,255,107,0.12)), transparent 70%);
+    pointer-events: none;
+  }
+  .integration-visual > * { position: relative; z-index: 1; }
+  .integration-visual .visual-title {
+    font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 2px;
+    font-weight: 700; margin-bottom: 18px;
+  }
+  .stat {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 13px 0; border-bottom: 1px solid var(--border);
+  }
+  .stat:last-child { border-bottom: none; }
+  .stat .label { color: var(--muted); font-size: 13px; }
+  .stat .value {
+    color: var(--text); font-weight: 700; font-size: 16px;
+    font-family: 'Consolas', 'Menlo', monospace;
+  }
+  .stat .value.accent { color: var(--accent-color, var(--green)); }
+
+  /* Platform accents */
+  .integration.yt { --accent-color: var(--yt); --glow: rgba(255,68,68,0.15); }
+  .integration.yt .integration-mark { background: rgba(255,68,68,0.1); border-color: rgba(255,68,68,0.3); color: var(--yt); }
+  .integration.yt .integration-features li svg { stroke: var(--yt); }
+
+  .integration.tw { --accent-color: var(--tw); --glow: rgba(169,112,255,0.18); }
+  .integration.tw .integration-mark { background: rgba(169,112,255,0.12); border-color: rgba(169,112,255,0.32); color: var(--tw); }
+  .integration.tw .integration-features li svg { stroke: var(--tw); }
+
+  .integration.tt { --accent-color: var(--tt-cyan); --glow: rgba(0,242,234,0.14); }
+  .integration.tt .integration-mark { background: rgba(0,242,234,0.1); border-color: rgba(255,0,80,0.3); color: var(--tt-cyan); }
+  .integration.tt .integration-features li svg { stroke: var(--tt-cyan); }
+
+  .integration.hf { --accent-color: var(--hf); --glow: rgba(255,210,30,0.14); }
+  .integration.hf .integration-mark { background: rgba(255,210,30,0.1); border-color: rgba(255,210,30,0.3); color: var(--hf); }
+  .integration.hf .integration-features li svg { stroke: var(--hf); }
+
   /* ---------- STEPS ---------- */
   .steps {
     display: grid;
@@ -300,9 +537,14 @@
     background: var(--panel);
     font-size: 14px; font-weight: 600;
     color: var(--text);
-    transition: border-color 0.15s, box-shadow 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
   }
-  .platform-pill:hover { border-color: var(--green); box-shadow: 0 0 16px var(--green-glow); text-decoration: none; }
+  .platform-pill:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 16px var(--green-glow);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
   .platform-pill svg { width: 18px; height: 18px; }
 
   /* ---------- CTA ---------- */
@@ -321,8 +563,8 @@
     background: radial-gradient(ellipse at 50% 100%, rgba(45,255,107,0.15) 0%, transparent 70%);
     pointer-events: none;
   }
-  .cta-banner h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; margin-bottom: 14px; }
-  .cta-banner p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto 32px; }
+  .cta-banner h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; margin-bottom: 14px; position: relative; }
+  .cta-banner p { color: var(--muted); font-size: 17px; max-width: 560px; margin: 0 auto 32px; position: relative; }
   .cta-banner .btn { position: relative; z-index: 1; }
   .cta-note {
     display: block;
@@ -365,6 +607,8 @@
     color: var(--green);
     font-size: 20px; font-weight: 400;
     transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: 12px;
   }
   details[open] summary::after { transform: rotate(45deg); }
   details p { padding: 0 22px 20px; color: var(--muted); font-size: 14px; line-height: 1.7; }
@@ -401,7 +645,7 @@
   }
   .footer-bottom .socials { display: flex; gap: 16px; }
   .footer-bottom .socials a { color: var(--muted); }
-  .footer-bottom .socials a:hover { color: var(--green); }
+  .footer-bottom .socials a:hover { color: var(--green); text-decoration: none; }
 
   /* ---------- ANIMATIONS ---------- */
   .fade-up {
@@ -418,7 +662,6 @@
 <nav>
   <div class="wrap">
     <div class="nav-logo">
-      <!-- Peak line — exact same shape as the dashboard logo (viewBox 680x340) -->
       <svg viewBox="0 0 680 340" fill="none" stroke="#2dff6b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"/>
         <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
@@ -429,7 +672,8 @@
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#compare">Compare</a>
-      <a href="#how">How it works</a>
+      <a href="#pro">Pro</a>
+      <a href="#integrations">Integrations</a>
       <a href="#faq">FAQ</a>
       <a href="http://localhost:8000/dashboard" class="nav-cta">Open Dashboard →</a>
     </div>
@@ -439,10 +683,6 @@
 <!-- ================= HERO ================= -->
 <header class="hero">
   <div class="wrap">
-
-    <!-- Peak line — exact same shape as the dashboard logo.
-         viewBox is cropped tight to the content (20 0 640 210) so there's
-         no dead space between the line and the PEAKSENSE wordmark. -->
     <svg class="hero-peak" viewBox="20 0 640 210" role="img" aria-hidden="true">
       <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"
                 fill="none" stroke="#2dff6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -497,20 +737,6 @@
 <section class="video-demo" id="demo">
   <div class="wrap">
     <div class="video-demo-frame fade-up">
-      <!--
-        DEMO VIDEO
-        ----------
-        Currently pointed at a public-domain placeholder (Big Buck Bunny)
-        so this section is not dead. When you have your own demo:
-
-          1. Record it (screen capture of PeakSense doing a full pipeline run
-             works great — 30–90 seconds is plenty).
-          2. Drop the file at:  assets/peaksense-demo.mp4
-          3. Change the <source> src below to:  assets/peaksense-demo.mp4
-
-        If you'd rather not show a placeholder, delete this entire
-        <section class="video-demo"> block — the page reads fine without it.
-      -->
       <video controls preload="metadata" playsinline>
         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
         Your browser doesn't support HTML5 video.
@@ -636,6 +862,258 @@
   </div>
 </section>
 
+<!-- ================= PRO ================= -->
+<section class="pro-section" id="pro">
+  <div class="wrap">
+    <div class="pro-grid">
+
+      <!-- Left: pitch + feature list -->
+      <div class="pro-pitch fade-up">
+        <div class="kicker">PeakSense Pro</div>
+        <h2>Built for streamers who treat clips like a business.</h2>
+        <p>Free tier stays free forever. Pro is for the people who need more throughput, deeper analytics, and priority access to the pipeline — without paying per clip.</p>
+
+        <ul class="pro-feature-list">
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+            <div>
+              <strong>Priority job queue</strong>
+              <span>Your VODs jump to the front of the worker queue. No waiting behind a batch of free-tier jobs.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+            <div>
+              <strong>Unlimited clip exports per VOD</strong>
+              <span>Free tier caps at 10 clips per video. Pro removes the cap entirely — process a 6-hour marathon and get every moment.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+            <div>
+              <strong>Multi-platform auto-posting</strong>
+              <span>Post to YouTube, TikTok, and Twitch on one schedule. Free tier is YouTube-only.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+            <div>
+              <strong>Performance analytics dashboard</strong>
+              <span>Views, watch time, CTR, and engagement per clip — fed back into the highlight scorer so it learns what works for your channel.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+            <div>
+              <strong>Live stream moment capture</strong>
+              <span>EventSub-driven auto-clipping during live streams — channel points, raids, keyword triggers, and chat velocity spikes.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+            <div>
+              <strong>Custom branding &amp; watermarks</strong>
+              <span>Upload your own intro, outro, and logo overlays. Auto-applied to every export across every platform.</span>
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+            <div>
+              <strong>Delayed reprocessing</strong>
+              <span>Re-runs the pipeline N hours after posting with fresh AI scoring signals to catch moments the first pass missed.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: pricing card -->
+      <div class="pro-card fade-up">
+        <span class="pro-badge">One-time · Lifetime</span>
+        <h3>PeakSense Pro</h3>
+        <p class="pro-sub">Unlock everything. Keep it forever. No subscription.</p>
+
+        <div class="pro-price">
+          <span class="amount">$79</span>
+          <span class="period">one-time payment</span>
+        </div>
+
+        <ul class="pro-card-features">
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Priority queue — your jobs first</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Unlimited clips per VOD</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>YouTube + TikTok + Twitch posting</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Analytics dashboard + AI feedback</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Live stream auto-capture</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Custom branding &amp; overlays</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>All future Pro features included</li>
+        </ul>
+
+        <a href="http://localhost:8000/dashboard" class="btn btn-primary">Activate License →</a>
+        <small class="pro-note">Already own a key? Paste it in <code>Settings → Pro License</code>.</small>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTEGRATIONS INTRO ================= -->
+<section class="integrations-intro" id="integrations">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="kicker">Integrations</div>
+      <h2>Plays nice with the platforms you already live on</h2>
+      <p>Pull VODs in, push clips out. Every platform has dedicated, tested support — not just a bare API call.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= YOUTUBE ================= -->
+<section class="integration yt" id="youtube">
+  <div class="wrap">
+    <div class="integration-grid">
+      <div class="fade-up">
+        <div class="integration-brand">
+          <div class="integration-mark">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          </div>
+          <div>
+            <div class="kind">Full support</div>
+            <div class="name">YouTube</div>
+          </div>
+        </div>
+        <h2>From raw VOD to published Short — in one flow.</h2>
+        <p class="lede">PeakSense handles both sides of YouTube: pulling down your VODs for processing, and pushing finished clips back up as uploads or Shorts.</p>
+        <ul class="integration-features">
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Dual-token OAuth</strong> — a read-only token for browsing and the monitor, a separate upload token for posting.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Uploads playlist monitor</strong> — PeakSense watches your channel every 10 minutes and auto-queues new VODs for clipping.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Direct upload API</strong> — clips are pushed to your channel with title, description, tags, and thumbnail set automatically.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Cookie-based yt-dlp</strong> — for private or age-restricted VODs, an embedded webview captures your login cookies.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Shorts-ready output</strong> — 9:16 vertical, burned captions, hook in the first 3 seconds. Optimized for the Shorts feed.</div></li>
+        </ul>
+      </div>
+      <div class="integration-visual fade-up">
+        <div class="visual-title">YouTube pipeline</div>
+        <div class="stat"><span class="label">VOD input formats</span><span class="value accent">Watch / Live / Shorts</span></div>
+        <div class="stat"><span class="label">Max download quality</span><span class="value accent">1440p</span></div>
+        <div class="stat"><span class="label">Monitor poll interval</span><span class="value">10 min</span></div>
+        <div class="stat"><span class="label">Auto-post target</span><span class="value accent">✓ Native</span></div>
+        <div class="stat"><span class="label">Post schedule slots</span><span class="value">7 days × N/day</span></div>
+        <div class="stat"><span class="label">Auth flow</span><span class="value">BYOK OAuth 2.0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TWITCH ================= -->
+<section class="integration tw reverse" id="twitch">
+  <div class="wrap">
+    <div class="integration-grid">
+      <div class="fade-up">
+        <div class="integration-brand">
+          <div class="integration-mark">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.3 1L1 4.7v14.6h4.9V23h3.3l3.3-3.7h4.4L23 13.5V1H4.3zm16.5 11.6l-3.3 3.6h-4.9l-3.3 3.7v-3.7H5.5V3.2h15.3v9.4zM16.4 7v5.4h-2.2V7h2.2zm-5.5 0v5.4H8.7V7h2.2z"/></svg>
+          </div>
+          <div>
+            <div class="kind">Live-stream native</div>
+            <div class="name">Twitch</div>
+          </div>
+        </div>
+        <h2>Catch the moment while the chat is still losing it.</h2>
+        <p class="lede">Twitch is where reactions happen live. PeakSense hooks into EventSub and the Helix API so clips get created the instant a moment lands — not hours later.</p>
+        <ul class="integration-features">
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>EventSub live tracking</strong> — receives <code>stream.online</code> and <code>stream.offline</code> in real time, no polling.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Create clips via Helix</strong> — trigger a Twitch clip from the PeakSense dashboard, then route it through the full pipeline.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>VOD &amp; clip lookup</strong> — browse recent broadcasts, pull clips, and process them without leaving the app.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Live alert webhooks</strong> — Discord/Slack notifications when a stream goes live or a clip gets created.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Clips:edit scope</strong> — reconnect flow handles the extra scope needed for the clip creation API.</div></li>
+        </ul>
+      </div>
+      <div class="integration-visual fade-up">
+        <div class="visual-title">Twitch pipeline</div>
+        <div class="stat"><span class="label">Event source</span><span class="value accent">EventSub WS</span></div>
+        <div class="stat"><span class="label">Live detection latency</span><span class="value accent">&lt; 2s</span></div>
+        <div class="stat"><span class="label">Clip creation</span><span class="value accent">✓ Helix API</span></div>
+        <div class="stat"><span class="label">VOD browse</span><span class="value">✓ Recent N</span></div>
+        <div class="stat"><span class="label">Alerts</span><span class="value">Discord · Slack</span></div>
+        <div class="stat"><span class="label">Upload support</span><span class="value" style="color:var(--muted);">N/A (Twitch limitation)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIKTOK ================= -->
+<section class="integration tt" id="tiktok">
+  <div class="wrap">
+    <div class="integration-grid">
+      <div class="fade-up">
+        <div class="integration-brand">
+          <div class="integration-mark">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a5.6 5.6 0 01-3.3-1.1 5.6 5.6 0 01-2-3.1h-3.1v13.2a2.7 2.7 0 11-2-2.6V9.9a5.9 5.9 0 105.1 5.8V9.3a8.7 8.7 0 005.3 1.8V7.9c0-.4 0-.7-.1-1 0-.1 0-.1.1-.2z"/></svg>
+          </div>
+          <div>
+            <div class="kind">Publishing pipeline</div>
+            <div class="name">TikTok</div>
+          </div>
+        </div>
+        <h2>The platform your clips were made for.</h2>
+        <p class="lede">Vertical, subtitled, hook-first. PeakSense's native output format was designed for TikTok's feed. Full OAuth via PKCE, direct upload, and post status tracking.</p>
+        <ul class="integration-features">
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>PKCE OAuth flow</strong> — secure login without a client secret. Local callback server catches the redirect.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>video.upload + video.publish scopes</strong> — upload to drafts or publish directly, your choice.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Creator info sync</strong> — pulls your TikTok display name and avatar into the PeakSense connected accounts panel.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Post status polling</strong> — tracks upload progress and confirms when a clip is live on the platform.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Manual posting today</strong> — scheduled TikTok posting is on the roadmap. Manual post works now via the dashboard.</div></li>
+        </ul>
+      </div>
+      <div class="integration-visual fade-up">
+        <div class="visual-title">TikTok pipeline</div>
+        <div class="stat"><span class="label">Auth flow</span><span class="value accent">PKCE</span></div>
+        <div class="stat"><span class="label">Publish scopes</span><span class="value">upload · publish</span></div>
+        <div class="stat"><span class="label">Output format</span><span class="value accent">9:16 · burned subs</span></div>
+        <div class="stat"><span class="label">Manual post</span><span class="value accent">✓ Live</span></div>
+        <div class="stat"><span class="label">Scheduled post</span><span class="value" style="color:#ffb400;">Roadmap</span></div>
+        <div class="stat"><span class="label">Post status tracking</span><span class="value accent">✓ Polled</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HUGGINGFACE ================= -->
+<section class="integration hf reverse" id="huggingface">
+  <div class="wrap">
+    <div class="integration-grid">
+      <div class="fade-up">
+        <div class="integration-brand">
+          <div class="integration-mark">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 3a2 2 0 110 4 2 2 0 010-4zm-4.5 5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm9 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 17a4 4 0 01-3.5-2h7A4 4 0 0112 17z"/></svg>
+          </div>
+          <div>
+            <div class="kind">Model access</div>
+            <div class="name">HuggingFace</div>
+          </div>
+        </div>
+        <h2>Powered by the best open models on the planet.</h2>
+        <p class="lede">PeakSense pulls state-of-the-art AI models from HuggingFace so you get cloud-quality results without a cloud subscription. Everything runs locally after the one-time download.</p>
+        <ul class="integration-features">
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Pyannote diarization</strong> — the speaker separation model that powers multi-speaker clip filtering.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>faster-whisper models</strong> — transcription runs at 10× real-time on GPU, near real-time on CPU.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>One-time token</strong> — paste your HuggingFace token once, and PeakSense caches the models locally forever.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Offline after download</strong> — once the models are cached, PeakSense never needs to phone home again.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Optional</strong> — diarization is the only HuggingFace-dependent feature. Everything else runs without it.</div></li>
+        </ul>
+      </div>
+      <div class="integration-visual fade-up">
+        <div class="visual-title">Model stack</div>
+        <div class="stat"><span class="label">Transcription</span><span class="value accent">faster-whisper</span></div>
+        <div class="stat"><span class="label">Diarization</span><span class="value accent">pyannote 3.x</span></div>
+        <div class="stat"><span class="label">Local LLM scoring</span><span class="value">Ollama</span></div>
+        <div class="stat"><span class="label">Face detection</span><span class="value">ONNX</span></div>
+        <div class="stat"><span class="label">Model cache location</span><span class="value">models/</span></div>
+        <div class="stat"><span class="label">Cloud calls after setup</span><span class="value accent">Zero</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= HOW ================= -->
 <section id="how">
   <div class="wrap">
@@ -650,20 +1128,20 @@
       <div class="step fade-up"><h3>Render, review, post</h3><p>PeakSense cuts clips, reframes them, burns subtitles, and queues them for auto-posting on the schedule you set.</p></div>
     </div>
     <div class="platform-row fade-up">
-      <a class="platform-pill" href="#">
+      <a class="platform-pill" href="#youtube">
         <svg viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
         YouTube
       </a>
-      <a class="platform-pill" href="#">
+      <a class="platform-pill" href="#twitch">
         <svg viewBox="0 0 24 24" fill="#9146ff"><path d="M4.3 1L1 4.7v14.6h4.9V23h3.3l3.3-3.7h4.4L23 13.5V1H4.3zm16.5 11.6l-3.3 3.6h-4.9l-3.3 3.7v-3.7H5.5V3.2h15.3v9.4zM16.4 7v5.4h-2.2V7h2.2zm-5.5 0v5.4H8.7V7h2.2z"/></svg>
         Twitch
       </a>
-      <a class="platform-pill" href="#">
+      <a class="platform-pill" href="#tiktok">
         <svg viewBox="0 0 24 24" fill="#69c9d0"><path d="M19.6 6.7a5.6 5.6 0 01-3.3-1.1 5.6 5.6 0 01-2-3.1h-3.1v13.2a2.7 2.7 0 11-2-2.6V9.9a5.9 5.9 0 105.1 5.8V9.3a8.7 8.7 0 005.3 1.8V7.9c0-.4 0-.7-.1-1 0-.1 0-.1.1-.2z"/></svg>
         TikTok
       </a>
-      <a class="platform-pill" href="#">
-        <svg viewBox="0 0 24 24" fill="#ffd21e"><text x="12" y="18" text-anchor="middle" font-size="16" font-family="sans-serif">🤗</text></svg>
+      <a class="platform-pill" href="#huggingface">
+        <svg viewBox="0 0 24 24" fill="#ffd21e"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 3a2 2 0 110 4 2 2 0 010-4zm-4.5 5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm9 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 17a4 4 0 01-3.5-2h7A4 4 0 0112 17z"/></svg>
         HuggingFace
       </a>
     </div>
@@ -693,9 +1171,11 @@
       <details><summary>Does PeakSense upload my videos anywhere?</summary><p>No. Every step — download, transcription, detection, rendering, and subtitling — runs locally on your machine. The only network calls are to the platforms you're actively downloading from or posting to, and to HuggingFace if you enable speaker diarization.</p></details>
       <details><summary>What GPU do I need?</summary><p>PeakSense falls back to CPU rendering and CPU transcription automatically, so it runs on anything. If you have an NVIDIA GPU, it'll use CUDA for Whisper and NVENC for rendering, which is dramatically faster. AMD and Intel GPUs work through their respective encoders (QSV/AMF).</p></details>
       <details><summary>Do I need an API key for the AI detection?</summary><p>No. PeakSense uses Ollama for local LLM scoring — you run the model yourself. There's no OpenAI key, no Anthropic key, no per-token billing. If you'd rather not use AI scoring at all, the loudness, hype-phrase, chat, and trigger-phrase detectors work independently.</p></details>
+      <details><summary>What's the difference between free and Pro?</summary><p>The free tier is fully functional — unlimited VODs, all detection signals, all reframe modes, and YouTube auto-posting. Pro ($79 one-time) removes the per-VOD clip cap, adds priority queueing, unlocks TikTok and Twitch multi-platform posting, enables the analytics dashboard, and turns on live-stream auto-capture. No subscription — you buy it once and keep it forever.</p></details>
+      <details><summary>How does the Pro license work?</summary><p>You get a license key in the format <code>PS-XXXX-XXXX-XXXX-XXXX</code>. Paste it into Settings → Pro License and the app unlocks the Pro features. It's a one-time purchase tied to your install, and it works offline. If you reinstall on the same machine, you can re-activate with the same key.</p></details>
       <details><summary>How is this different from Opus Clip or Eklipse?</summary><p>Three things: (1) it runs locally, so your footage never leaves your PC; (2) it has no clip credits — you can process as many VODs as your hardware can handle; and (3) it includes facecam-top layouts, speaker diarization, and a full montage builder that most cloud tools either gate behind paid tiers or don't offer at all.</p></details>
-      <details><summary>Can I schedule posts to multiple platforms?</summary><p>Yes. PeakSense has a posting scheduler where you set days and times. Clips are assigned to the next available slot in ranking order and posted automatically. YouTube and TikTok are supported today, with Twitch clip creation built in for live streams.</p></details>
-      <details><summary>Is there a free tier?</summary><p>PeakSense is self-hosted — there's no metered tier at all. You install it, point it at your hardware, and use it as much as you want.</p></details>
+      <details><summary>Can I schedule posts to multiple platforms?</summary><p>Yes. PeakSense has a posting scheduler where you set days and times. Clips are assigned to the next available slot in ranking order and posted automatically. YouTube is supported on the free tier; TikTok and Twitch multi-platform posting are Pro features.</p></details>
+      <details><summary>Is there a free tier?</summary><p>PeakSense is self-hosted — the free tier is the app itself. You install it, point it at your hardware, and use it as much as you want. Pro is an optional one-time upgrade for users who want higher throughput and multi-platform posting.</p></details>
     </div>
   </div>
 </section>
@@ -706,7 +1186,6 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">
-          <!-- Same peak line as the nav — matches the dashboard logo -->
           <svg viewBox="0 0 680 340" fill="none" stroke="#2dff6b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"/>
             <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
@@ -720,8 +1199,16 @@
         <h4>Product</h4>
         <a href="#features">Features</a>
         <a href="#compare">Comparison</a>
-        <a href="#how">How it works</a>
+        <a href="#pro">Pro</a>
+        <a href="#integrations">Integrations</a>
         <a href="http://localhost:8000/dashboard">Dashboard</a>
+      </div>
+      <div class="footer-col">
+        <h4>Platforms</h4>
+        <a href="#youtube">YouTube</a>
+        <a href="#twitch">Twitch</a>
+        <a href="#tiktok">TikTok</a>
+        <a href="#huggingface">HuggingFace</a>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
@@ -730,19 +1217,13 @@
         <a href="#">Documentation</a>
         <a href="#">Changelog</a>
       </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">License</a>
-        <a href="#">Contact</a>
-      </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 PeakSense. Built for streamers, by a streamer.</span>
       <div class="socials">
-        <a href="#">Twitch</a>
-        <a href="#">YouTube</a>
+        <a href="#twitch">Twitch</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#tiktok">TikTok</a>
         <a href="https://github.com/GrimmortalDread/peaksense-site">GitHub</a>
       </div>
     </div>
@@ -751,6 +1232,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Fade-up on scroll
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -760,6 +1242,26 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+    // Highlight active nav link based on scroll position
+    var sections = document.querySelectorAll('section[id], header[id]');
+    var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    var navObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          navLinks.forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (href === '#' + id) {
+              link.style.color = 'var(--green)';
+            } else if (href && href.startsWith('#')) {
+              link.style.color = '';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(function(s) { navObserver.observe(s); });
   });
 </script>
 
