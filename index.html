@@ -226,7 +226,7 @@
 
   .compare-scroll { overflow-x: auto; margin-top: 8px; }
   table.compare {
-    width: 100%; border-collapse: collapse; min-width: 720px; font-size: 14px;
+    width: 100%; border-collapse: collapse; min-width: 520px; font-size: 14px;
   }
   table.compare th, table.compare td {
     padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border);
@@ -810,8 +810,8 @@
   <div class="wrap">
     <div class="section-head fade-up">
       <div class="kicker">Why streamers switch</div>
-      <h2>The stuff other clip tools charge you for</h2>
-      <p>Cloud clippers meter you per clip and put a watermark on your exports until you pay up. PeakSense runs on your own hardware, so there's no meter to watch.</p>
+      <h2>What the cloud tools won't give you</h2>
+      <p>Cloud clippers meter you per clip and watermark your exports until you pay up. PeakSense runs on your own hardware, so there's no meter to watch and no watermark to hide.</p>
     </div>
     <div class="compare-scroll fade-up">
       <table class="compare">
@@ -819,23 +819,20 @@
           <tr>
             <th>What you get</th>
             <th class="hl">PeakSense</th>
-            <th>Nopus</th>
-            <th>Eclipse of the Broken Heart</th>
-            <th>Midzard</th>
-            <th>Yikes / GagCut</th>
+            <th>Typical cloud clipper</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Where it runs</td><td class="hl yes">Your PC (local)</td><td class="no">Their cloud</td><td class="no">Their cloud</td><td class="no">Their cloud</td><td class="no">Their cloud</td></tr>
-          <tr><td>Clip limits</td><td class="hl yes">✓ Unlimited, no credits</td><td class="no">✗ Minutes per month</td><td class="partial">Capped by tier</td><td class="no">✗ Minutes per month</td><td class="no">✗ Minutes per month</td></tr>
-          <tr><td>Watermark-free</td><td class="hl yes">✓ Always</td><td class="partial">Paid unlock</td><td class="partial">Paid unlock</td><td class="partial">Paid unlock</td><td class="partial">Paid unlock</td></tr>
-          <tr><td>Facecam-top layout</td><td class="hl yes">✓ 3 zoom presets</td><td class="partial">Basic crop</td><td class="partial">Auto crop</td><td class="no">✗</td><td class="partial">Basic crop</td></tr>
-          <tr><td>Captions with live preview</td><td class="hl yes">✓ Live preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td></tr>
-          <tr><td>Speaker separation</td><td class="hl yes">✓ Included</td><td class="no">✗</td><td class="no">✗</td><td class="partial">Sometimes</td><td class="no">✗</td></tr>
-          <tr><td>Montage with music &amp; intros</td><td class="hl yes">✓ Included</td><td class="partial">Basic stitch</td><td class="yes">✓</td><td class="no">✗</td><td class="partial">Basic stitch</td></tr>
-          <tr><td>Auto-posting</td><td class="hl yes">✓ YouTube, TikTok, Twitch</td><td class="partial">YouTube only</td><td class="partial">YouTube only</td><td class="no">✗</td><td class="partial">Some platforms</td></tr>
-          <tr><td>Where your footage goes</td><td class="hl yes">✓ Never leaves your PC</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td></tr>
-          <tr><td>What it costs</td><td class="hl yes">Free (self-hosted)</td><td>$15–29/mo</td><td>Free tier + paid</td><td>$29/mo</td><td>$14–39/mo</td></tr>
+          <tr><td>Where it runs</td><td class="hl yes">Your PC (local)</td><td class="no">Their cloud</td></tr>
+          <tr><td>Clip limits</td><td class="hl yes">✓ Unlimited, no credits</td><td class="no">✗ Minutes per month</td></tr>
+          <tr><td>Watermark-free</td><td class="hl yes">✓ Always</td><td class="partial">Paid unlock</td></tr>
+          <tr><td>Facecam-top layout</td><td class="hl yes">✓ 3 zoom presets</td><td class="partial">Basic crop</td></tr>
+          <tr><td>Captions with live preview</td><td class="hl yes">✓ Live preview</td><td class="partial">Cloud preview</td></tr>
+          <tr><td>Speaker separation</td><td class="hl yes">✓ Included</td><td class="partial">Sometimes</td></tr>
+          <tr><td>Montage with music &amp; intros</td><td class="hl yes">✓ Included</td><td class="partial">Basic stitch</td></tr>
+          <tr><td>Auto-posting</td><td class="hl yes">✓ YouTube, TikTok, Twitch</td><td class="partial">YouTube only</td></tr>
+          <tr><td>Where your footage goes</td><td class="hl yes">✓ Never leaves your PC</td><td class="no">Uploaded to them</td></tr>
+          <tr><td>What it costs</td><td class="hl yes">Free (self-hosted)</td><td>Monthly subscription</td></tr>
         </tbody>
       </table>
     </div>
@@ -849,7 +846,7 @@
       <div class="pro-pitch fade-up">
         <div class="kicker">PeakSense Pro</div>
         <h2>For streamers who treat clips like a business.</h2>
-        <p>The free version of PeakSense is the full product — not a demo. Pro is for people who want to move faster, post more, and learn from what works. One-time payment, yours forever.</p>
+        <p>The free version of PeakSense is the full product — not a demo. Pro unlocks the extras for people who want to move faster, post more, and learn from what works. One-time payment, yours forever.</p>
 
         <ul class="pro-feature-list">
           <li>
@@ -863,14 +860,7 @@
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
               <strong>Unlimited clips per stream</strong>
-              <span>Free caps at 20 clips per VOD. Pro has no cap — pull every moment out of a six-hour marathon.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-            <div>
-              <strong>Post to YouTube, TikTok, and Twitch at once</strong>
-              <span>One schedule, three platforms. Free posts to YouTube only.</span>
+              <span>The free version caps at 20 clips per VOD. Pro has no cap — pull every moment out of a six-hour marathon.</span>
             </div>
           </li>
           <li>
@@ -910,17 +900,17 @@
         <p class="pro-sub">Everything unlocked. No subscription, no surprises.</p>
 
         <div class="pro-price">
-          <span class="amount">$79</span>
+          <span class="amount">$69</span>
           <span class="period">pay once, keep it</span>
         </div>
 
         <ul class="pro-card-features">
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Priority processing</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Unlimited clips per VOD</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>YouTube, TikTok, and Twitch posting</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Performance analytics</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Live-stream capture</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Custom branding overlays</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Second-pass reprocessing</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Everything else we build, included</li>
         </ul>
 
@@ -1131,12 +1121,11 @@
     <div class="faq">
       <details><summary>Does PeakSense upload my videos anywhere?</summary><p>No. Everything — download, detection, clipping, captioning — runs on your computer. The only time PeakSense touches the internet is when it's pulling a stream you asked for or posting a clip to your own channel.</p></details>
       <details><summary>What kind of computer do I need?</summary><p>Almost anything. If you have an NVIDIA GPU, PeakSense uses it and runs fast. If you don't, it uses your CPU and just runs slower. No special hardware required either way.</p></details>
-      <details><summary>Do I need to pay for AI or an API key?</summary><p>No. PeakSense runs its own AI locally through Ollama, which means there are no per-clip charges and no hidden bills. You're not paying OpenAI or anyone else for each clip you make.</p></details>
-      <details><summary>What's the difference between free and Pro?</summary><p>The free version is the real product — unlimited VODs, all the clip styles, YouTube posting. Pro ($79 one-time) removes the 20-clip cap per stream, adds priority processing, unlocks TikTok and Twitch scheduled posting, enables the analytics dashboard, and turns on live-stream capture. You pay once and keep it.</p></details>
+      <details><summary>Do I need to pay for AI or an API key?</summary><p>No. PeakSense runs its own AI locally, which means there are no per-clip charges and no hidden bills. You're not paying anyone per clip you make.</p></details>
+      <details><summary>What's the difference between free and Pro?</summary><p>The free version is the real product — unlimited VODs, all the clip styles, auto-posting. Pro ($69 one-time) adds the extras: no cap on clips per stream, priority processing, performance analytics, live-stream capture, custom branding, and second-pass reprocessing. You pay once and keep it.</p></details>
       <details><summary>How does the license work?</summary><p>You get a key that starts with <code>PS-</code>. Paste it into Settings and you're done. No subscription, no monthly renewal, no calls to our servers to verify it. It just works.</p></details>
-      <details><summary>How is this different from Opus Clip or Eklipse?</summary><p>Two things. First, it runs on your computer — your footage never gets uploaded to someone else's servers. Second, there are no credits. You can process as many streams as your hardware can handle. Most cloud tools cap you at a few minutes per month; PeakSense doesn't cap you at all.</p></details>
-      <details><summary>Can I schedule posts to multiple platforms?</summary><p>Yes. Set your posting days and times once, and clips go out on autopilot. YouTube is included in the free version. TikTok and Twitch scheduling are Pro features.</p></details>
-      <details><summary>Is there really a free version?</summary><p>Yes, and it's not a trial. The free version of PeakSense is the actual product. Pro is optional — it's for people who want to move faster or post to more platforms.</p></details>
+      <details><summary>How is this different from other clip tools?</summary><p>Two things. First, it runs on your computer — your footage never gets uploaded to someone else's servers. Second, there are no credits. You can process as many streams as your hardware can handle. Most cloud tools cap you at a few minutes per month; PeakSense doesn't cap you at all.</p></details>
+      <details><summary>Is there really a free version?</summary><p>Yes, and it's not a trial. The free version of PeakSense is the actual product. Pro is optional — it's for people who want to move faster and get the analytics and live-capture tools.</p></details>
     </div>
   </div>
 </section>
