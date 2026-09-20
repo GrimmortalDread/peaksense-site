@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PeakSense — AI-Powered Stream Highlight Detection &amp; Clipping</title>
-<meta name="description" content="PeakSense finds the best moments in your streams, cuts them, reframes them for Shorts/TikTok/Reels, burns subtitles, and auto-posts — all locally on your PC. No cloud uploads, no per-clip credits, no watermarks.">
-<meta property="og:title" content="PeakSense — AI Stream Highlight Detection &amp; Clipping">
-<meta property="og:description" content="Local AI. Unlimited clips. Facecam-top layouts. Burned subtitles. Auto-posting.">
+<title>PeakSense — Turn your stream into clips that pop</title>
+<meta name="description" content="PeakSense finds the best moments in your stream, cuts them into clips, sizes them for Shorts and TikTok, adds captions, and posts them for you. Runs on your own computer.">
+<meta property="og:title" content="PeakSense — Turn your stream into clips that pop">
+<meta property="og:description" content="Find your best moments. Clip them. Post them. All on your own computer.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
@@ -40,7 +40,6 @@
   a:hover { text-decoration: underline; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-  /* ---------- NAV ---------- */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(13,7,22,0.85);
@@ -73,7 +72,6 @@
   .nav-cta:hover { box-shadow: 0 0 20px var(--green-glow); transform: translateY(-1px); text-decoration: none; }
   @media (max-width: 900px) { .nav-links a:not(.nav-cta) { display: none; } }
 
-  /* ---------- HERO ---------- */
   .hero {
     position: relative;
     padding: 60px 0 60px;
@@ -157,7 +155,6 @@
   }
   .hero-proof strong { color: var(--text); display: block; font-size: 22px; font-weight: 800; }
 
-  /* ---------- VIDEO DEMO ---------- */
   .video-demo { padding: 20px 0 80px; }
   .video-demo-frame {
     position: relative;
@@ -179,7 +176,6 @@
   }
   .video-demo-caption strong { color: var(--green); }
 
-  /* ---------- SECTION ---------- */
   section { padding: 80px 0; }
   .section-head { text-align: center; margin-bottom: 56px; }
   .section-head .kicker {
@@ -197,7 +193,6 @@
     max-width: 640px; margin: 0 auto;
   }
 
-  /* ---------- FEATURE GRID ---------- */
   .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -229,7 +224,6 @@
     padding: 3px 10px; border-radius: 100px;
   }
 
-  /* ---------- COMPARISON ---------- */
   .compare-scroll { overflow-x: auto; margin-top: 8px; }
   table.compare {
     width: 100%; border-collapse: collapse; min-width: 720px; font-size: 14px;
@@ -253,7 +247,6 @@
   .no { color: var(--danger); }
   .partial { color: #ffb400; }
 
-  /* ---------- PRO SECTION ---------- */
   .pro-section {
     padding: 80px 0;
     position: relative;
@@ -381,7 +374,6 @@
     color: var(--green); font-size: 11px;
   }
 
-  /* ---------- INTEGRATIONS ---------- */
   .integrations-intro { padding-bottom: 20px; }
   .integration {
     padding: 80px 0;
@@ -481,7 +473,6 @@
   }
   .stat .value.accent { color: var(--accent-color, var(--green)); }
 
-  /* Platform accents */
   .integration.yt { --accent-color: var(--yt); --glow: rgba(255,68,68,0.15); }
   .integration.yt .integration-mark { background: rgba(255,68,68,0.1); border-color: rgba(255,68,68,0.3); color: var(--yt); }
   .integration.yt .integration-features li svg { stroke: var(--yt); }
@@ -498,7 +489,6 @@
   .integration.hf .integration-mark { background: rgba(255,210,30,0.1); border-color: rgba(255,210,30,0.3); color: var(--hf); }
   .integration.hf .integration-features li svg { stroke: var(--hf); }
 
-  /* ---------- STEPS ---------- */
   .steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -525,7 +515,6 @@
   .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
   .step p { color: var(--muted); font-size: 14px; }
 
-  /* ---------- PLATFORM ROW ---------- */
   .platform-row {
     display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
     margin-top: 32px;
@@ -547,7 +536,6 @@
   }
   .platform-pill svg { width: 18px; height: 18px; }
 
-  /* ---------- CTA ---------- */
   .cta-banner {
     background: linear-gradient(135deg, #1f1433, #2a1b47);
     border: 1px solid var(--border);
@@ -583,7 +571,6 @@
     color: var(--green);
   }
 
-  /* ---------- FAQ ---------- */
   .faq { max-width: 760px; margin: 0 auto; }
   details {
     background: var(--panel);
@@ -613,7 +600,6 @@
   details[open] summary::after { transform: rotate(45deg); }
   details p { padding: 0 22px 20px; color: var(--muted); font-size: 14px; line-height: 1.7; }
 
-  /* ---------- FOOTER ---------- */
   footer {
     border-top: 1px solid var(--border);
     padding: 48px 0 32px;
@@ -647,7 +633,6 @@
   .footer-bottom .socials a { color: var(--muted); }
   .footer-bottom .socials a:hover { color: var(--green); text-decoration: none; }
 
-  /* ---------- ANIMATIONS ---------- */
   .fade-up {
     opacity: 0;
     transform: translateY(24px);
@@ -658,7 +643,6 @@
 </head>
 <body>
 
-<!-- ================= NAV ================= -->
 <nav>
   <div class="wrap">
     <div class="nav-logo">
@@ -680,7 +664,6 @@
   </div>
 </nav>
 
-<!-- ================= HERO ================= -->
 <header class="hero">
   <div class="wrap">
     <svg class="hero-peak" viewBox="20 0 640 210" role="img" aria-hidden="true">
@@ -700,40 +683,39 @@
       <circle cx="630" cy="20"  r="5"  fill="#2dff6b"/>
     </svg>
 
-    <div class="hero-badge">Local AI · No cloud uploads · Unlimited clips</div>
+    <div class="hero-badge">Made by a streamer, for streamers</div>
 
     <h1>
       <span style="color: var(--text);">PEAK</span><span class="accent">SENSE</span>
     </h1>
 
     <div class="hero-tagline">
-      Find Top Moments <span class="sep">·</span> Highlight Engine <span class="sep">·</span> Grimmortal Dread
+      Find your best moments <span class="sep">·</span> Clip them <span class="sep">·</span> Post them
     </div>
 
     <p class="sub">
-      PeakSense watches your VODs, finds the moments that matter, cuts them,
-      reframes them for Shorts &amp; Reels, burns subtitles, and auto-posts —
-      all on your own PC. No per-clip credits. No watermarks. No 720p paywall.
+      PeakSense goes through your stream, finds the moments worth sharing, cuts them into clips,
+      makes them the right shape for Shorts and TikTok, adds captions, and posts them for you.
+      It all happens on your own computer. No credits. No watermarks. No monthly bill.
     </p>
 
     <div class="hero-actions">
-      <a href="http://localhost:8000/dashboard" class="btn btn-primary">Start Clipping Free →</a>
-      <a href="#demo" class="btn btn-ghost">Watch the demo</a>
+      <a href="http://localhost:8000/dashboard" class="btn btn-primary">Get started free →</a>
+      <a href="#demo" class="btn btn-ghost">See it in action</a>
     </div>
     <p class="hero-actions-note">
-      PeakSense runs on your own PC — make sure it's running first, then the dashboard opens at <code>http://localhost:8000</code>.
+      PeakSense runs on your own PC. Start it up, then the dashboard opens at <code>http://localhost:8000</code>.
     </p>
 
     <div class="hero-proof">
-      <div><strong>100%</strong>Local processing</div>
-      <div><strong>∞</strong>Clips, no credits</div>
-      <div><strong>9:16 / 1:1 / 4:5</strong>Auto-reframe</div>
-      <div><strong>0</strong>Watermarks</div>
+      <div><strong>100%</strong>On your computer</div>
+      <div><strong>∞</strong>Clips, no limits</div>
+      <div><strong>Any shape</strong>Shorts, TikTok, Reels</div>
+      <div><strong>0</strong>Watermarks, ever</div>
     </div>
   </div>
 </header>
 
-<!-- ================= VIDEO DEMO ================= -->
 <section class="video-demo" id="demo">
   <div class="wrap">
     <div class="video-demo-frame fade-up">
@@ -743,101 +725,99 @@
       </video>
     </div>
     <p class="video-demo-caption fade-up">
-      <strong>▶ Watch PeakSense work:</strong> drop in a VOD, watch it detect, clip, reframe, and burn subtitles — all locally.
+      <strong>▶ See PeakSense work:</strong> drop in a stream, watch it find the good parts and turn them into ready-to-post clips.
     </p>
   </div>
 </section>
 
-<!-- ================= FEATURES ================= -->
 <section id="features">
   <div class="wrap">
     <div class="section-head fade-up">
-      <div class="kicker">Everything the cloud tools charge for</div>
-      <h2>Built for streamers who ship clips daily</h2>
-      <p>PeakSense isn't a thin wrapper around an API. It's a full pipeline — from VOD download to published Short — running entirely on your machine.</p>
+      <div class="kicker">Everything you need to go from stream to posted</div>
+      <h2>Stop scrolling through your own VODs</h2>
+      <p>You already streamed for hours. The good stuff is in there somewhere. PeakSense digs it out so you don't have to.</p>
     </div>
     <div class="feature-grid">
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-        <h3>Multi-Signal Highlight Detection</h3>
-        <p>Loudness spikes, audio deltas, hype phrases, chat activity, keyword matches, and a local LLM all vote on what matters. Weighted merging ensures no single signal dominates.</p>
-        <span class="feature-tag">AI-Powered</span>
+        <h3>It hears what your chat hears</h3>
+        <p>PeakSense picks up on the same things your viewers react to: the loud moments, the funny lines, the clutch plays, the chat going wild. You don't have to teach it what's funny — it just gets it.</p>
+        <span class="feature-tag">The main event</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
-        <h3>Facecam-Top Layouts</h3>
-        <p>Three zoom presets put your webcam on top and gameplay underneath — the layout that wins on Shorts. PeakSense auto-detects your webcam region from the VOD, no manual cropping.</p>
-        <span class="feature-tag">Signature</span>
+        <h3>Your face on top, gameplay below</h3>
+        <p>That's the layout that makes people stop scrolling. PeakSense finds your webcam on its own, so you don't have to crop anything by hand. Pick a zoom level and it handles the rest.</p>
+        <span class="feature-tag">Set it and forget it</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
-        <h3>Burned Subtitles &amp; Captions</h3>
-        <p>Whisper transcribes locally, writes an SRT, and burns it in with your choice of font, size, color, outline, position, and bold. Preview it live before you render.</p>
-        <span class="feature-tag">Whisper</span>
+        <h3>Captions, on every clip</h3>
+        <p>Most people watch with the sound off. PeakSense writes captions for your clips and puts them right on the video, so your best lines still land on mute. You can tweak the look before you export.</p>
+        <span class="feature-tag">On by default</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
-        <h3>Speaker Diarization</h3>
-        <p>Know who said what. Pyannote speaker diarization labels every segment so you can filter clips by speaker — perfect for co-streams and podcasts.</p>
-        <span class="feature-tag">Multi-speaker</span>
+        <h3>Know who's talking</h3>
+        <p>Streaming with a friend? PeakSense can tell your voice from theirs, so you can pull out just the back-and-forths that made the stream memorable.</p>
+        <span class="feature-tag">For co-streams</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg></div>
-        <h3>Montage Maker</h3>
-        <p>Select multiple clips and stitch them into one video with intros, outros, background music, and burned subtitles. Great for weekly highlight reels.</p>
-        <span class="feature-tag">Batch</span>
+        <h3>Turn a pile of clips into one reel</h3>
+        <p>Pick your favorites, drop them on a timeline, add an intro, add music, and you've got a highlight reel. Perfect for a weekly roundup or a channel trailer.</p>
+        <span class="feature-tag">Batch it</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
-        <h3>Auto-Posting &amp; Scheduling</h3>
-        <p>Queue clips to post to YouTube, TikTok, and Twitch on a schedule you set. PeakSense renders, uploads, and marks them as posted — fully hands-free.</p>
-        <span class="feature-tag">Automation</span>
+        <h3>Post on autopilot</h3>
+        <p>Set your posting days and times once. PeakSense uploads clips for you while you sleep. Wake up, check your phone, and see that the internet already found your best moment.</p>
+        <span class="feature-tag">Hands-off</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
-        <h3>Twitch Clip Bridge</h3>
-        <p>Create Twitch clips from your live dashboard, then send them straight through the PeakSense pipeline — reframe, subtitle, and post without leaving the app.</p>
+        <h3>Clip it while it's happening</h3>
+        <p>If something wild goes down live, hit the Clip button in PeakSense. It goes straight into the pipeline and comes out the other side as a post-ready clip.</p>
         <span class="feature-tag">Live</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h3>Clip Deduplication</h3>
-        <p>Perceptual hashing prevents the same moment from being clipped twice across runs. Your library stays clean and your posted content stays unique.</p>
-        <span class="feature-tag">Smart</span>
+        <h3>No repeat clips</h3>
+        <p>PeakSense remembers what it's already clipped. You won't scroll through your library and find the same moment twice, and you won't accidentally post the same thing two weeks apart.</p>
+        <span class="feature-tag">Clean library</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3>Live Preview Editor</h3>
-        <p>See exactly what will render — real-time facecam compositing, burned-subtitle overlay synced to the playhead, trim timeline, and waveform scrubbing.</p>
-        <span class="feature-tag">Real-time</span>
+        <h3>See it before you save it</h3>
+        <p>Trim a clip, check the captions, tweak the framing — all on a live preview. You'll know exactly what you're posting before you hit export. No more guessing.</p>
+        <span class="feature-tag">Live preview</span>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ================= COMPARISON ================= -->
 <section id="compare">
   <div class="wrap">
     <div class="section-head fade-up">
-      <div class="kicker">Why PeakSense</div>
-      <h2>Everything they gate, we give you free</h2>
-      <p>Cloud clippers charge per clip, cap your resolution, and watermark your exports. PeakSense runs on your GPU, so there's no meter to watch.</p>
+      <div class="kicker">Why people switch</div>
+      <h2>The stuff other tools charge you for</h2>
+      <p>Other clip tools take your money per clip and slap a watermark on your video until you pay up. PeakSense runs on your own computer, so there's nothing to meter.</p>
     </div>
     <div class="compare-scroll fade-up">
       <table class="compare">
         <thead>
           <tr>
-            <th>Feature</th>
+            <th>What you get</th>
             <th class="hl">PeakSense</th>
             <th>Nopus</th>
             <th>Eclipse of the Broken Heart</th>
@@ -846,127 +826,122 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Processing location</td><td class="hl yes">Your PC (local)</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="no">Cloud</td><td class="no">Cloud</td></tr>
-          <tr><td>Unlimited clips</td><td class="hl yes">✓ No credits</td><td class="no">✗ Minute caps</td><td class="partial">Limited by tier</td><td class="no">✗ Minute caps</td><td class="no">✗ Minute caps</td></tr>
-          <tr><td>Watermark-free exports</td><td class="hl yes">✓ Always</td><td class="partial">Paid only</td><td class="partial">Paid only</td><td class="partial">Paid only</td><td class="partial">Paid only</td></tr>
-          <tr><td>Facecam-top layout</td><td class="hl yes">✓ 3 zoom presets</td><td class="partial">Basic reframe</td><td class="partial">Auto reframe</td><td class="no">✗</td><td class="partial">Basic reframe</td></tr>
-          <tr><td>Burned subtitles w/ preview</td><td class="hl yes">✓ Live preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td><td class="partial">Cloud preview</td></tr>
-          <tr><td>Speaker diarization</td><td class="hl yes">✓ Included</td><td class="no">✗</td><td class="no">✗</td><td class="partial">Talker detection</td><td class="no">✗</td></tr>
-          <tr><td>Montage builder</td><td class="hl yes">✓ + music/intros</td><td class="partial">Basic stitch</td><td class="yes">✓</td><td class="no">✗</td><td class="partial">Basic stitch</td></tr>
-          <tr><td>Auto-posting schedule</td><td class="hl yes">✓ YT / TikTok / Twitch</td><td class="partial">YT only</td><td class="partial">YT only</td><td class="no">✗</td><td class="partial">Some platforms</td></tr>
-          <tr><td>Data privacy</td><td class="hl yes">✓ Never uploaded</td><td class="no">Cloud storage</td><td class="no">Cloud storage</td><td class="no">Cloud storage</td><td class="no">Cloud storage</td></tr>
-          <tr><td>Price</td><td class="hl yes">Free (self-hosted)</td><td>$15–29/mo</td><td>Free tier + paid</td><td>$29/mo</td><td>$14–39/mo</td></tr>
+          <tr><td>Where it runs</td><td class="hl yes">On your computer</td><td class="no">Their servers</td><td class="no">Their servers</td><td class="no">Their servers</td><td class="no">Their servers</td></tr>
+          <tr><td>How many clips you can make</td><td class="hl yes">✓ As many as you want</td><td class="no">✗ Minutes per month</td><td class="partial">Capped by plan</td><td class="no">✗ Minutes per month</td><td class="no">✗ Minutes per month</td></tr>
+          <tr><td>Watermark-free</td><td class="hl yes">✓ Always</td><td class="partial">Pay to remove</td><td class="partial">Pay to remove</td><td class="partial">Pay to remove</td><td class="partial">Pay to remove</td></tr>
+          <tr><td>Face-on-top layouts</td><td class="hl yes">✓ 3 zoom levels</td><td class="partial">Basic crop</td><td class="partial">Auto crop</td><td class="no">✗</td><td class="partial">Basic crop</td></tr>
+          <tr><td>Captions you can preview first</td><td class="hl yes">✓ Live preview</td><td class="partial">Preview on cloud</td><td class="partial">Preview on cloud</td><td class="partial">Preview on cloud</td><td class="partial">Preview on cloud</td></tr>
+          <tr><td>Knows who's talking on co-streams</td><td class="hl yes">✓ Included</td><td class="no">✗</td><td class="no">✗</td><td class="partial">Sometimes</td><td class="no">✗</td></tr>
+          <tr><td>Highlight reel builder</td><td class="hl yes">✓ With music and intros</td><td class="partial">Basic stitching</td><td class="yes">✓</td><td class="no">✗</td><td class="partial">Basic stitching</td></tr>
+          <tr><td>Auto-posting to YouTube, TikTok, Twitch</td><td class="hl yes">✓ All three</td><td class="partial">YouTube only</td><td class="partial">YouTube only</td><td class="no">✗</td><td class="partial">Some platforms</td></tr>
+          <tr><td>Where your footage goes</td><td class="hl yes">✓ Nowhere</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td></tr>
+          <tr><td>What it costs</td><td class="hl yes">Free, forever</td><td>$15–29/mo</td><td>Free tier + paid</td><td>$29/mo</td><td>$14–39/mo</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ================= PRO ================= -->
 <section class="pro-section" id="pro">
   <div class="wrap">
     <div class="pro-grid">
 
-      <!-- Left: pitch + feature list -->
       <div class="pro-pitch fade-up">
         <div class="kicker">PeakSense Pro</div>
-        <h2>Built for streamers who treat clips like a business.</h2>
-        <p>Free tier stays free forever. Pro is for the people who need more throughput, deeper analytics, and priority access to the pipeline — without paying per clip.</p>
+        <h2>For the streamers who treat this like a job.</h2>
+        <p>The free version is the full product, not a teaser. Pro is for the people who want to move faster and post more. You pay once and it's yours forever.</p>
 
         <ul class="pro-feature-list">
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Priority job queue</strong>
-              <span>Your VODs jump to the front of the worker queue. No waiting behind a batch of free-tier jobs.</span>
+              <strong>Your clips go to the front of the line</strong>
+              <span>Skip the queue. When you hit process, your stream gets worked on before everyone else's.</span>
             </div>
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Unlimited clip exports per VOD</strong>
-              <span>Free tier caps at 10 clips per video. Pro removes the cap entirely — process a 6-hour marathon and get every moment.</span>
+              <strong>No limit on clips</strong>
+              <span>Free version caps you at 20 clips per stream. Pro has no cap. Six-hour marathon? Pull every last moment.</span>
             </div>
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Multi-platform auto-posting</strong>
-              <span>Post to YouTube, TikTok, and Twitch on one schedule. Free tier is YouTube-only.</span>
+              <strong>Post to YouTube, TikTok, and Twitch at once</strong>
+              <span>One schedule, three platforms. Free posts to YouTube only.</span>
             </div>
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Performance analytics dashboard</strong>
-              <span>Views, watch time, CTR, and engagement per clip — fed back into the highlight scorer so it learns what works for your channel.</span>
+              <strong>See what's actually working</strong>
+              <span>Views, watch time, and engagement for every clip you post. PeakSense uses the winners to pick better moments next time.</span>
             </div>
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Live stream moment capture</strong>
-              <span>EventSub-driven auto-clipping during live streams — channel points, raids, keyword triggers, and chat velocity spikes.</span>
+              <strong>Catches moments while you're live</strong>
+              <span>Channel point redemptions, raids, chat going nuts — PeakSense notices and clips it in real time.</span>
             </div>
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Custom branding &amp; watermarks</strong>
-              <span>Upload your own intro, outro, and logo overlays. Auto-applied to every export across every platform.</span>
+              <strong>Your own branding</strong>
+              <span>Add your logo, your intro, your outro. Every clip that goes out has your fingerprints on it.</span>
             </div>
           </li>
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Delayed reprocessing</strong>
-              <span>Re-runs the pipeline N hours after posting with fresh AI scoring signals to catch moments the first pass missed.</span>
+              <strong>Second pass on old streams</strong>
+              <span>Come back to a stream a few hours later and PeakSense gives it another look with fresh eyes. It catches moments the first pass missed.</span>
             </div>
           </li>
         </ul>
       </div>
 
-      <!-- Right: pricing card -->
       <div class="pro-card fade-up">
-        <span class="pro-badge">One-time · Lifetime</span>
+        <span class="pro-badge">One-time. Yours forever.</span>
         <h3>PeakSense Pro</h3>
-        <p class="pro-sub">Unlock everything. Keep it forever. No subscription.</p>
+        <p class="pro-sub">Everything unlocked. No subscription, no surprises.</p>
 
         <div class="pro-price">
           <span class="amount">$79</span>
-          <span class="period">one-time payment</span>
+          <span class="period">pay once, keep it</span>
         </div>
 
         <ul class="pro-card-features">
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Priority queue — your jobs first</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Unlimited clips per VOD</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>YouTube + TikTok + Twitch posting</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Analytics dashboard + AI feedback</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Live stream auto-capture</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Custom branding &amp; overlays</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>All future Pro features included</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Your clips go to the front of the line</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>No cap on clips per stream</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Post to YouTube, TikTok, and Twitch</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>See what's working, learn from it</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Catch moments while you're live</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Your own branding on every clip</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Everything else we build, included</li>
         </ul>
 
-        <a href="http://localhost:8000/dashboard" class="btn btn-primary">Activate License →</a>
-        <small class="pro-note">Already own a key? Paste it in <code>Settings → Pro License</code>.</small>
+        <a href="http://localhost:8000/dashboard" class="btn btn-primary">Activate your license →</a>
+        <small class="pro-note">Already have a key? Drop it into <code>Settings → PeakSense Pro</code>.</small>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ================= INTEGRATIONS INTRO ================= -->
 <section class="integrations-intro" id="integrations">
   <div class="wrap">
     <div class="section-head fade-up">
-      <div class="kicker">Integrations</div>
-      <h2>Plays nice with the platforms you already live on</h2>
-      <p>Pull VODs in, push clips out. Every platform has dedicated, tested support — not just a bare API call.</p>
+      <div class="kicker">Works with where you already are</div>
+      <h2>Pull your stream in. Push your clips out.</h2>
+      <p>PeakSense plugs into the places you're already streaming and the places you're already posting.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= YOUTUBE ================= -->
 <section class="integration yt" id="youtube">
   <div class="wrap">
     <div class="integration-grid">
@@ -976,34 +951,32 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
           </div>
           <div>
-            <div class="kind">Full support</div>
+            <div class="kind">Your main channel</div>
             <div class="name">YouTube</div>
           </div>
         </div>
-        <h2>From raw VOD to published Short — in one flow.</h2>
-        <p class="lede">PeakSense handles both sides of YouTube: pulling down your VODs for processing, and pushing finished clips back up as uploads or Shorts.</p>
+        <h2>From stream to Short without leaving your chair.</h2>
+        <p class="lede">PeakSense reads your channel and pulls down your VODs for you. When a clip is ready, it uploads it right back to your channel.</p>
         <ul class="integration-features">
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Dual-token OAuth</strong> — a read-only token for browsing and the monitor, a separate upload token for posting.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Uploads playlist monitor</strong> — PeakSense watches your channel every 10 minutes and auto-queues new VODs for clipping.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Direct upload API</strong> — clips are pushed to your channel with title, description, tags, and thumbnail set automatically.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Cookie-based yt-dlp</strong> — for private or age-restricted VODs, an embedded webview captures your login cookies.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Shorts-ready output</strong> — 9:16 vertical, burned captions, hook in the first 3 seconds. Optimized for the Shorts feed.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Watches your channel for new streams</strong> so you don't have to paste links every time.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Uploads clips straight to your channel</strong> with the title, description, and thumbnail already filled in.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Signs into private or age-restricted streams</strong> so nothing gets left behind.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Made for Shorts</strong> — vertical, captioned, and ready for the feed.</div></li>
         </ul>
       </div>
       <div class="integration-visual fade-up">
-        <div class="visual-title">YouTube pipeline</div>
-        <div class="stat"><span class="label">VOD input formats</span><span class="value accent">Watch / Live / Shorts</span></div>
-        <div class="stat"><span class="label">Max download quality</span><span class="value accent">1440p</span></div>
-        <div class="stat"><span class="label">Monitor poll interval</span><span class="value">10 min</span></div>
-        <div class="stat"><span class="label">Auto-post target</span><span class="value accent">✓ Native</span></div>
-        <div class="stat"><span class="label">Post schedule slots</span><span class="value">7 days × N/day</span></div>
-        <div class="stat"><span class="label">Auth flow</span><span class="value">BYOK OAuth 2.0</span></div>
+        <div class="visual-title">How YouTube works here</div>
+        <div class="stat"><span class="label">What it can pull</span><span class="value accent">Streams, VODs, Shorts</span></div>
+        <div class="stat"><span class="label">Best quality available</span><span class="value accent">1440p</span></div>
+        <div class="stat"><span class="label">Checks for new streams</span><span class="value">Every 10 minutes</span></div>
+        <div class="stat"><span class="label">Posts clips for you</span><span class="value accent">✓ Yes</span></div>
+        <div class="stat"><span class="label">Your posting schedule</span><span class="value">Any day, any time</span></div>
+        <div class="stat"><span class="label">Signing in</span><span class="value">Your Google account</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= TWITCH ================= -->
 <section class="integration tw reverse" id="twitch">
   <div class="wrap">
     <div class="integration-grid">
@@ -1013,34 +986,31 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.3 1L1 4.7v14.6h4.9V23h3.3l3.3-3.7h4.4L23 13.5V1H4.3zm16.5 11.6l-3.3 3.6h-4.9l-3.3 3.7v-3.7H5.5V3.2h15.3v9.4zM16.4 7v5.4h-2.2V7h2.2zm-5.5 0v5.4H8.7V7h2.2z"/></svg>
           </div>
           <div>
-            <div class="kind">Live-stream native</div>
+            <div class="kind">Where you stream</div>
             <div class="name">Twitch</div>
           </div>
         </div>
         <h2>Catch the moment while the chat is still losing it.</h2>
-        <p class="lede">Twitch is where reactions happen live. PeakSense hooks into EventSub and the Helix API so clips get created the instant a moment lands — not hours later.</p>
+        <p class="lede">Twitch is where things happen live. PeakSense knows when you go live and can grab clips the second something wild goes down.</p>
         <ul class="integration-features">
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>EventSub live tracking</strong> — receives <code>stream.online</code> and <code>stream.offline</code> in real time, no polling.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Create clips via Helix</strong> — trigger a Twitch clip from the PeakSense dashboard, then route it through the full pipeline.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>VOD &amp; clip lookup</strong> — browse recent broadcasts, pull clips, and process them without leaving the app.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Live alert webhooks</strong> — Discord/Slack notifications when a stream goes live or a clip gets created.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Clips:edit scope</strong> — reconnect flow handles the extra scope needed for the clip creation API.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Knows the instant you go live</strong> and gets ready to clip.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Clips with one click</strong> from your PeakSense dashboard while you're streaming.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Browse your past broadcasts</strong> and pull clips without opening a second tab.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Get pinged on Discord or Slack</strong> whenever you go live or a clip is created.</div></li>
         </ul>
       </div>
       <div class="integration-visual fade-up">
-        <div class="visual-title">Twitch pipeline</div>
-        <div class="stat"><span class="label">Event source</span><span class="value accent">EventSub WS</span></div>
-        <div class="stat"><span class="label">Live detection latency</span><span class="value accent">&lt; 2s</span></div>
-        <div class="stat"><span class="label">Clip creation</span><span class="value accent">✓ Helix API</span></div>
-        <div class="stat"><span class="label">VOD browse</span><span class="value">✓ Recent N</span></div>
-        <div class="stat"><span class="label">Alerts</span><span class="value">Discord · Slack</span></div>
-        <div class="stat"><span class="label">Upload support</span><span class="value" style="color:var(--muted);">N/A (Twitch limitation)</span></div>
+        <div class="visual-title">How Twitch works here</div>
+        <div class="stat"><span class="label">Knows when you're live</span><span class="value accent">In under 2 seconds</span></div>
+        <div class="stat"><span class="label">Clip from your dashboard</span><span class="value accent">✓ Yes</span></div>
+        <div class="stat"><span class="label">Browse old broadcasts</span><span class="value">✓ Yes</span></div>
+        <div class="stat"><span class="label">Get notified when you go live</span><span class="value">Discord · Slack</span></div>
+        <div class="stat"><span class="label">Uploads clips to Twitch</span><span class="value" style="color:var(--muted);">Twitch doesn't allow it</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= TIKTOK ================= -->
 <section class="integration tt" id="tiktok">
   <div class="wrap">
     <div class="integration-grid">
@@ -1050,34 +1020,31 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a5.6 5.6 0 01-3.3-1.1 5.6 5.6 0 01-2-3.1h-3.1v13.2a2.7 2.7 0 11-2-2.6V9.9a5.9 5.9 0 105.1 5.8V9.3a8.7 8.7 0 005.3 1.8V7.9c0-.4 0-.7-.1-1 0-.1 0-.1.1-.2z"/></svg>
           </div>
           <div>
-            <div class="kind">Publishing pipeline</div>
+            <div class="kind">Where clips go viral</div>
             <div class="name">TikTok</div>
           </div>
         </div>
         <h2>The platform your clips were made for.</h2>
-        <p class="lede">Vertical, subtitled, hook-first. PeakSense's native output format was designed for TikTok's feed. Full OAuth via PKCE, direct upload, and post status tracking.</p>
+        <p class="lede">Vertical, captioned, hook-first. Every clip PeakSense makes is already the right shape for TikTok. Sign in once and you're set.</p>
         <ul class="integration-features">
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>PKCE OAuth flow</strong> — secure login without a client secret. Local callback server catches the redirect.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>video.upload + video.publish scopes</strong> — upload to drafts or publish directly, your choice.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Creator info sync</strong> — pulls your TikTok display name and avatar into the PeakSense connected accounts panel.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Post status polling</strong> — tracks upload progress and confirms when a clip is live on the platform.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Manual posting today</strong> — scheduled TikTok posting is on the roadmap. Manual post works now via the dashboard.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Sign in with TikTok</strong> in a couple of taps. No copy-pasting codes.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Post to your drafts or straight to your feed</strong>, whichever you prefer.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Shows your TikTok name and picture</strong> right in the dashboard so you know it's connected.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>You can post right now</strong> from the clip editor. Automatic posting is on the way.</div></li>
         </ul>
       </div>
       <div class="integration-visual fade-up">
-        <div class="visual-title">TikTok pipeline</div>
-        <div class="stat"><span class="label">Auth flow</span><span class="value accent">PKCE</span></div>
-        <div class="stat"><span class="label">Publish scopes</span><span class="value">upload · publish</span></div>
-        <div class="stat"><span class="label">Output format</span><span class="value accent">9:16 · burned subs</span></div>
-        <div class="stat"><span class="label">Manual post</span><span class="value accent">✓ Live</span></div>
-        <div class="stat"><span class="label">Scheduled post</span><span class="value" style="color:#ffb400;">Roadmap</span></div>
-        <div class="stat"><span class="label">Post status tracking</span><span class="value accent">✓ Polled</span></div>
+        <div class="visual-title">How TikTok works here</div>
+        <div class="stat"><span class="label">Signing in</span><span class="value accent">Easy</span></div>
+        <div class="stat"><span class="label">Clip shape</span><span class="value accent">9:16 with captions</span></div>
+        <div class="stat"><span class="label">Post from the editor</span><span class="value accent">✓ Yes</span></div>
+        <div class="stat"><span class="label">Post on a schedule</span><span class="value" style="color:#ffb400;">Coming soon</span></div>
+        <div class="stat"><span class="label">See when your clip goes live</span><span class="value accent">✓ Yes</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= HUGGINGFACE ================= -->
 <section class="integration hf reverse" id="huggingface">
   <div class="wrap">
     <div class="integration-grid">
@@ -1087,45 +1054,41 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 3a2 2 0 110 4 2 2 0 010-4zm-4.5 5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm9 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 17a4 4 0 01-3.5-2h7A4 4 0 0112 17z"/></svg>
           </div>
           <div>
-            <div class="kind">Model access</div>
+            <div class="kind">Where the smarts come from</div>
             <div class="name">HuggingFace</div>
           </div>
         </div>
-        <h2>Powered by the best open models on the planet.</h2>
-        <p class="lede">PeakSense pulls state-of-the-art AI models from HuggingFace so you get cloud-quality results without a cloud subscription. Everything runs locally after the one-time download.</p>
+        <h2>The brain behind the curtain.</h2>
+        <p class="lede">PeakSense uses some of the best open AI in the world. You don't need to know how any of it works — you just get the results, and it all runs on your computer.</p>
         <ul class="integration-features">
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Pyannote diarization</strong> — the speaker separation model that powers multi-speaker clip filtering.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>faster-whisper models</strong> — transcription runs at 10× real-time on GPU, near real-time on CPU.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>One-time token</strong> — paste your HuggingFace token once, and PeakSense caches the models locally forever.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Offline after download</strong> — once the models are cached, PeakSense never needs to phone home again.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Optional</strong> — diarization is the only HuggingFace-dependent feature. Everything else runs without it.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>One-time setup</strong> — paste your HuggingFace token once and you're done.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Runs offline after setup</strong> — PeakSense never needs to call home again.</div></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Optional</strong> — it's only needed for telling who's talking on co-streams. Everything else works without it.</div></li>
         </ul>
       </div>
       <div class="integration-visual fade-up">
-        <div class="visual-title">Model stack</div>
-        <div class="stat"><span class="label">Transcription</span><span class="value accent">faster-whisper</span></div>
-        <div class="stat"><span class="label">Diarization</span><span class="value accent">pyannote 3.x</span></div>
-        <div class="stat"><span class="label">Local LLM scoring</span><span class="value">Ollama</span></div>
-        <div class="stat"><span class="label">Face detection</span><span class="value">ONNX</span></div>
-        <div class="stat"><span class="label">Model cache location</span><span class="value">models/</span></div>
-        <div class="stat"><span class="label">Cloud calls after setup</span><span class="value accent">Zero</span></div>
+        <div class="visual-title">What you actually need to set up</div>
+        <div class="stat"><span class="label">Tell voices apart</span><span class="value accent">Optional</span></div>
+        <div class="stat"><span class="label">Captions</span><span class="value accent">Built in</span></div>
+        <div class="stat"><span class="label">Highlight detection</span><span class="value accent">Built in</span></div>
+        <div class="stat"><span class="label">Face detection</span><span class="value accent">Built in</span></div>
+        <div class="stat"><span class="label">Calls out to the internet after setup</span><span class="value accent">Never</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= HOW ================= -->
 <section id="how">
   <div class="wrap">
     <div class="section-head fade-up">
-      <div class="kicker">Three steps, zero cloud</div>
-      <h2>From VOD to posted Short in minutes</h2>
-      <p>Drop a URL, pick your settings, and let PeakSense do the rest. No uploads, no queues, no waiting on someone else's server.</p>
+      <div class="kicker">Three steps, no cloud</div>
+      <h2>From stream to posted clip in a few minutes</h2>
+      <p>Drop a link. Pick your settings. Let PeakSense do the boring part.</p>
     </div>
     <div class="steps">
-      <div class="step fade-up"><h3>Paste your VOD URL</h3><p>YouTube, Twitch, or a direct link. PeakSense downloads it locally at up to 1440p.</p></div>
-      <div class="step fade-up"><h3>Pick your signals</h3><p>Choose detection sources — hype phrases, loud moments, chat spikes, AI scoring, speaker diarization — and your reframe/ratio preset.</p></div>
-      <div class="step fade-up"><h3>Render, review, post</h3><p>PeakSense cuts clips, reframes them, burns subtitles, and queues them for auto-posting on the schedule you set.</p></div>
+      <div class="step fade-up"><h3>Paste your stream link</h3><p>YouTube, Twitch, or anywhere else. PeakSense downloads it right to your PC.</p></div>
+      <div class="step fade-up"><h3>Pick what you want it to look for</h3><p>Funny moments? Loud reactions? Chat going wild? A clutch play? Tick the boxes and PeakSense goes to work.</p></div>
+      <div class="step fade-up"><h3>Let it clip, or review first</h3><p>Clips get cut, sized, captioned, and queued up. Post them yourself or let PeakSense handle it on your schedule.</p></div>
     </div>
     <div class="platform-row fade-up">
       <a class="platform-pill" href="#youtube">
@@ -1148,39 +1111,36 @@
   </div>
 </section>
 
-<!-- ================= CTA ================= -->
 <section>
   <div class="wrap">
     <div class="cta-banner fade-up">
-      <h2>Stop paying per clip.</h2>
-      <p>PeakSense runs on your hardware, uses your GPU, and never meters your output. Download it, point it at a VOD, and watch it work.</p>
-      <a href="http://localhost:8000/dashboard" class="btn btn-primary">Launch PeakSense →</a>
-      <small class="cta-note">Runs locally — start PeakSense first, then open <code>http://localhost:8000</code></small>
+      <h2>Your stream already has good moments in it.</h2>
+      <p>Let PeakSense find them. Point it at a VOD and watch it work — no signup, no credit card, no cloud.</p>
+      <a href="http://localhost:8000/dashboard" class="btn btn-primary">Open PeakSense →</a>
+      <small class="cta-note">Runs on your own computer. Start it up, then open <code>http://localhost:8000</code>.</small>
     </div>
   </div>
 </section>
 
-<!-- ================= FAQ ================= -->
 <section id="faq">
   <div class="wrap">
     <div class="section-head fade-up">
-      <div class="kicker">Questions</div>
-      <h2>Everything you need to know</h2>
+      <div class="kicker">Common questions</div>
+      <h2>Things people ask before they try it</h2>
     </div>
     <div class="faq">
-      <details><summary>Does PeakSense upload my videos anywhere?</summary><p>No. Every step — download, transcription, detection, rendering, and subtitling — runs locally on your machine. The only network calls are to the platforms you're actively downloading from or posting to, and to HuggingFace if you enable speaker diarization.</p></details>
-      <details><summary>What GPU do I need?</summary><p>PeakSense falls back to CPU rendering and CPU transcription automatically, so it runs on anything. If you have an NVIDIA GPU, it'll use CUDA for Whisper and NVENC for rendering, which is dramatically faster. AMD and Intel GPUs work through their respective encoders (QSV/AMF).</p></details>
-      <details><summary>Do I need an API key for the AI detection?</summary><p>No. PeakSense uses Ollama for local LLM scoring — you run the model yourself. There's no OpenAI key, no Anthropic key, no per-token billing. If you'd rather not use AI scoring at all, the loudness, hype-phrase, chat, and trigger-phrase detectors work independently.</p></details>
-      <details><summary>What's the difference between free and Pro?</summary><p>The free tier is fully functional — unlimited VODs, all detection signals, all reframe modes, and YouTube auto-posting. Pro ($79 one-time) removes the per-VOD clip cap, adds priority queueing, unlocks TikTok and Twitch multi-platform posting, enables the analytics dashboard, and turns on live-stream auto-capture. No subscription — you buy it once and keep it forever.</p></details>
-      <details><summary>How does the Pro license work?</summary><p>You get a license key in the format <code>PS-XXXX-XXXX-XXXX-XXXX</code>. Paste it into Settings → Pro License and the app unlocks the Pro features. It's a one-time purchase tied to your install, and it works offline. If you reinstall on the same machine, you can re-activate with the same key.</p></details>
-      <details><summary>How is this different from Opus Clip or Eklipse?</summary><p>Three things: (1) it runs locally, so your footage never leaves your PC; (2) it has no clip credits — you can process as many VODs as your hardware can handle; and (3) it includes facecam-top layouts, speaker diarization, and a full montage builder that most cloud tools either gate behind paid tiers or don't offer at all.</p></details>
-      <details><summary>Can I schedule posts to multiple platforms?</summary><p>Yes. PeakSense has a posting scheduler where you set days and times. Clips are assigned to the next available slot in ranking order and posted automatically. YouTube is supported on the free tier; TikTok and Twitch multi-platform posting are Pro features.</p></details>
-      <details><summary>Is there a free tier?</summary><p>PeakSense is self-hosted — the free tier is the app itself. You install it, point it at your hardware, and use it as much as you want. Pro is an optional one-time upgrade for users who want higher throughput and multi-platform posting.</p></details>
+      <details><summary>Does PeakSense upload my videos anywhere?</summary><p>No. Everything happens on your computer — downloading, watching, clipping, captioning, all of it. The only time PeakSense touches the internet is when it's pulling a stream you asked for or posting a clip to your own channel.</p></details>
+      <details><summary>What kind of computer do I need?</summary><p>Almost anything. If you've got a gaming PC with an NVIDIA card, PeakSense will use it and be very fast. If not, it just works slower. No special hardware required.</p></details>
+      <details><summary>Do I need to pay for AI or an API key?</summary><p>No. PeakSense runs its own AI locally, so there are no per-clip charges and no hidden bills. You're not paying OpenAI or anyone else for each clip.</p></details>
+      <details><summary>What's the difference between free and Pro?</summary><p>The free version is the real thing — unlimited streams, all the clip styles, YouTube posting. Pro ($79 one-time) removes the 20-clip cap per stream, adds priority processing, lets you post to TikTok and Twitch on a schedule, unlocks the analytics dashboard, and turns on live-stream capture. You pay once and keep it.</p></details>
+      <details><summary>How does the license work?</summary><p>You get a key that starts with <code>PS-</code>. Paste it in and you're done. No subscription, no monthly renewal, no calls to our servers to check if you're still allowed to use it. It just works.</p></details>
+      <details><summary>How is this different from Opus Clip or Eklipse?</summary><p>Two big things. First, it runs on your computer, so your footage never gets uploaded to someone else's servers. Second, there are no credits — you can process as many streams as your computer can handle. Free tools cap you at a few minutes per month; PeakSense doesn't cap you at all.</p></details>
+      <details><summary>Can I schedule posts to multiple platforms?</summary><p>Yes. Set your posting days and times once, and clips go out on autopilot. YouTube is included in the free version. TikTok and Twitch scheduling are Pro features.</p></details>
+      <details><summary>Is there really a free version?</summary><p>Yes, and it's not a limited trial. The free version of PeakSense is the actual product. Pro is optional — it's for people who want to move faster or post to more platforms.</p></details>
     </div>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
     <div class="footer-grid">
@@ -1193,12 +1153,12 @@
           </svg>
           <span>PEAK<span class="sense">SENSE</span></span>
         </div>
-        <p>AI-powered stream highlight detection, clipping, reframing, subtitling, and auto-posting — running entirely on your hardware.</p>
+        <p>PeakSense finds the best moments in your stream and turns them into clips you'd actually want to post. Made by a streamer, for streamers.</p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
         <a href="#features">Features</a>
-        <a href="#compare">Comparison</a>
+        <a href="#compare">Compare</a>
         <a href="#pro">Pro</a>
         <a href="#integrations">Integrations</a>
         <a href="http://localhost:8000/dashboard">Dashboard</a>
@@ -1211,15 +1171,15 @@
         <a href="#huggingface">HuggingFace</a>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
+        <h4>More</h4>
         <a href="#faq">FAQ</a>
         <a href="https://github.com/GrimmortalDread/peaksense-site">GitHub</a>
-        <a href="#">Documentation</a>
-        <a href="#">Changelog</a>
+        <a href="#">Docs</a>
+        <a href="#">What's new</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 PeakSense. Built for streamers, by a streamer.</span>
+      <span>© 2026 PeakSense. Built by a streamer, for streamers.</span>
       <div class="socials">
         <a href="#twitch">Twitch</a>
         <a href="#youtube">YouTube</a>
@@ -1232,7 +1192,6 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Fade-up on scroll
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -1243,7 +1202,6 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
-    // Highlight active nav link based on scroll position
     var sections = document.querySelectorAll('section[id], header[id]');
     var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     var navObserver = new IntersectionObserver(function(entries) {
