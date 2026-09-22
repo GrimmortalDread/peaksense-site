@@ -738,7 +738,7 @@
       <p>Bring in a stream — paste a link or connect your accounts. Pick your settings. Let PeakSense handle the rest.</p>
     </div>
     <div class="steps">
-      <div class="step fade-up"><h3>Bring in your stream</h3><p>Paste a YouTube or Twitch link — or connect your accounts to browse recent VODs, playlists, and live broadcasts. PeakSense downloads it all locally.</p></div>
+      <div class="step fade-up"><h3>Bring in your stream</h3><p>Paste a YouTube, Twitch or Kick link — or connect your accounts to browse recent VODs, playlists, and live broadcasts. PeakSense downloads it all locally - or delete's the download after processing.</p></div>
       <div class="step fade-up"><h3>Pick what you're looking for</h3><p>Hype phrases, loud moments, chat spikes, AI scoring — choose the signals that match your content.</p></div>
       <div class="step fade-up"><h3>Clip, review, post</h3><p>PeakSense cuts and reframes clips, burns captions, and — with Pro — queues them for auto-posting on your schedule.</p></div>
     </div>
@@ -855,6 +855,13 @@
       </div>
 
       <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Never leaves your PC</h3>
+        <p>Download, detection, clipping, captioning — it all runs on your machine. PeakSense knows the state of every clip (draft, rendered, posted), warns you before a job runs out of disk space, and remembers what it's already clipped so you never post the same moment twice.</p>
+        <span class="feature-tag">Local &amp; clean</span>
+      </div>
+  
+      <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>Auto-posting on your schedule <span class="pro-tag">Pro</span></h3>
         <p>Set your posting days and times once. PeakSense renders and uploads clips to YouTube and TikTok on the schedule you pick. Wake up to new content live on your channels.</p>
@@ -873,13 +880,6 @@
         <h3>Learns from your winners <span class="pro-tag">Pro</span></h3>
         <p>PeakSense pulls performance on your posted YouTube clips and uses what worked to pick better moments next time. The more you post, the smarter the detection gets.</p>
         <span class="feature-tag">Gets smarter</span>
-      </div>
-
-      <div class="feature-card fade-up">
-        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3>Never leaves your PC</h3>
-        <p>Download, detection, clipping, captioning — it all runs on your machine. PeakSense knows the state of every clip (draft, rendered, posted), warns you before a job runs out of disk space, and remembers what it's already clipped so you never post the same moment twice.</p>
-        <span class="feature-tag">Local &amp; clean</span>
       </div>
 
     </div>
@@ -923,7 +923,7 @@
           </tr>
           <tr><td>Keeps posting after you close the tab</td><td class="hl yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="partial">Unclear</td><td class="partial">Unclear</td><td class="no">✗ No</td></tr>
           <tr><td>Where your footage goes</td><td class="hl yes">✓ Never leaves your PC</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td></tr>
-          <tr><td>What it costs</td><td class="hl yes">Free · $69 Pro (one-time)</td><td>$15–29/mo</td><td>Free tier + paid</td><td>$29/mo</td><td>$14–39/mo</td></tr>
+          <tr><td>What it costs</td><td class="hl yes">Free · $69 Pro (one-time)</td><td>$15–29/mo</td><td>Weak Free tier + $25/mo</td><td>$29/mo</td><td>$14–39/mo</td></tr>
         </tbody>
       </table>
       <p class="compare-note">Feature comparison verified September 2026. Cloud tools change their feature tiers frequently — check their sites directly before switching.</p>
@@ -1155,12 +1155,11 @@
           </div>
         </div>
         <h2>The AI behind the curtain.</h2>
-        <p class="lede">HuggingFace hosts the open-source AI models PeakSense uses. The one that matters here is <strong>pyannote/speaker-diarization-3.1</strong>. Speaker diarization is the AI task of answering "who spoke when" — it splits your stream's audio into segments and tags each one with the person talking. Paste a free read-only token once, accept the model's license, and PeakSense downloads it to your computer; after that it never needs HuggingFace again.</p>
+        <p class="lede">HuggingFace hosts the open-source AI models PeakSense uses. The one that matters here is <strong>pyannote/speaker-diarization-3.1</strong>. Speaker diarization is the AI task of answering "who spoke when" — it splits your stream's audio into segments and tags each one with the person talking.</p>
         <ul class="integration-features">
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>What diarization does</strong> — splits your audio into segments and labels each one with who's speaking, so a transcript reads like a conversation instead of a wall of text.</div></li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>How PeakSense uses it</strong> — it runs after transcription and tags every line with a speaker, powering "Know who's talking": find a guest's best reaction, or pull the back-and-forths that made the stream.</div></li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Downloads pyannote/speaker-diarization-3.1</strong> — the leading open model for speaker separation, running locally on your PC.</div></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>One-time setup, then offline</strong> — accept the model's license, paste a free read token, and PeakSense pulls the model down. It never calls home again.</div></li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Completely optional</strong> — it's only needed for speaker separation on co-streams and podcasts. Captions, detection, and face finding all work without it.</div></li>
         </ul>
       </div>
