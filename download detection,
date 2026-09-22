@@ -972,20 +972,6 @@
           <li>
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
-              <strong>Priority processing</strong>
-              <span>Your jobs jump the line. When you hit process, your stream gets worked on before anything else in the queue.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-            <div>
-              <strong>No clip cap</strong>
-              <span>Pull every moment worth keeping out of a six-hour marathon, not just a handful.</span>
-            </div>
-          </li>
-          <li>
-            <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-            <div>
               <strong>Custom branding on every export</strong>
               <span>Apply a "Made With / PeakSense" badge automatically, and drop your own intro and outro cards onto every montage. Consistent branding without extra editing time.</span>
             </div>
@@ -1008,8 +994,6 @@
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Live-stream auto-capture</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>AI that learns from your winners</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Second-pass reprocessing</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Priority processing</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>No clip cap</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Custom branding overlays</li>
           <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Everything else we build, included</li>
         </ul>
@@ -1201,7 +1185,7 @@
       <h2>Things people ask before they try it</h2>
     </div>
     <div class="faq">
-      <details><summary>How much does PeakSense cost?</summary><p>The free version is the full toolset — highlight detection, facecam layouts, captions, sequence mode, playlist bulk processing — used manually. PeakSense Pro is a one-time $69 payment that adds the automation: scheduled auto-posting, live auto-capture, the learning loop, priority queue, no clip cap, and custom branding. No subscription, no per-clip charges.</p></details>
+      <details><summary>How much does PeakSense cost?</summary><p>The free version is the full toolset — highlight detection, facecam layouts, captions, sequence mode, playlist bulk processing — used manually. PeakSense Pro is a one-time $69 payment that adds the automation: scheduled auto-posting, live auto-capture, the learning loop, and custom branding. No subscription, no per-clip charges.</p></details>
       <details><summary>Does PeakSense upload my videos anywhere?</summary><p>No. Everything — download, detection, clipping, captioning — runs on your computer. The only time PeakSense touches the internet is when it's pulling a stream you asked for or posting a clip to your own channel.</p></details>
       <details><summary>What kind of computer do I need?</summary><p>A Windows PC. If you have an NVIDIA GPU, PeakSense uses it and runs fast. If you don't, it uses your CPU and just runs slower. No special hardware required either way.</p></details>
       <details><summary>How does the license work?</summary><p>You get a key that starts with <code>PS-</code>. Paste it into Settings and you're done. No subscription, no monthly renewal, no calls to our servers to verify it. It just works.</p></details>
