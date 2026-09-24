@@ -1401,15 +1401,14 @@
         submitBtn.textContent = 'Sending...';
         status.textContent = 'Adding you...';
 
-        try {
-          // Send data to the LaunchList form endpoint
+          // Send data to your LaunchList form endpoint
+          var formData = new FormData();
+          formData.append('email', email);
+          
           var response = await fetch('https://getlaunchlist.com/s/m6QTxF', {
             method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({ email: email })
+            body: formData
+            // Note: We removed the 'Content-Type' header. The browser automatically sets it to multipart/form-data for FormData.
           });
           
           if (response.ok) {
