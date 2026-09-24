@@ -720,7 +720,6 @@
 <nav>
   <div class="wrap">
     <div class="nav-logo">
-      <!-- REPLACED SVG WITH PNG -->
       <img src="peaksense-icon.png" alt="PeakSense Icon" class="logo-icon">
       <div class="nav-logo-text">
         <span>PEAK<span class="sense">SENSE</span></span>
@@ -740,7 +739,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <svg class="hero-peak" viewBox="20 0 640 210" role="img" aria-hidden="true">
+    <svg class="hero-peak" viewBox="0 0 640 210" role="img" aria-hidden="true">
       <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"
                 fill="none" stroke="#2dff6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="40"  cy="185" r="4" fill="#2dff6b"/>
@@ -959,8 +958,6 @@
       <h2>Built for streamers. Runs on your PC.</h2>
       <p>Most clip tools run in the cloud and bill you every month. Here's how PeakSense lines up against the tools streamers ask about most.</p>
     </div>
-    <!-- HOW TO UPDATE: edit the rows below. Re-verify every competitor cell against the ↗ source pages
-         and change the date in the note. If a claim can't be verified, say "Not advertised" rather than guess. -->
     <div class="compare-scroll fade-up">
       <table class="compare">
         <thead>
@@ -1006,7 +1003,7 @@
             <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
             <div>
               <strong>Scheduled auto-posting</strong>
-              <span> times once — or post every few hours — and PeakSense renders and uploads clips to YouTube and TikTok* while you sleep, work, or stream.</span>
+              <span>Set times once — or post every few hours — and PeakSense renders and uploads clips to YouTube and TikTok* while you sleep, work, or stream.</span>
             </div>
           </li>
           <li>
@@ -1261,7 +1258,6 @@
       <h2>PeakSense is almost ready.</h2>
       <p>Get one email when the Windows download goes live. No newsletter, no spam.</p>
       
-      <!-- Form handled by JavaScript at the bottom of the page -->
       <!-- LaunchList Official Widget -->
       <div class="launchlist-widget" data-key-id="m6QTxF"></div>
       <small class="cta-note">We only use your email to tell you when PeakSense launches. See our <a href="privacy.html">privacy policy</a>.</small>
@@ -1295,7 +1291,6 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">
-          <!-- REPLACED SVG WITH PNG -->
           <img src="peaksense-icon.png" alt="PeakSense Icon" class="logo-icon">
           <div class="nav-logo-text">
             <span>PEAK<span class="sense">SENSE</span></span>
@@ -1372,7 +1367,7 @@
     }, { threshold: 0.3 });
     sections.forEach(function(s) { navObserver.observe(s); });
 
-    // LaunchList Form Submission Handler
+    // Optional custom form handler (only runs if you add #launchForm back into the HTML)
     var form = document.getElementById('launchForm');
     if (form) {
       var input = document.getElementById('launchEmail');
@@ -1380,44 +1375,40 @@
       var submitBtn = form.querySelector('button');
 
       form.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Prevent default browser submission (stops Outlook from opening)
-        
+        e.preventDefault();
+
         var email = (input.value || '').trim();
         status.className = 'form-status';
-        
-        // Basic validation
+
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
           status.textContent = 'Please enter a valid email address.';
           input.focus();
           return;
         }
 
-        // Disable button while sending
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
         status.textContent = 'Adding you...';
 
-          // Send data to your LaunchList form endpoint
+        try {
           var formData = new FormData();
           formData.append('email', email);
-          
+
           var response = await fetch('https://getlaunchlist.com/s/m6QTxF', {
             method: 'POST',
             body: formData
-            // Note: We removed the 'Content-Type' header. The browser automatically sets it to multipart/form-data for FormData.
           });
-          
+
           if (response.ok) {
             status.className = 'form-status ok';
             status.textContent = "You're on the list. We'll email you once, at launch.";
-            form.reset(); // Clear the input
+            form.reset();
           } else {
             throw new Error('HTTP ' + response.status);
           }
         } catch (error) {
           status.textContent = "That didn't go through. Email support@peaksense.net and we'll add you.";
         } finally {
-          // Re-enable button
           submitBtn.disabled = false;
           submitBtn.textContent = 'Notify me';
         }
