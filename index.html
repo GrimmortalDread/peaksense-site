@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PeakSense — The AI stream clipper that runs on your PC</title>
-<meta name="description" content="Free AI clipper for Twitch, YouTube and Kick streamers. PeakSense finds your best moments, captions them, sizes them for Shorts and TikTok, and posts them — on your own Windows PC. No uploads, no credits. Pro is $69 once.">
+<meta name="description" content="Free AI clipper for Twitch, YouTube and Kick streamers. PeakSense finds your Peak moments, captions them, sizes them for Shorts and TikTok, and posts them — on your own Windows PC. No uploads, no credits. Pro is $69 once.">
 <link rel="canonical" href="https://peaksense.net/">
 <meta name="theme-color" content="#150c24">
 <meta property="og:type" content="website">
@@ -19,6 +19,9 @@
 <meta name="twitter:description" content="Free AI clipper for Twitch, YouTube and Kick streamers. No uploads, no credits. Pro is $69 once.">
 <meta name="twitter:image" content="https://peaksense.net/peaksense-icon.png">
 <link rel="apple-touch-icon" href="peaksense-icon.png">
+<link rel="icon" type="image/png" href="peaksense-icon.png">
+<!-- LaunchList Script -->
+<script src="https://getlaunchlist.com/js/widget.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,7 +37,6 @@
   ]
 }
 </script>
-<link rel="icon" type="image/png" href="peaksense-icon.png">
 <style>
   :root {
     --bg: #0d0716;
@@ -80,7 +82,9 @@
     display: flex; align-items: center; gap: 10px;
     font-weight: 800; letter-spacing: 1px; font-size: 18px;
   }
-  .nav-logo svg { width: 44px; height: 22px; }
+  .logo-icon {
+    width: 44px; height: auto; display: inline-block; vertical-align: middle;
+  }
   .nav-logo .sense { color: var(--green); }
   .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
   .nav-tagline {
@@ -716,11 +720,8 @@
 <nav>
   <div class="wrap">
     <div class="nav-logo">
-      <svg viewBox="0 0 680 340" fill="none" stroke="#2dff6b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"/>
-        <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
-        <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
-      </svg>
+      <!-- REPLACED SVG WITH PNG -->
+      <img src="peaksense-icon.png" alt="PeakSense Icon" class="logo-icon">
       <div class="nav-logo-text">
         <span>PEAK<span class="sense">SENSE</span></span>
         <span class="nav-tagline">Find Peak Moments</span>
@@ -975,7 +976,7 @@
           <tr><td>Scheduled auto-posting</td><td class="hl yes">✓ Pro<span class="row-sub yes">✓ Fully automatic</span></td><td class="partial">Manual Scheduler</td><td class="yes">✓ Paid plans</td><td class="yes">✓ Pro plan</td><td class="na">Not advertised</td></tr>
           <tr><td>Your footage</td><td class="hl yes">✓ Stays on your PC</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="yes">✓ Stays on your PC</td></tr>
           <tr><td>Runs on</td><td class="hl partial">Windows<span class="row-sub">Mac &amp; Linux planned</span></td><td class="yes">Web + mobile app</td><td class="yes">Web</td><td class="yes">Web</td><td class="yes">✓ Windows, Mac, Linux</td></tr>
-          <tr><td>Price</td><td class="hl yes">Free · Pro $69 ONETIME</td><td>$24.99/mo or $179.99/yr</td><td>Free editor · Silver $79.99/yr or Gold/AI $270/yr  plans</td><td>Free · $15–$29/mo</td><td>Free beta, then $7.99–$12.99/mo</td></tr>
+          <tr><td>Price</td><td class="hl yes">Free · Pro $69 ONE-TIME</td><td>$24.99/mo or $179.99/yr</td><td>Free editor · Silver $79.99/yr or Gold/AI $270/yr  plans</td><td>Free · $15–$29/mo</td><td>Free beta, then $7.99–$12.99/mo</td></tr>
         </tbody>
       </table>
       <p class="compare-note">Competitor details verified September 23, 2026 from each company's public pages (↗). Plans change often — check their sites before you decide. Spotted something out of date? Tell us at <a href="mailto:support@peaksense.net">support@peaksense.net</a> and we'll fix it.</p>
@@ -1259,6 +1260,8 @@
     <div class="cta-banner fade-up">
       <h2>PeakSense is almost ready.</h2>
       <p>Get one email when the Windows download goes live. No newsletter, no spam.</p>
+      
+      <!-- Form handled by JavaScript at the bottom of the page -->
       <form class="launch-form" id="launchForm" novalidate>
         <label class="sr-only" for="launchEmail">Email address</label>
         <input type="email" id="launchEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
@@ -1266,58 +1269,6 @@
       </form>
       <div class="form-status" id="launchStatus" role="status" aria-live="polite"></div>
       <small class="cta-note">We only use your email to tell you when PeakSense launches. See our <a href="privacy.html">privacy policy</a>.</small>
-    </div>
-
-<script>
-      document.getElementById('launchForm').addEventListener('submit', async function(e) {
-        e.preventDefault(); // THIS STOPS OUTLOOK FROM OPENING
-        
-        const email = document.getElementById('launchEmail').value;
-        const statusDiv = document.getElementById('launchStatus');
-        const submitBtn = this.querySelector('button');
-        
-        // Disable button while sending
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-        
-        try {
-          // Send data to your LaunchList form endpoint
-          const response = await fetch('https://getlaunchlist.com/s/m6QTxF', {
-            method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({ email: email })
-          });
-          
-          if (response.ok) {
-            statusDiv.textContent = "You're on the list! We'll be in touch.";
-            statusDiv.style.color = "#4ade80"; // Green success color
-            this.reset(); // Clear the input
-          } else {
-            statusDiv.textContent = "Something went wrong. Please try again.";
-            statusDiv.style.color = "#f87171"; // Red error color
-          }
-        } catch (error) {
-          statusDiv.textContent = "Network error. Please try again.";
-          statusDiv.style.color = "#f87171";
-        } finally {
-          // Re-enable button
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Notify me';
-        }
-      });
-    </script>
-  </div>
-</section>
-    
-    <div class="needs-title fade-up">What you'll need</div>
-    <div class="compat fade-up">
-      <div class="compat-item"><strong>Windows 10 or 11</strong><span>Mac and Linux are planned.</span></div>
-      <div class="compat-item"><strong>A GPU helps</strong><span>NVIDIA runs fastest. AMD and CPU-only PCs work — AI transcription is just slower.</span></div>
-      <div class="compat-item"><strong>About 20 GB free</strong><span>A 2-hour VOD takes 4–5 GB while it's processed. PeakSense can delete it afterward.</span></div>
-      <div class="compat-item"><strong>Optional extras (free)</strong><span>Ollama for AI scoring · a Hugging Face account for speaker labels · a one-time Google setup to post to YouTube.</span></div>
     </div>
   </div>
 </section>
@@ -1348,11 +1299,8 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">
-          <svg viewBox="0 0 680 340" fill="none" stroke="#2dff6b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"/>
-            <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
-            <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
-          </svg>
+          <!-- REPLACED SVG WITH PNG -->
+          <img src="peaksense-icon.png" alt="PeakSense Icon" class="logo-icon">
           <div class="nav-logo-text">
             <span>PEAK<span class="sense">SENSE</span></span>
             <span class="nav-tagline">Find Peak Moments</span>
@@ -1397,6 +1345,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Fade-up animation observer
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -1407,6 +1356,7 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
+    // Nav active state observer
     var sections = document.querySelectorAll('section[id], header[id]');
     var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     var navObserver = new IntersectionObserver(function(entries) {
@@ -1426,43 +1376,58 @@
     }, { threshold: 0.3 });
     sections.forEach(function(s) { navObserver.observe(s); });
 
-  // Launch-list form. Set LAUNCH_FORM_ENDPOINT to a form service URL (e.g. Formspree, Buttondown)
-  // to collect emails directly. Left empty, it opens the visitor's email app addressed to support.
-  var LAUNCH_FORM_ENDPOINT = '';
-  (function() {
+    // LaunchList Form Submission Handler
     var form = document.getElementById('launchForm');
-    if (!form) return;
-    var input = document.getElementById('launchEmail');
-    var status = document.getElementById('launchStatus');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var email = (input.value || '').trim();
-      status.className = 'form-status';
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        status.textContent = 'Please enter a valid email address.';
-        input.focus();
-        return;
-      }
-      if (!LAUNCH_FORM_ENDPOINT) {
-        window.location.href = 'mailto:support@peaksense.net?subject=' + encodeURIComponent('PeakSense launch list') +
-          '&body=' + encodeURIComponent('Please let me know when PeakSense launches: ' + email);
-        status.textContent = 'Opening your email app — just hit send.';
-        return;
-      }
-      status.textContent = 'Adding you…';
-      var data = new FormData(); data.append('email', email);
-      fetch(LAUNCH_FORM_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-        .then(function(r) {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          status.className = 'form-status ok';
-          status.textContent = "You're on the list. We'll email you once, at launch.";
-          form.reset();
-        })
-        .catch(function() {
+    if (form) {
+      var input = document.getElementById('launchEmail');
+      var status = document.getElementById('launchStatus');
+      var submitBtn = form.querySelector('button');
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent default browser submission (stops Outlook from opening)
+        
+        var email = (input.value || '').trim();
+        status.className = 'form-status';
+        
+        // Basic validation
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          status.textContent = 'Please enter a valid email address.';
+          input.focus();
+          return;
+        }
+
+        // Disable button while sending
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        status.textContent = 'Adding you...';
+
+        try {
+          // Send data to the LaunchList form endpoint
+          var response = await fetch('https://getlaunchlist.com/s/m6QTxF', {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+          });
+          
+          if (response.ok) {
+            status.className = 'form-status ok';
+            status.textContent = "You're on the list. We'll email you once, at launch.";
+            form.reset(); // Clear the input
+          } else {
+            throw new Error('HTTP ' + response.status);
+          }
+        } catch (error) {
           status.textContent = "That didn't go through. Email support@peaksense.net and we'll add you.";
-        });
-    });
-  })();
+        } finally {
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Notify me';
+        }
+      });
+    }
   });
 </script>
 
