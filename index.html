@@ -82,6 +82,11 @@
   }
   .nav-logo svg { width: 44px; height: 22px; }
   .nav-logo .sense { color: var(--green); }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-tagline {
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted);
+  }
   .nav-links { display: flex; gap: 22px; align-items: center; }
   .nav-links a {
     color: var(--muted); font-size: 13px; font-weight: 600;
@@ -715,7 +720,10 @@
         <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
         <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
       </svg>
-      <span>PEAK<span class="sense">SENSE</span></span>
+      <div class="nav-logo-text">
+        <span>PEAK<span class="sense">SENSE</span></span>
+        <span class="nav-tagline">Find Peak Moments</span>
+      </div>
     </div>
     <div class="nav-links">
       <a href="#features">Features</a>
@@ -1300,7 +1308,10 @@
             <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
             <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
           </svg>
-          <span>PEAK<span class="sense">SENSE</span></span>
+          <div class="nav-logo-text">
+            <span>PEAK<span class="sense">SENSE</span></span>
+            <span class="nav-tagline">Find Peak Moments</span>
+          </div>
         </div>
         <p>PeakSense finds the best moments in your stream and turns them into clips you'd actually want to post. Made by a streamer, for streamers.</p>
       </div>
