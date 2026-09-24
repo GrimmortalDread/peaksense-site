@@ -34,7 +34,7 @@
   ]
 }
 </script>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="peaksense-icon.png">
 <style>
   :root {
     --bg: #0d0716;
@@ -82,6 +82,11 @@
   }
   .nav-logo svg { width: 44px; height: 22px; }
   .nav-logo .sense { color: var(--green); }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-tagline {
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted);
+  }
   .nav-links { display: flex; gap: 22px; align-items: center; }
   .nav-links a {
     color: var(--muted); font-size: 13px; font-weight: 600;
@@ -274,6 +279,7 @@
     line-height: 1.4;
   }
   table.compare td.hl .row-sub { color: rgba(255,255,255,0.65); }
+  table.compare td.hl .row-sub.yes { color: var(--green); }
   .compare-note {
     text-align: center;
     color: var(--muted);
@@ -715,7 +721,10 @@
         <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
         <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
       </svg>
-      <span>PEAK<span class="sense">SENSE</span></span>
+      <div class="nav-logo-text">
+        <span>PEAK<span class="sense">SENSE</span></span>
+        <span class="nav-tagline">Find Peak Moments</span>
+      </div>
     </div>
     <div class="nav-links">
       <a href="#features">Features</a>
@@ -963,7 +972,7 @@
           <tr><td>Built for stream VODs</td><td class="hl yes">✓ YouTube, Twitch, Kick</td><td class="yes">✓ Twitch, Kick, YouTube, Facebook</td><td class="yes">✓ Twitch, Kick, YouTube</td><td class="partial">General uploads</td><td class="partial">YouTube links &amp; local files</td></tr>
           <tr><td>Chat-spike detection</td><td class="hl yes">✓ From YouTube chat replay</td><td class="partial">Audience spikes</td><td class="na">Not advertised</td><td class="na">Not advertised</td><td class="na">Not advertised</td></tr>
           <tr><td>Facecam layouts</td><td class="hl yes">✓ Auto-detected, 4 layouts</td><td class="partial">Auto reframe</td><td class="yes">✓ Facecam framing</td><td class="partial">Auto reframe</td><td class="partial">Auto reframe</td></tr>
-          <tr><td>Scheduled auto-posting</td><td class="hl yes">✓ Pro<span class="row-sub">✓ Fully automatic/span></td><td partial="yes">Manual Scheduler</td><td class="yes">✓ Paid plans</td><td class="yes">✓ Pro plan</td><td class="na">Not advertised</td></tr>
+          <tr><td>Scheduled auto-posting</td><td class="hl yes">✓ Pro<span class="row-sub yes">✓ Fully automatic</span></td><td class="partial">Manual Scheduler</td><td class="yes">✓ Paid plans</td><td class="yes">✓ Pro plan</td><td class="na">Not advertised</td></tr>
           <tr><td>Your footage</td><td class="hl yes">✓ Stays on your PC</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="no">Uploaded to them</td><td class="yes">✓ Stays on your PC</td></tr>
           <tr><td>Runs on</td><td class="hl partial">Windows<span class="row-sub">Mac &amp; Linux planned</span></td><td class="yes">Web + mobile app</td><td class="yes">Web</td><td class="yes">Web</td><td class="yes">✓ Windows, Mac, Linux</td></tr>
           <tr><td>Price</td><td class="hl yes">Free · Pro $69 once</td><td>$24.99/mo or $179.99/yr</td><td>Free editor · AI on paid plans</td><td>Free · $15–$29/mo</td><td>Free beta, then $7.99–$12.99/mo</td></tr>
@@ -1344,7 +1353,10 @@
             <circle cx="630" cy="20" r="40" fill="none" stroke="#2dff6b" stroke-width="16"/>
             <circle cx="630" cy="20" r="20" fill="#2dff6b" stroke="none"/>
           </svg>
-          <span>PEAK<span class="sense">SENSE</span></span>
+          <div class="nav-logo-text">
+            <span>PEAK<span class="sense">SENSE</span></span>
+            <span class="nav-tagline">Find Peak Moments</span>
+          </div>
         </div>
         <p>PeakSense finds the best moments in your stream and turns them into clips you'd actually want to post. Made by a streamer, for streamers.</p>
       </div>
