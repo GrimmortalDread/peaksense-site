@@ -41,7 +41,7 @@
   <div class="summary">
     <strong>The short version</strong>
     <ul>
-      <li>PeakSense runs on your own PC. Your videos, recordings, transcripts, account tokens and settings stay on your computer. We don't run servers that receive them.</li>
+      <li>PeakSense runs on your own PC. Your videos, recordings, transcripts, account tokens and settings stay on your computer. Our only server is a sign-in relay that passes TikTok and Twitch sign-in requests through and keeps nothing (<a href="#relay">section 4</a>).</li>
       <li>PeakSense contacts a service (YouTube, Twitch, TikTok and the others listed below) only to do something you set up or asked for, such as signing in, finding your streams, or posting your clip.</li>
       <li>No analytics, no tracking, no advertising, and we never sell or share your data.</li>
       <li>PeakSense uses YouTube API Services. See <a href="#youtube">section 7</a>.</li>
@@ -108,9 +108,10 @@
   <p><strong>Security:</strong> the data is protected by your Windows account, the same as your other files. Sign-in tokens, the YouTube sign-in session and your OBS password are stored in PeakSense's data folder without additional encryption, so anyone who can use your Windows account could read them. Keep your PC and Windows account secure, and disconnect platforms you no longer use.</p>
 
   <h2 id="share">4. Services the app talks to</h2>
-  <p>We don't sell, rent or share your data. PeakSense sends data directly from your PC to these services, and only when you use the related feature. Each service handles what it receives under its own privacy policy.</p>
+  <p>We don't sell, rent or share your data. PeakSense sends data from your PC to these services only when you use the related feature. Everything goes directly to the service, except TikTok and Twitch sign-in requests, which pass through our relay. Each service handles what it receives under its own privacy policy.</p>
   <table>
     <tr><th>Service</th><th>When</th><th>What is sent</th></tr>
+    <tr id="relay"><td>PeakSense sign-in relay (auth.peaksense.net, hosted on Cloudflare)</td><td>You connect TikTok or Twitch, PeakSense renews that sign-in, or you disconnect</td><td>The sign-in code, PKCE verifier, refresh token or the token being revoked. The relay adds PeakSense's app secret, which can't be kept safely inside a desktop app, and passes the request straight to TikTok or Twitch. Their answer goes back to your PC unchanged. The relay stores and logs none of it. Cloudflare, which hosts it, sees your IP address.</td></tr>
     <tr><td>YouTube / Google (YouTube API Services, Google sign-in)</td><td>You connect YouTube, browse your streams or playlists, post a clip, or turn on channel watching</td><td>Your sign-in, requests for your channel's videos and statistics, the clips you post with their title, description, tags, thumbnail, privacy and schedule. When you download one of your own VODs, the request to YouTube for that video.</td></tr>
     <tr><td>Twitch</td><td>You connect Twitch</td><td>Your sign-in, live-status and event subscriptions (raids, subs, bits, channel points, chat), requests for your VOD list, clip creation, and downloads of your own VODs.</td></tr>
     <tr><td>IGDB (a Twitch/Amazon game database)</td><td>Your clip library sorts clips by game</td><td>The stream title, tags or description of those clips, used to look up the game's name. No account information is sent.</td></tr>
