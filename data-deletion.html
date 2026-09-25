@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PeakSense — Data Deletion</title>
+<meta name="description" content="How to delete your PeakSense data and revoke its access to YouTube, Twitch and TikTok.">
+<link rel="canonical" href="https://peaksense.net/data-deletion.html">
+<style>
+  body {
+    background: #150c24;
+    color: #ece8f5;
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    line-height: 1.6;
+  }
+  h1 { color: #2dff6b; letter-spacing: 1px; font-size: 28px; }
+  h2 { color: #2dff6b; font-size: 18px; margin-top: 36px; border-bottom: 1px solid #3c2b57; padding-bottom: 6px; }
+  a { color: #2dff6b; }
+  .updated { color: #a08cc4; font-size: 13px; margin-bottom: 32px; }
+  ol, ul { padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  code { background: #1f1333; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+</style>
+</head>
+<body>
+  <p><a href="./">← Back to PeakSense</a></p>
+  <h1>PEAKSENSE — Data Deletion</h1>
+  <div class="updated">Last updated: September 25, 2026</div>
+
+  <p>PeakSense runs on your computer and doesn't send your videos, tokens or account data to us, so there is no PeakSense account or server copy to delete. Your data lives on your PC. Deleting it there removes it completely.</p>
+
+  <h2>1. Revoke PeakSense's access to your accounts</h2>
+  <ol>
+    <li>In PeakSense, open <strong>Accounts</strong> and click <strong>Disconnect</strong> for each platform. This revokes PeakSense's token with that platform and deletes it from your PC.</li>
+    <li>To be sure, you can also remove PeakSense at each platform:
+      <ul>
+        <li>Google / YouTube: <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">security.google.com/settings/security/permissions</a></li>
+        <li>Twitch: Settings → Connections → PeakSense → Disconnect</li>
+        <li>TikTok: Settings and privacy → Security → Manage app permissions → PeakSense → Remove</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>2. Delete the data on your PC</h2>
+  <ol>
+    <li>Close PeakSense (including its tray icon).</li>
+    <li>Delete these folders:
+      <ul>
+        <li><code>%LOCALAPPDATA%\PeakSense</code>: the app's database, settings, clips, logs, sign-in tokens and its sign-in window's data;</li>
+        <li><code>%APPDATA%\PeakSense</code>: YouTube sign-in files;</li>
+        <li>the <strong>download / library folder</strong> you set in PeakSense, if you want to remove downloaded or copied videos;</li>
+        <li>any <code>_peaksense_kept</code> folders next to your recordings (720p copies and kept clip footage) and <code>*.live_chat.json</code> files next to OBS recordings (chat logs).</li>
+      </ul>
+    </li>
+    <li>Uninstall PeakSense from Windows Settings → Apps.</li>
+  </ol>
+  <p>Your own recordings and imported videos stay where you keep them. PeakSense never moves them, so delete them yourself if you want them gone.</p>
+
+  <h2>3. Data we hold</h2>
+  <p>The only personal data we hold is:</p>
+  <ul>
+    <li>your email address, if you joined the launch list (kept by our list provider, LaunchList);</li>
+    <li>emails you sent us.</li>
+  </ul>
+  <p>To delete it, email <a href="mailto:support@peaksense.net?subject=Data%20deletion%20request">support@peaksense.net</a> with the subject "Data deletion request" from the address concerned. We'll delete it within 30 days and confirm by email.</p>
+
+  <p style="margin-top:40px; font-size:13px; color:#a08cc4;"><a href="./">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
+</body>
+</html>
