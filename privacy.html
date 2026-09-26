@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PeakSense — Privacy Policy</title>
-<meta name="description" content="How the PeakSense desktop app and peaksense.net handle your data, including data from YouTube, Twitch and TikTok.">
+<meta name="description" content="How the PeakSense desktop app and peaksense.net handle your data, including data from YouTube, Twitch, TikTok, Instagram and Facebook.">
 <link rel="canonical" href="https://peaksense.net/privacy.html">
 <style>
   body {
@@ -34,15 +34,15 @@
 <body>
   <p><a href="./">← Back to PeakSense</a></p>
   <h1>PEAKSENSE — Privacy Policy</h1>
-  <div class="updated">Last updated: September 25, 2026</div>
+  <div class="updated">Last updated: September 26, 2026</div>
 
   <p>This policy covers the PeakSense desktop app for Windows ("PeakSense", "the app") and the website peaksense.net. PeakSense is made by an independent developer ("we", "us"). Contact: <a href="mailto:support@peaksense.net">support@peaksense.net</a>.</p>
 
   <div class="summary">
     <strong>The short version</strong>
     <ul>
-      <li>PeakSense runs on your own PC. Your videos, recordings, transcripts, account tokens and settings stay on your computer. Our only server is a sign-in relay that passes TikTok and Twitch sign-in requests through and keeps nothing (<a href="#relay">section 4</a>).</li>
-      <li>PeakSense contacts a service (YouTube, Twitch, TikTok and the others listed below) only to do something you set up or asked for, such as signing in, finding your streams, or posting your clip.</li>
+      <li>PeakSense runs on your own PC. Your videos, recordings, transcripts, account tokens and settings stay on your computer. Our only server is a sign-in relay that passes TikTok, Twitch, Instagram and Facebook sign-in requests through and keeps nothing (<a href="#relay">section 4</a>).</li>
+      <li>PeakSense contacts a service (YouTube, Twitch, TikTok, Instagram, Facebook and the others listed below) only to do something you set up or asked for, such as signing in, finding your streams, or posting your clip.</li>
       <li>No analytics, no tracking, no advertising, and we never sell or share your data.</li>
       <li>PeakSense uses YouTube API Services. See <a href="#youtube">section 7</a>.</li>
       <li>To delete everything, see <a href="data-deletion.html">Data deletion</a>.</li>
@@ -58,8 +58,9 @@
     <a href="#downloads">6. Downloads</a>
     <a href="#youtube">7. YouTube</a>
     <a href="#tiktok">8. TikTok</a>
-    <a href="#website">9. Website</a>
-    <a href="#choices">10. Your choices</a>
+    <a href="#meta">9. Instagram &amp; Facebook</a>
+    <a href="#website">10. Website</a>
+    <a href="#choices">11. Your choices</a>
   </nav>
 
   <h2 id="collect">1. What the app handles</h2>
@@ -67,8 +68,8 @@
   <ul>
     <li><strong>Your videos:</strong> OBS recordings made while PeakSense watches your stream, video files you import or drop in (for example YouTube Studio or Twitch downloads, ShadowPlay or ReLive recordings), VODs downloaded from your own connected channel, and the clips, montages, thumbnails and captions made from them.</li>
     <li><strong>Analysis results:</strong> speech transcripts made by a speech-recognition model that runs on your PC, loudness and motion measurements, gameplay events detected from the picture and game sounds (using game profiles you create), optional speaker labels, and moments found during a live stream.</li>
-    <li><strong>Account information from platforms you connect:</strong> your display name, channel or user ID and, for TikTok, your creator nickname, avatar and posting options.</li>
-    <li><strong>Sign-in tokens</strong> issued by the platforms you connect (Google/YouTube, Twitch, TikTok) and, if you add them, a Hugging Face token and a Discord/Slack webhook address.</li>
+    <li><strong>Account information from platforms you connect:</strong> your display name, channel or user ID and, for TikTok, your creator nickname, avatar and posting options; for Instagram, your username and account type; for Facebook, your name and the names of the Pages you manage.</li>
+    <li><strong>Sign-in tokens</strong> issued by the platforms you connect (Google/YouTube, Twitch, TikTok, Instagram, Facebook, including Facebook Page tokens) and, if you add them, a Hugging Face token and a Discord/Slack webhook address.</li>
     <li><strong>YouTube sign-in session (optional):</strong> if you sign in to YouTube inside PeakSense's own sign-in window to download your own channel's VODs, PeakSense keeps that window's session cookies on your PC so downloads keep working.</li>
     <li><strong>Platform data about your own channel:</strong> your recent uploads and broadcasts (titles, descriptions, tags, durations, thumbnails, dates), your playlists, and view, like and comment counts of clips you posted.</li>
     <li><strong>Live stream information (Twitch):</strong> whether you're live, your stream title and category, and events such as raids, subscriptions, bits, channel point redemptions and chat messages, including the chatting viewer's username and message text. See <a href="#live">section 5</a>.</li>
@@ -108,14 +109,16 @@
   <p><strong>Security:</strong> the data is protected by your Windows account, the same as your other files. Sign-in tokens, the YouTube sign-in session and your OBS password are stored in PeakSense's data folder without additional encryption, so anyone who can use your Windows account could read them. Keep your PC and Windows account secure, and disconnect platforms you no longer use.</p>
 
   <h2 id="share">4. Services the app talks to</h2>
-  <p>We don't sell, rent or share your data. PeakSense sends data from your PC to these services only when you use the related feature. Everything goes directly to the service, except TikTok and Twitch sign-in requests, which pass through our relay. Each service handles what it receives under its own privacy policy.</p>
+  <p>We don't sell, rent or share your data. PeakSense sends data from your PC to these services only when you use the related feature. Everything goes directly to the service, except TikTok, Twitch, Instagram and Facebook sign-in requests, which pass through our relay. Each service handles what it receives under its own privacy policy.</p>
   <table>
     <tr><th>Service</th><th>When</th><th>What is sent</th></tr>
-    <tr id="relay"><td>PeakSense sign-in relay (auth.peaksense.net, hosted on Cloudflare)</td><td>You connect TikTok or Twitch, PeakSense renews that sign-in, or you disconnect</td><td>The sign-in code, PKCE verifier, refresh token or the token being revoked. The relay adds PeakSense's app secret, which can't be kept safely inside a desktop app, and passes the request straight to TikTok or Twitch. Their answer goes back to your PC unchanged. The relay stores and logs none of it. Cloudflare, which hosts it, sees your IP address.</td></tr>
+    <tr id="relay"><td>PeakSense sign-in relay (auth.peaksense.net, hosted on Cloudflare)</td><td>You connect TikTok, Twitch, Instagram or Facebook, PeakSense renews that sign-in, or you disconnect</td><td>The sign-in code, PKCE verifier, refresh token or the token being exchanged or revoked. Instagram and Facebook send you back to the relay after you sign in, and it forwards the sign-in code straight to PeakSense on your PC. The relay adds PeakSense's app secret, which can't be kept safely inside a desktop app, and passes the request straight to the platform. Their answer goes back to your PC unchanged. The relay stores and logs none of it. Cloudflare, which hosts it, sees your IP address.</td></tr>
     <tr><td>YouTube / Google (YouTube API Services, Google sign-in)</td><td>You connect YouTube, browse your streams or playlists, post a clip, or turn on channel watching</td><td>Your sign-in, requests for your channel's videos and statistics, the clips you post with their title, description, tags, thumbnail, privacy and schedule. When you download one of your own VODs, the request to YouTube for that video.</td></tr>
     <tr><td>Twitch</td><td>You connect Twitch</td><td>Your sign-in, live-status and event subscriptions (raids, subs, bits, channel points, chat), requests for your VOD list, clip creation, and downloads of your own VODs.</td></tr>
     <tr><td>IGDB (a Twitch/Amazon game database)</td><td>Your clip library sorts clips by game</td><td>The stream title, tags or description of those clips, used to look up the game's name. No account information is sent.</td></tr>
     <tr><td>TikTok</td><td>You connect TikTok and post</td><td>Your sign-in, a request for your posting options, the clip, and the caption and settings you chose. Also a post-status check.</td></tr>
+    <tr><td>Instagram (Meta)</td><td>You connect Instagram and post</td><td>Your sign-in, a request for your username and account type, the clip and its caption. Also a processing-status check, a check of your daily posting limit, and a request for the post's link.</td></tr>
+    <tr><td>Facebook (Meta)</td><td>You connect Facebook and post to a Page</td><td>Your sign-in, a request for your name and the Pages you manage, the clip and its description. Also a processing-status check. Disconnecting sends a request that removes PeakSense's access.</td></tr>
     <tr><td>Kick</td><td>You paste a Kick VOD link</td><td>A download request for that video.</td></tr>
     <tr><td>OBS Studio</td><td>You connect OBS</td><td>Commands to your own OBS (start or stop recording, add chapter markers, save the Replay Buffer, and settings changes you click "Fix" or "Turn on" for). This stays on your PC or home network.</td></tr>
     <tr><td>Discord or Slack</td><td>You add a webhook address</td><td>Notification text: stream and clip titles, status and error messages.</td></tr>
@@ -123,7 +126,6 @@
     <tr><td>GitHub</td><td>First use of face detection or of downloading from your channel</td><td>Downloads of the face-detection model and of helper components for the downloader. No personal data.</td></tr>
     <tr><td>Ollama (optional local AI)</td><td>AI scoring is on</td><td>Transcript excerpts, sent to Ollama running on your own PC (by default <code>localhost</code>).</td></tr>
   </table>
-  <p><strong>Instagram and Facebook:</strong> PeakSense does not connect to Instagram or Facebook today. "Instagram Reels" in PeakSense is only an export size. This policy will be updated before any such connection is offered.</p>
 
   <h2 id="live">5. Live sessions (OBS and Twitch)</h2>
   <p>If you connect OBS, PeakSense watches your stream while you're live. It reads the recording OBS is writing on your PC, finds moments, and saves the recording to its local library when you stop.</p>
@@ -155,12 +157,24 @@
   </ul>
   <p>See <a href="https://www.tiktok.com/legal/page/row/privacy-policy/en" target="_blank" rel="noopener">TikTok's Privacy Policy</a>.</p>
 
-  <h2 id="website">9. The website (peaksense.net)</h2>
+  <h2 id="meta">9. Instagram and Facebook</h2>
+  <p>PeakSense can post your clips as Reels to Instagram and, if you choose, to a Facebook Page you manage. They are connected separately, and you don't need Facebook to use Instagram.</p>
+  <ul>
+    <li><strong>Instagram</strong> uses Instagram Login with the <code>instagram_business_basic</code> and <code>instagram_business_content_publish</code> permissions. PeakSense reads your username and account type (Instagram only allows posting to Creator or Business accounts) and publishes the Reels you choose, with your caption.</li>
+    <li><strong>Facebook</strong> uses Facebook Login with the <code>pages_show_list</code>, <code>pages_read_engagement</code> and <code>pages_manage_posts</code> permissions. PeakSense reads your name and the list of Pages you manage so you can pick one, and publishes the Reels you choose to that Page.</li>
+    <li><strong>What PeakSense doesn't do:</strong> it doesn't read your messages, followers, other posts or insights, and it doesn't post anything you didn't choose or schedule.</li>
+    <li><strong>Posting:</strong> posts from the editor go out when you click Post. Scheduled posts (PeakSense Pro) go out at the times you set, and you can cancel them before then.</li>
+    <li><strong>Storage:</strong> tokens, your username and Page names are stored only on your PC. Instagram tokens last 60 days and are renewed automatically while you use PeakSense. We don't receive or keep any of it.</li>
+    <li><strong>Disconnecting</strong> in PeakSense deletes the tokens from your PC. For Facebook it also removes PeakSense's access at Facebook. For Instagram, remove PeakSense in Instagram too: Settings → Website permissions → Apps and websites.</li>
+  </ul>
+  <p>See the <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener">Instagram Privacy Policy</a> and <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta Privacy Policy</a>.</p>
+
+  <h2 id="website">10. The website (peaksense.net)</h2>
   <p>peaksense.net is a static site. If you join the launch list, your email address is collected by our list provider, <a href="https://getlaunchlist.com" target="_blank" rel="noopener">LaunchList</a>, which also loads a small script on the page. We use the address only to email you once when PeakSense launches.</p>
   <p>If you email us, we use your message only to reply. Our web host receives standard request information, such as your IP address and browser type, to serve the pages. We don't use analytics or advertising cookies.</p>
   <p>To be removed from the list or have your emails deleted, write to <a href="mailto:support@peaksense.net">support@peaksense.net</a>. We act within 30 days.</p>
 
-  <h2 id="choices">10. Your choices and rights</h2>
+  <h2 id="choices">11. Your choices and rights</h2>
   <ul>
     <li><strong>Disconnect a platform</strong> in PeakSense (Accounts). This revokes and deletes its token.</li>
     <li><strong>Revoke access</strong> at the platform:
@@ -168,19 +182,21 @@
         <li>Google: <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">security settings</a></li>
         <li>Twitch: Settings → Connections</li>
         <li>TikTok: Settings and privacy → Security → Manage app permissions</li>
+        <li>Instagram: Settings → Website permissions → Apps and websites</li>
+        <li>Facebook: Settings &amp; privacy → Settings → Apps and websites (or Business integrations for Pages)</li>
       </ul>
     </li>
     <li><strong>Delete your data:</strong> follow <a href="data-deletion.html">Data deletion</a>. Because the app's data lives only on your PC, deleting it there deletes it completely.</li>
     <li><strong>Access, correction and deletion requests</strong> for anything we hold (launch-list email, support emails): write to <a href="mailto:support@peaksense.net">support@peaksense.net</a>. Depending on where you live (for example under GDPR or US state privacy laws) you may have further rights, including to complain to your data-protection authority. We honour them.</li>
   </ul>
 
-  <h2>11. Children</h2>
+  <h2>12. Children</h2>
   <p>PeakSense is not directed at children. You must be at least 13 years old, and old enough to use each platform you connect under its own rules, to use PeakSense. We don't knowingly collect data from children. If you believe a child sent us their email, contact us and we'll delete it.</p>
 
-  <h2>12. Changes to this policy</h2>
+  <h2>13. Changes to this policy</h2>
   <p>We'll post changes here with a new "Last updated" date. If a change affects how the app handles your data, the app's release notes will say so.</p>
 
-  <h2>13. Contact</h2>
+  <h2>14. Contact</h2>
   <p><a href="mailto:support@peaksense.net">support@peaksense.net</a></p>
 
   <p style="margin-top:40px; font-size:13px; color:#a08cc4;"><a href="./">Home</a> · <a href="terms.html">Terms of Service</a> · <a href="data-deletion.html">Data deletion</a></p>
