@@ -718,6 +718,31 @@
   .freepro-table td { width: 50%; }
   .freepro-table td:last-child { color: var(--text); }
 
+
+  /* Built-in editor section */
+  .editor-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 32px; align-items: start; }
+  .editor-list { list-style: none; display: grid; gap: 14px; }
+  .editor-list li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+  .editor-list .ek { width: 34px; height: 34px; border-radius: 9px; border: 1px solid var(--border); background: var(--panel); display: grid; place-items: center; font: 700 13px/1 ui-monospace, Menlo, Consolas, monospace; color: var(--green); }
+  .editor-list b { display: block; color: var(--text); font-size: 15px; }
+  .editor-list span.d { color: var(--muted); font-size: 14px; }
+  .editor-price { display: flex; gap: 14px; flex-wrap: wrap; margin: 0 0 16px; }
+  .editor-price > div { flex: 1 1 180px; border: 1px solid var(--border); border-radius: 14px; padding: 16px; background: var(--panel); }
+  .editor-price > div.us { border-color: var(--green); box-shadow: 0 0 0 1px var(--green) inset; }
+  .editor-price .p { font-size: 28px; font-weight: 800; line-height: 1.1; }
+  .editor-price .us .p { color: var(--green); }
+  .editor-price .l { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .editor-price .s { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .editor-grid > * { min-width: 0; }
+  #editor table.compare { min-width: 0; width: 100%; table-layout: fixed; }
+  #editor table.compare th:first-child, #editor table.compare td:first-child { width: 38%; }
+  #editor table.compare td, #editor table.compare th { overflow-wrap: break-word; hyphens: auto; }
+  @media (max-width: 900px) { .editor-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) {
+    #editor table.compare td, #editor table.compare th { padding: 10px 6px; font-size: 12px; }
+    #editor table.compare th { letter-spacing: 0.3px; font-size: 11px; }
+    #editor table.compare th:first-child, #editor table.compare td:first-child { width: 32%; }
+  }
   /* Brand: Unbounded wordmark (self-hosted, SIL OFL) and the logo graph */
   @font-face { font-family: "Unbounded"; src: url("fonts/Unbounded-latin-var.woff2") format("woff2"); font-weight: 200 900; font-display: swap; }
   .nav-logo > .nav-logo-text > span:first-child { font-family: "Unbounded", "Arial Black", system-ui, sans-serif; font-weight: 800; letter-spacing: 0.02em; }
@@ -756,8 +781,9 @@
       </div>
     </div>
     <div class="nav-links">
-      <a href="#new">What's new</a>
+      <a href="#new">Highlights</a>
       <a href="#features">Features</a>
+      <a href="#editor">Editor</a>
       <a href="#compare">Compare</a>
       <a href="#pro">Pro</a>
       <a href="#integrations">Integrations</a>
@@ -819,12 +845,11 @@
 <section id="new">
   <div class="wrap">
     <div class="section-head fade-up">
-      <div class="kicker">What's new</div>
-      <h2>A cleaner PeakSense, a new look, and a sound of its own</h2>
-      <p>The latest round of updates makes the app faster to use every day: less on screen, more done with a key press, and a proper editor for your Shorts.</p>
+      <div class="kicker">Highlights</div>
+      <h2>Fast to use, every single day</h2>
+      <p>Less on screen, more done with a key press, and a proper editor for your Shorts.</p>
     </div>
     <div class="new-grid">
-      <div class="new-item fade-up"><span class="new-tag">New look</span><h3>A mark, a line and a melody</h3><p>The Clip Peak icon (the editor's trim brackets around a summit) and the PeakSense line. At launch the line draws itself while its seven notes play, and the last three become the chime you hear when a job finishes.</p></div>
       <div class="new-item fade-up"><span class="new-tag">Review</span><h3>Go through new clips in seconds</h3><p>Review mode plays each new clip full screen. <span class="kbd">K</span> keep, <span class="kbd">Q</span> queue, <span class="kbd">B</span> bin, <span class="kbd">E</span> edit. A stream's worth of clips is sorted in a couple of minutes.</p></div>
       <div class="new-item fade-up"><span class="new-tag">Editor</span><h3>An editor like the Shorts app</h3><p>Trim with bracket handles, cut out the boring middle (<span class="kbd">C</span>), ramp the speed with keyframes (<span class="kbd">V</span>), zoom on moments, move the gameplay while the facecam stays put, and add filters, fades and music.</p></div>
       <div class="new-item fade-up"><span class="new-tag">Layouts</span><h3>Facecam on top, bottom or side by side</h3><p>9:16 with your camera above or below the game, plus 16:9 split layouts. PeakSense finds your webcam once and every layout just works.</p></div>
@@ -1024,6 +1049,50 @@
         <span class="feature-tag">Batch it</span>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<section id="editor">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="kicker">It's an editor too</div>
+      <h2>Everything a Short needs, in the same free app</h2>
+      <p>PeakSense doesn't stop at finding clips. Open any clip, render or whole stream in the built-in editor and finish it right there: no exporting to another program, no subscription.</p>
+    </div>
+    <div class="editor-grid">
+      <ul class="editor-list fade-up">
+        <li><span class="ek">[ ]</span><div><b>Trim with bracket handles</b><span class="d">Too tight? Pull extra footage straight from the stream.</span></div></li>
+        <li><span class="ek">C</span><div><b>Cut out the slow middle</b><span class="d">Mark a section and skip it; the clip plays straight through.</span></div></li>
+        <li><span class="ek">V</span><div><b>Speed ramps with keyframes</b><span class="d">Slow down the play, speed through the walk back.</span></div></li>
+        <li><span class="ek">Z</span><div><b>Zoom and pan on moments</b><span class="d">Punch in on the kill; move the gameplay while your facecam stays put.</span></div></li>
+        <li><span class="ek">▦</span><div><b>Facecam layouts in one click</b><span class="d">Camera on top, bottom or side by side, found automatically.</span></div></li>
+        <li><span class="ek">Aa</span><div><b>Captions, text and titles</b><span class="d">Auto captions with word-by-word highlighting, plus your own text on screen.</span></div></li>
+        <li><span class="ek">♪</span><div><b>Look &amp; sound</b><span class="d">Filters, fades, volume and background music.</span></div></li>
+        <li><span class="ek">▶▶</span><div><b>Sequences</b><span class="d">Stitch clips and renders into one video, in the order you pick them.</span></div></li>
+      </ul>
+      <div class="fade-up">
+        <div class="editor-price">
+          <div class="us"><div class="l">PeakSense editor</div><div class="p">Free</div><div class="s">Every editing tool, no watermark. Pro is $69 once, for autopilot and posting.</div></div>
+          <div><div class="l">Adobe Premiere Pro</div><div class="p">$34.49<span style="font-size:15px;font-weight:600;">/mo</span></div><div class="s">or $263.88 a year, paid up front <a class="src" href="https://www.adobe.com/products/premiere/plans.html" target="_blank" rel="nofollow noopener" title="Source: Adobe">↗</a></div></div>
+        </div>
+        <div class="compare-scroll">
+          <table class="compare">
+            <thead><tr><th>Making a Short from your stream</th><th class="hl">PeakSense</th><th>Premiere Pro</th></tr></thead>
+            <tbody>
+              <tr><td>Finds the moments worth clipping</td><td class="hl yes">✓ Automatically</td><td class="no">✗ You scrub the VOD</td></tr>
+              <tr><td>Facecam + gameplay vertical layout</td><td class="hl yes">✓ One click, webcam found for you</td><td class="partial">Build it by hand with crops and masks</td></tr>
+              <tr><td>Captions burned into the video</td><td class="hl yes">✓ Styled, word-by-word</td><td class="yes">✓ Speech to Text</td></tr>
+              <tr><td>Trim, cut, speed ramps, zoom</td><td class="hl yes">✓</td><td class="yes">✓ And far more</td></tr>
+              <tr><td>Filters, fades, music</td><td class="hl yes">✓ The essentials</td><td class="yes">✓ Full colour and audio suites</td></tr>
+              <tr><td>Post to YouTube, Instagram, Facebook, TikTok</td><td class="hl yes">✓ Scheduled, with Pro</td><td class="partial">Export, then upload yourself</td></tr>
+              <tr><td>Time to learn</td><td class="hl yes">Minutes, built for Shorts</td><td class="partial">A professional tool with a learning curve</td></tr>
+              <tr><td>Price</td><td class="hl yes">Free · Pro $69 once</td><td>$34.49/mo or $263.88/yr</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare-note">Premiere Pro is a full professional editor with far more depth than PeakSense's editor; for long-form editing it's the right tool. PeakSense's editor is built for turning stream moments into Shorts. Adobe pricing is from adobe.com in US dollars before tax; plans change, so check their site. Adobe and Premiere Pro are trademarks of Adobe. PeakSense isn't affiliated with or endorsed by Adobe.</p>
+      </div>
     </div>
   </div>
 </section>
