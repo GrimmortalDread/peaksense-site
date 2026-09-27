@@ -12,14 +12,18 @@
 <meta property="og:site_name" content="PeakSense">
 <meta property="og:title" content="PeakSense — The AI stream clipper that runs on your PC">
 <meta property="og:description" content="Free has every tool. Pro runs them for you. No uploads, no credits, no watermark — $69 once.">
-<meta property="og:image" content="https://peaksense.net/peaksense-icon.png">
-<meta property="og:image:alt" content="PeakSense logo">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://peaksense.net/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PeakSense logo: a rising line that climbs through the PeakSense name to a peak">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PeakSense — The AI stream clipper that runs on your PC">
 <meta name="twitter:description" content="Free AI clipper for Twitch, YouTube and Kick streamers. No uploads, no credits. Pro is $69 once.">
-<meta name="twitter:image" content="https://peaksense.net/peaksense-icon.png">
-<link rel="apple-touch-icon" href="peaksense-icon.png">
-<link rel="icon" type="image/png" href="peaksense-icon.png">
+<meta name="twitter:image" content="https://peaksense.net/og.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <!-- LaunchList Script -->
 <script src="https://getlaunchlist.com/js/widget.js" defer></script>
 <script type="application/ld+json">
@@ -713,6 +717,31 @@
   .freepro-table { max-width: 900px; margin: 0 auto; }
   .freepro-table td { width: 50%; }
   .freepro-table td:last-child { color: var(--text); }
+
+  /* Brand: Unbounded wordmark (self-hosted, SIL OFL) and the logo graph */
+  @font-face { font-family: "Unbounded"; src: url("fonts/Unbounded-latin-var.woff2") format("woff2"); font-weight: 200 900; font-display: swap; }
+  .nav-logo > .nav-logo-text > span:first-child { font-family: "Unbounded", "Arial Black", system-ui, sans-serif; font-weight: 800; letter-spacing: 0.02em; }
+  .logo-icon { border-radius: 10px; }
+  .hero-peak { max-width: 760px; overflow: visible; }
+  .hero-peak .hp-line { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: hpDraw 2.05s linear .2s forwards; }
+  .hero-peak .hp-dot { opacity: 0; animation: hpPop .25s ease-out forwards; transform-box: fill-box; transform-origin: center; }
+  .hero-peak .hp-ring { opacity: 0; animation: hpRing .6s cubic-bezier(.2,1.6,.4,1) 2.2s forwards; transform-box: fill-box; transform-origin: center; }
+  @keyframes hpDraw { to { stroke-dashoffset: 0; } }
+  @keyframes hpPop { from { opacity: 0; transform: scale(0.2); } to { opacity: 1; transform: scale(1); } }
+  @keyframes hpRing { from { opacity: 0; transform: scale(0.3); } to { opacity: 1; transform: scale(1); } }
+  @media (prefers-reduced-motion: reduce) { .hero-peak .hp-line, .hero-peak .hp-dot, .hero-peak .hp-ring { animation: none; stroke-dashoffset: 0; opacity: 1; } }
+  .hero-sound { display: flex; width: fit-content; align-items: center; gap: 8px; margin: 0 auto 18px; padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); background: rgba(0,0,0,0.25); color: var(--muted); font: 600 12px/1 inherit; letter-spacing: 0.5px; cursor: pointer; }
+  .hero-sound:hover, .hero-sound:focus-visible { color: var(--text); border-color: var(--green); outline: none; }
+  .hero-sound .hs-ico { width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: var(--bg); display: grid; place-items: center; font-size: 9px; }
+  .hero-title-word { font-family: "Unbounded", "Arial Black", system-ui, sans-serif; font-weight: 800; letter-spacing: 0.02em; font-size: clamp(34px, 6vw, 64px); line-height: 1; margin: 4px 0 14px; }
+  .hero-title-word span { color: var(--green); }
+
+  .new-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+  .new-item { border: 1px solid var(--border); border-radius: 14px; background: var(--panel); padding: 18px 18px 16px; display: grid; gap: 8px; align-content: start; }
+  .new-item h3 { font-size: 16px; line-height: 1.3; }
+  .new-item p { color: var(--muted); font-size: 14px; }
+  .new-item .new-tag { justify-self: start; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--green); border: 1px solid rgba(45,255,107,0.35); border-radius: 100px; padding: 2px 9px; }
+  .kbd { font: 600 11px/1 ui-monospace, Menlo, Consolas, monospace; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; padding: 2px 5px; color: var(--text); background: rgba(0,0,0,0.25); }
 </style>
 </head>
 <body>
@@ -727,6 +756,7 @@
       </div>
     </div>
     <div class="nav-links">
+      <a href="#new">What's new</a>
       <a href="#features">Features</a>
       <a href="#compare">Compare</a>
       <a href="#pro">Pro</a>
@@ -739,22 +769,20 @@
 
 <header class="hero">
   <div class="wrap">
-    <svg class="hero-peak" viewBox="0 0 640 210" role="img" aria-hidden="true">
-      <polyline points="40,185 75,172 135,193 175,165 230,178 310,130 350,145 430,90 500,105 570,70 630,20"
-                fill="none" stroke="#2dff6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="40"  cy="185" r="4" fill="#2dff6b"/>
-      <circle cx="75"  cy="172" r="4" fill="#2dff6b"/>
-      <circle cx="135" cy="193" r="4" fill="#2dff6b"/>
-      <circle cx="175" cy="165" r="4" fill="#2dff6b"/>
-      <circle cx="230" cy="178" r="4" fill="#2dff6b"/>
-      <circle cx="310" cy="130" r="4" fill="#2dff6b"/>
-      <circle cx="350" cy="145" r="4" fill="#2dff6b"/>
-      <circle cx="430" cy="90"  r="4" fill="#2dff6b"/>
-      <circle cx="500" cy="105" r="4" fill="#2dff6b"/>
-      <circle cx="570" cy="70"  r="4" fill="#2dff6b"/>
-      <circle cx="630" cy="20"  r="10" fill="none" stroke="#2dff6b" stroke-width="2"/>
-      <circle cx="630" cy="20"  r="5"  fill="#2dff6b"/>
+    <svg class="hero-peak" viewBox="20 0 620 210" role="img" aria-label="The PeakSense line: seven moments in a stream, rising to a peak">
+      <polyline class="hp-line" points="40,193 147,158 254,176 361,124 468,141 575,72 605,20"
+                fill="none" stroke="#2dff6b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1400"/>
+      <circle class="hp-dot" cx="40" cy="193" r="5" fill="#2dff6b" style="animation-delay:0.20s"/>
+      <circle class="hp-dot" cx="147" cy="158" r="5" fill="#2dff6b" style="animation-delay:0.56s"/>
+      <circle class="hp-dot" cx="254" cy="176" r="5" fill="#2dff6b" style="animation-delay:0.91s"/>
+      <circle class="hp-dot" cx="361" cy="124" r="5" fill="#2dff6b" style="animation-delay:1.30s"/>
+      <circle class="hp-dot" cx="468" cy="141" r="5" fill="#2dff6b" style="animation-delay:1.65s"/>
+      <circle class="hp-dot" cx="575" cy="72" r="5" fill="#2dff6b" style="animation-delay:2.06s"/>
+      <circle class="hp-dot" cx="605" cy="20" r="6" fill="#2dff6b" style="animation-delay:2.25s"/>
+      <circle class="hp-ring" cx="605" cy="20" r="13" fill="none" stroke="#2dff6b" stroke-width="2.5"/>
     </svg>
+    <div class="hero-title-word" aria-hidden="true">PEAK<span>SENSE</span></div>
+    <button type="button" class="hero-sound" id="heroSound" aria-label="Play the PeakSense sound"><span class="hs-ico">▶</span>Hear the PeakSense sound</button>
 
     <div class="hero-badge">Built by a streamer, for streamers</div>
 
@@ -787,6 +815,27 @@
     </div>
   </div>
 </header>
+
+<section id="new">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="kicker">What's new</div>
+      <h2>A cleaner PeakSense, a new look, and a sound of its own</h2>
+      <p>The latest round of updates makes the app faster to use every day: less on screen, more done with a key press, and a proper editor for your Shorts.</p>
+    </div>
+    <div class="new-grid">
+      <div class="new-item fade-up"><span class="new-tag">New look</span><h3>A mark, a line and a melody</h3><p>The Clip Peak icon (the editor's trim brackets around a summit) and the PeakSense line. At launch the line draws itself while its seven notes play, and the last three become the chime you hear when a job finishes.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">Review</span><h3>Go through new clips in seconds</h3><p>Review mode plays each new clip full screen. <span class="kbd">K</span> keep, <span class="kbd">Q</span> queue, <span class="kbd">B</span> bin, <span class="kbd">E</span> edit. A stream's worth of clips is sorted in a couple of minutes.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">Editor</span><h3>An editor like the Shorts app</h3><p>Trim with bracket handles, cut out the boring middle (<span class="kbd">C</span>), ramp the speed with keyframes (<span class="kbd">V</span>), zoom on moments, move the gameplay while the facecam stays put, and add filters, fades and music.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">Layouts</span><h3>Facecam on top, bottom or side by side</h3><p>9:16 with your camera above or below the game, plus 16:9 split layouts. PeakSense finds your webcam once and every layout just works.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">Search</span><h3>Keyword search that hears accents</h3><p>Finds words that sound alike, shows its progress, can take a slower second pass for accuracy, and can make clips only where your keyword is said. Scan a whole stream, a quarter of it, or exact time ranges.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">OBS</span><h3>Recordings become MP4 on their own</h3><p>OBS keeps recording to MKV so a crash can't lose your stream. The moment you stop, PeakSense converts it to MP4 in seconds with no quality loss, and it shows up in the VOD Editor ready to scrub.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">Speed</span><h3>Everything a key press away</h3><p><span class="kbd">Ctrl</span> <span class="kbd">K</span> jumps to any section, setting, clip or stream. <span class="kbd">J</span>/<span class="kbd">K</span> move between clips, a floating bar handles everything you've selected, and every queue, delete or bulk edit can be undone.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">Clarity</span><h3>A timeline that tells you what happened</h3><p>"Processed Friday's stream → 35 clips → 5 queued → 3 posted." When something fails, it says why in plain words and gives you the one-click fix, like Reconnect.</p></div>
+      <div class="new-item fade-up"><span class="new-tag">Yours</span><h3>Light theme, your colour, your phone</h3><p>Dark, OLED or a new light theme, an accent colour of your choice, reduced motion, and a layout that works on your phone over remote access. Start from a preset like Stream night or Quick shorts.</p></div>
+    </div>
+  </div>
+</section>
 
 <section id="how">
   <div class="wrap">
@@ -852,7 +901,7 @@
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></div>
         <h3>Facecam layouts</h3>
-        <p>Your webcam on top, gameplay underneath — the layout that wins on Shorts and TikTok. PeakSense finds your webcam automatically and gives you four layouts, including a two-cam duo layout for co-streams. No hand cropping.</p>
+        <p>Your webcam on top, gameplay underneath: the layout that wins on Shorts and TikTok. Or camera on the bottom, side-by-side 16:9 splits, and a two-cam duo layout for co-streams. PeakSense finds your webcam automatically, so there's no hand cropping.</p>
         <span class="feature-tag">Signature layout</span>
       </div>
 
@@ -880,14 +929,14 @@
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
         <h3>Keyword Search</h3>
-        <p>Type a word or phrase — "clutch", "fail", "GG" — and PeakSense finds every time it was said in the transcript, then clips just those moments. Run it on a single stream or across a whole playlist.</p>
+        <p>Type a word or phrase ("clutch", "fail", "GG") and PeakSense finds every time it was said, including words that sound alike in your accent, then clips just those moments. Search a whole stream, a quarter of it or exact time ranges, or run it across a playlist.</p>
         <span class="feature-tag">Transcript search</span>
       </div>
 
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
-        <h3>Extend Clip</h3>
-        <p>Cut a little too tight? Drag the handles outward to pull more time from before or after the moment, and PeakSense re-renders the clip with the extra footage — so you never miss the setup or the payoff.</p>
+        <h3>A real Shorts editor</h3>
+        <p>Trim with bracket handles, and pull extra footage from the stream if you cut too tight. Cut out the slow middle, ramp speed with keyframes, zoom on moments, pan the gameplay while your facecam stays put, then finish with filters, fades, volume and music.</p>
         <span class="feature-tag">Editor</span>
       </div>
 
@@ -915,7 +964,7 @@
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div>
         <h3>Watches your stream with OBS</h3>
-        <p>Connect OBS once (no plugin to install). When you go live, PeakSense records, finds moments while you play, and marks them in the recording. Tap a hotkey, type !clip in chat, or hit a Stream Deck button to mark one yourself. When you stop, the VOD is ready in PeakSense. Works on your gaming PC or a second streaming PC.</p>
+        <p>Connect OBS once (no plugin to install). When you go live, PeakSense records, finds moments while you play, and marks them in the recording. Tap a hotkey, type !clip in chat, or hit a Stream Deck button to mark one yourself. When you stop, the recording is converted to MP4 (no re-encode, no quality loss) and ready in PeakSense. Works on your gaming PC or a second streaming PC.</p>
         <span class="feature-tag">Live · OBS</span>
       </div>
 
@@ -926,6 +975,20 @@
         <span class="feature-tag">Game detection</span>
       </div>
   
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></div>
+        <h3>Review mode</h3>
+        <p>New clips play one after another, full screen. One key each to keep, queue, bin, star or edit, with a summary at the end. Sorting a stream's worth of clips takes minutes, not an evening.</p>
+        <span class="feature-tag">Keyboard first</span>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M6 9h4M6 13h8M6 17h3"/></svg></div>
+        <h3>A dashboard that stays out of your way</h3>
+        <p>Press Ctrl+K to reach any section, setting, clip or stream. Nav badges show what's new, an Activity timeline shows what happened with plain-language fixes, and every queue, delete or bulk edit can be undone. Light theme, accent colours and a phone-friendly layout included.</p>
+        <span class="feature-tag">Everyday speed</span>
+      </div>
+
       <div class="feature-card fade-up">
         <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>Auto-posting on your schedule <span class="pro-tag">Pro</span></h3>
@@ -1294,6 +1357,8 @@
       <details><summary>Do I need to install anything else?</summary><p>PeakSense works on its own. Optional, free extras unlock more: OBS Studio (28 or newer) to record and watch your streams live, Ollama for AI scoring of your moments, and a Hugging Face account for labeling who's talking on co-streams. Posting to YouTube just needs you to sign in with Google.</p></details>
       <details><summary>How does the license work?</summary><p>You get a key that starts with <code>PS-</code>. Paste it into Settings and you're done. It never expires, there's no subscription, and PeakSense checks it offline — no calls to our servers.</p></details>
       <details><summary>Is the free version a real product or a trial?</summary><p>It's the real product, with no time limit. Every tool works — PeakSense even tells you when a new stream is ready; you just click Process and post clips yourself. Pro is for people who want it to happen on its own.</p></details>
+      <details><summary>Should I record to MKV or MP4 in OBS?</summary><p>Keep OBS on MKV (or Hybrid MP4). MKV survives a crash or power cut without losing the recording. When your stream ends, PeakSense converts it to MP4 in a few seconds without re-encoding, so there's no quality loss, and the MKV goes to the Recycle Bin. You can turn that off or keep the original in Settings → Storage. It's free.</p></details>
+      <details><summary>Can I use PeakSense from my phone?</summary><p>Yes, while PeakSense runs on your PC. Turn on remote access (for example over Tailscale), set a password, and the dashboard works on your phone with touch-sized buttons: review new clips, queue them, or check what's scheduled.</p></details>
       <details><summary>Will it clip the same moment twice?</summary><p>No. PeakSense remembers what it has already clipped from each stream and skips those moments when you process it again, then fills your clip count with new ones.</p></details>
       <details><summary>Is there a limit on YouTube uploads?</summary><p>Not from us. YouTube limits how many videos an app can upload per day, and until PeakSense completes YouTube's API audit, YouTube keeps uploads from unaudited apps private. PeakSense shows how much of the daily cap is left.</p></details>
       <details><summary>Can PeakSense post to Instagram and Facebook?</summary><p>Yes, as Reels. Instagram uses Instagram's own sign-in, so you don't need a Facebook account or Page. Instagram only lets apps post to professional accounts (Creator or Business), which is a free switch in Instagram's settings. If you also run a Facebook Page, you can connect it separately to post Reels there (up to 90 seconds). Meta reviews apps before they can post for everyone, so until PeakSense's review is approved, Instagram and Facebook posting is limited to test accounts.</p></details>
@@ -1384,6 +1449,38 @@
       });
     }, { threshold: 0.3 });
     sections.forEach(function(s) { navObserver.observe(s); });
+
+    // The PeakSense sound: the seven dots of the logo line, as notes.
+    (function() {
+      var btn = document.getElementById('heroSound'); if (!btn) return;
+      var NOTES = [261.63, 329.63, 293.66, 440.00, 392.00, 659.25, 1046.50];   // C4 E4 D4 A4 G4 E5 C6
+      var DUR = [0.385, 0.385, 0.385, 0.385, 0.385, 0.108, 1.0];
+      var ctx = null, master = null;
+      btn.addEventListener('click', function() {
+        var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+        if (!ctx) {
+          ctx = new AC(); master = ctx.createGain(); master.gain.value = 0.35;
+          var d = ctx.createDelay(); d.delayTime.value = 0.19; var fb = ctx.createGain(); fb.gain.value = 0.26; var wet = ctx.createGain(); wet.gain.value = 0.3;
+          master.connect(ctx.destination); master.connect(d); d.connect(fb); fb.connect(d); d.connect(wet); wet.connect(ctx.destination);
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+        var t = ctx.currentTime + 0.05;
+        NOTES.forEach(function(f, i) {
+          var last = i === NOTES.length - 1, len = last ? 1.3 : Math.max(0.16, DUR[i] * 1.6);
+          var g = ctx.createGain(), o1 = ctx.createOscillator(), o2 = ctx.createOscillator(), g2 = ctx.createGain();
+          o1.type = 'triangle'; o2.type = 'sine'; o1.frequency.value = f; o2.frequency.value = f * 2; g2.gain.value = 0.18;
+          o1.connect(g); o2.connect(g2); g2.connect(g); g.connect(master);
+          g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.9, t + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t + len);
+          o1.start(t); o2.start(t); o1.stop(t + len + 0.05); o2.stop(t + len + 0.05);
+          t += DUR[i];
+        });
+        // replay the draw-in in time with the notes
+        var svg = document.querySelector('.hero-peak');
+        if (svg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          var clone = svg.cloneNode(true); svg.parentNode.replaceChild(clone, svg);
+        }
+      });
+    })();
 
     // Optional custom form handler (only runs if you add #launchForm back into the HTML)
     var form = document.getElementById('launchForm');
