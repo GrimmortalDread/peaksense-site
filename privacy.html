@@ -37,7 +37,7 @@
 <body>
   <p><a href="./">← Back to PeakSense</a></p>
   <h1>PEAKSENSE — Privacy Policy</h1>
-  <div class="updated">Last updated: September 26, 2026</div>
+  <div class="updated">Last updated: September 28, 2026</div>
 
   <p>This policy covers the PeakSense desktop app for Windows ("PeakSense", "the app") and the website peaksense.net. PeakSense is made by an independent developer ("we", "us"). Contact: <a href="mailto:support@peaksense.net">support@peaksense.net</a>.</p>
 
@@ -80,7 +80,7 @@
     <li><strong>What you enter:</strong> titles, descriptions, captions, hashtags, schedules, presets, game profiles and settings, plus your PeakSense Pro licence key.</li>
     <li><strong>Logs:</strong> a local log file of what the app did, used for troubleshooting. Sign-in tokens and secrets are removed from logs and from the diagnostics file you can export.</li>
   </ul>
-  <p>PeakSense does <strong>not</strong> collect usage analytics, crash reports or advertising identifiers, and it does not read the cookies or data of your web browsers.</p>
+  <p>PeakSense does <strong>not</strong> collect advertising identifiers or read the cookies or data of your web browsers. It sends no crash reports or usage counts unless you turn them on (both are off until you do; see <a href="#share">section 4</a>).</p>
 
   <h2 id="use">2. How it's used</h2>
   <p>Only to provide PeakSense's features to you:</p>
@@ -105,17 +105,22 @@
   <p><strong>Retention:</strong></p>
   <ul>
     <li><strong>Full-length videos PeakSense created or copied</strong>, such as OBS recordings it made, uploads and downloads, are moved to the Recycle Bin after the number of days you set (30 by default), or when your library goes over the size limit you set. You can pin videos to keep them, or turn the limits off. Your own imported files are only touched if you allow it.</li>
-    <li><strong>YouTube statistics</strong> for your posted clips are refreshed within 30 days, or deleted if they can't be refreshed (for example, after you disconnect YouTube).</li>
+    <li><strong>YouTube statistics</strong> for your posted clips are refreshed within 30 days, or deleted if they can't be refreshed (for example, after you disconnect YouTube). The hourly view readings PeakSense takes in a post's first three days (for "best time to post") are deleted after 30 days.</li>
     <li><strong>Sign-in tokens</strong> are deleted and revoked with the platform when you disconnect that platform in PeakSense.</li>
     <li><strong>Everything else</strong> stays until you delete it or remove PeakSense's folders (see <a href="data-deletion.html">Data deletion</a>).</li>
   </ul>
   <p><strong>Security:</strong> the data is protected by your Windows account, the same as your other files. Sign-in tokens, the YouTube sign-in session and your OBS password are stored in PeakSense's data folder without additional encryption, so anyone who can use your Windows account could read them. Keep your PC and Windows account secure, and disconnect platforms you no longer use.</p>
 
   <h2 id="share">4. Services the app talks to</h2>
-  <p>We don't sell, rent or share your data. PeakSense sends data from your PC to these services only when you use the related feature. Everything goes directly to the service, except TikTok, Twitch, Instagram and Facebook sign-in requests, which pass through our relay. Each service handles what it receives under its own privacy policy.</p>
+  <p>We don't sell, rent or share your data. PeakSense sends data from your PC to these services only when you use the related feature. Everything goes directly to the service, except TikTok, Twitch, Instagram and Facebook sign-in requests and the PeakSense relay items below (new-video notifications, and crash reports and usage counts if you turn them on). Each service handles what it receives under its own privacy policy.</p>
   <table>
     <tr><th>Service</th><th>When</th><th>What is sent</th></tr>
     <tr id="relay"><td>PeakSense sign-in relay (auth.peaksense.net, hosted on Cloudflare)</td><td>You connect TikTok, Twitch, Instagram or Facebook, PeakSense renews that sign-in, or you disconnect</td><td>The sign-in code, PKCE verifier, refresh token or the token being exchanged or revoked. Instagram and Facebook send you back to the relay after you sign in, and it forwards the sign-in code straight to PeakSense on your PC. The relay adds PeakSense's app secret, which can't be kept safely inside a desktop app, and passes the request straight to the platform. Their answer goes back to your PC unchanged. The relay stores and logs none of it. Cloudflare, which hosts it, sees your IP address.</td></tr>
+    <tr id="push"><td>PeakSense relay: new-video notifications</td><td>YouTube is connected</td><td>Your channel ID, so the relay can subscribe to YouTube's public notifications of new videos on your channel (through Google's PubSubHubbub hub). The relay keeps the IDs of your channel's newest public videos for up to 30 days so PeakSense can pick up new streams without asking YouTube repeatedly. Nothing else about your channel is stored.</td></tr>
+    <tr><td>PeakSense relay: crash reports (opt-in)</td><td>You turn on "Send crash reports automatically", or send one yourself</td><td>The error, a short stack trace, the app and Windows versions. Secrets, your user name, file paths, email addresses and media file names are removed first, and you can see the latest report in Help &amp; About before sending. Kept 90 days.</td></tr>
+    <tr><td>PeakSense relay: anonymous YouTube usage counts (opt-in)</td><td>You turn on "Share anonymous YouTube usage counts"</td><td>Once a day: how many of each kind of YouTube request PeakSense made the day before, how many uploads, and whether it's Pro. No install, channel, video or account IDs. Kept 180 days and used only to size PeakSense's YouTube API quota requests to Google.</td></tr>
+    <tr><td>Lemon Squeezy (payments) and the PeakSense relay</td><td>You buy Pro from the app</td><td>Checkout happens on Lemon Squeezy's site, which handles payment details under its own policy; PeakSense never sees them. The app passes a random install ID with the checkout, and the relay keeps your Pro key under that ID for 30 days so the app can activate it.</td></tr>
+    <tr><td>GitHub or Cloudflare R2 (updates)</td><td>The installed app checks for updates</td><td>A request for the list of releases and, when you update, the download. No personal data.</td></tr>
     <tr><td>YouTube / Google (YouTube API Services, Google sign-in)</td><td>You connect YouTube, browse your streams or playlists, post a clip, or turn on channel watching</td><td>Your sign-in, requests for your channel's videos and statistics, the clips you post with their title, description, tags, thumbnail, privacy and schedule. When you download one of your own VODs, the request to YouTube for that video.</td></tr>
     <tr><td>Twitch</td><td>You connect Twitch</td><td>Your sign-in, live-status and event subscriptions (raids, subs, bits, channel points, chat), requests for your VOD list, clip creation, and downloads of your own VODs.</td></tr>
     <tr><td>IGDB (a Twitch/Amazon game database)</td><td>Your clip library sorts clips by game</td><td>The stream title, tags or description of those clips, used to look up the game's name. No account information is sent.</td></tr>
@@ -144,8 +149,8 @@
   <ul>
     <li><strong>Accessed:</strong> your channel ID and name; your uploads, live VODs and playlists (titles, descriptions, tags, durations, thumbnails, dates, owner); statistics (views, likes, comments) of clips posted through PeakSense.</li>
     <li><strong>Used for:</strong> the features above only.</li>
-    <li><strong>Stored:</strong> on your PC only. Statistics are refreshed or deleted within 30 days, and sign-in tokens are kept until you disconnect.</li>
-    <li><strong>Shared:</strong> with no one. Nothing is sent to us or to other parties.</li>
+    <li><strong>Stored:</strong> on your PC. Statistics and hourly view readings are refreshed or deleted within 30 days, and sign-in tokens are kept until you disconnect.</li>
+    <li><strong>Shared:</strong> with no one. The only YouTube-related data that reaches our relay is your channel ID (to subscribe to YouTube's public new-video notifications) and the IDs of your newest public videos that YouTube sends it, kept up to 30 days. The optional usage counts contain no YouTube data.</li>
     <li><strong>Revoking access:</strong> disconnect YouTube in PeakSense, which revokes the token, or remove PeakSense at <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">Google security settings</a>.</li>
   </ul>
   <p>PeakSense's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
