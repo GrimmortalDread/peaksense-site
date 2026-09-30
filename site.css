@@ -14,7 +14,7 @@
   --muted: #a59eb3;
   --green: #3be37a;
   --on-green: #0c0b10;
-  --maxw: 1080px;
+  --maxw: 1200px;
   --display: "Archivo", "Arial Narrow", Arial, sans-serif;
   --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -67,7 +67,7 @@ section + section { border-top: 1px solid var(--border); }
 
 /* hero */
 .hero { padding: 80px 0 64px; border-bottom: 1px solid var(--border); }
-.hero .wrap { display: grid; gap: 48px; }
+.hero .wrap { display: grid; gap: 40px; }
 .hero-copy { display: grid; gap: 20px; max-width: 760px; }
 .hero-copy .lede { font-size: 19px; color: var(--muted); max-width: 640px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
@@ -162,3 +162,10 @@ footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--text); }
 footer .legal { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 20px; }
 @media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr 1fr; } footer .wrap > :first-child { grid-column: 1 / -1; } }
+
+/* Hero: copy on the left, the real app on the right */
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 48px; align-items: center; }
+.hero-grid h1 { font-size: clamp(34px, 4.2vw, 54px); }
+.hero-shot { margin: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--panel); box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.hero-shot img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 32px; } }
