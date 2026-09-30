@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PeakSense: the stream clipper that runs on your PC</title>
+<title>PeakSense: your stream’s best moments, clipped for you</title>
 <meta name="description" content="PeakSense finds the best moments in your Twitch, YouTube and Kick streams and turns them into captioned Shorts, on your own Windows PC. Free, with a one-time $69 Pro.">
 <link rel="canonical" href="https://peaksense.net/">
 <meta name="theme-color" content="#0f0d13">
@@ -63,19 +63,40 @@
 <main id="main">
 <section class="hero" aria-labelledby="heroTitle">
   <div class="wrap">
-    <div class="hero-copy">
-      <h1 id="heroTitle">Stream tonight. Wake up to Shorts.</h1>
-      <p class="lede">PeakSense goes through your VOD on your own PC, finds the moments chat lost it, and cuts them into captioned vertical clips. Free for Windows. Pro is $69, once.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#notify">Get notified at launch</a>
-        <a class="btn" href="features.html">See what it does</a>
-        <!-- DEMO: once the 40-second recording exists, upload it (e.g. demo.mp4)
-             and swap the button above for:
-             <a class="btn" href="demo.mp4">Watch the 40-second demo</a> -->
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1 id="heroTitle">Your stream&rsquo;s best moments, clipped for you.</h1>
+        <p class="lede">PeakSense finds the moments chat lost it and turns them into captioned Shorts, right on your PC. Record with OBS and your clips are waiting when you end the stream. Free for Windows. Pro is $69, once.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#notify">Get notified at launch</a>
+          <a class="btn" href="features.html">See what it does</a>
+          <!-- DEMO: once the 40-second recording exists, upload it (e.g. demo.mp4)
+               and swap the button above for:
+               <a class="btn" href="demo.mp4">Watch the 40-second demo</a> -->
+        </div>
+        <p class="fine">Windows 10 and 11. Works with OBS. Twitch, YouTube and Kick.</p>
       </div>
-      <p class="fine">Windows 10 and 11. Works with OBS. Twitch, YouTube and Kick.</p>
+      <!-- SCREENSHOT: the app's Home page. Swap app-home.webp for your own
+           screenshot any time (about 1600 px wide looks sharp). -->
+      <figure class="hero-shot">
+        <img src="app-home.webp" width="1600" height="784" alt="The PeakSense app on its Home page: new clips to review, your last stream, the posting queue and this week's views." fetchpriority="high">
+      </figure>
     </div>
 
+    <ul class="facts">
+      <li>Runs on your PC. Your VODs never get uploaded.</li>
+      <li>No credits. Clip as much as you stream.</li>
+      <li>No watermark on the free version.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="tlTitle">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="tlTitle">What it looks for in a stream</h2>
+      <p>Quiet stretches stay out. The spikes, where chat, your voice or the game went off, become clips.</p>
+    </div>
     <!-- TIMELINE: an example. Replace the title, length, count and the three
          clips with the numbers from one of your own streams. -->
     <figure class="timeline" style="margin:0">
@@ -88,12 +109,6 @@
         <div class="tl-clip"><span class="t">3:58:31</span><span class="w">Funniest line</span></div>
       </div>
     </figure>
-
-    <ul class="facts">
-      <li>Runs on your PC. Your VODs never get uploaded.</li>
-      <li>No credits. Clip as much as you stream.</li>
-      <li>No watermark on the free version.</li>
-    </ul>
   </div>
 </section>
 
