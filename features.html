@@ -35,6 +35,7 @@
     <a class="brand" href="./" aria-label="PeakSense home"><img src="brand/peaksense-logo-dark.svg" alt="PeakSense" width="152" height="26"></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <nav class="nav-links" id="navLinks" aria-label="Main">
+      <a href="./">Home</a>
       <a href="features.html" aria-current="page">Features</a>
       <a href="pro.html">Pro</a>
       <a href="compare.html">Compare</a>
@@ -47,6 +48,7 @@
 <main id="main">
 <section aria-labelledby="featTitle">
   <div class="wrap">
+    <div class="page-hero">
     <div class="section-head">
       <h1 id="featTitle">Everything around your stream</h1>
       <p>Before you go live, while you're live and every day after. Everything here is in the free version unless it says Pro.</p>
@@ -54,17 +56,11 @@
         <a href="#brand">Before</a><a href="#detection">During</a><a href="#editing">The editor</a><a href="#montages">Montages and recaps</a><a href="#posting">Posting</a><a href="#yours">Your PC</a>
       </nav>
     </div>
+    <figure class="stage-shot page-hero-shot reveal"><img src="app-home.webp" width="1600" height="784" alt="The PeakSense app on its Home page: new clips to review, your last stream, the posting queue and this week's views."></figure>
+    </div>
     <div class="chapter" id="brand">
       <header class="reveal"><span class="kicker">Before the stream</span><h2>Look like a channel from day one</h2><p>Most small streamers don't have a designer. PeakSense gives you the logo, the overlays and the announcement in one sitting.</p></header>
       <div class="scene-row">
-        <div class="copy reveal">
-          <h3>A brand kit, then everything made from it</h3>
-          <p>Start with your logo, or let PeakSense help you make one. Pick your colours and fonts and every other piece follows from them, so the Shorts, the overlays and the thumbnails all look like the same channel.</p>
-          <ul><li>Your logo in every shape it's needed: square, wide, round, a small mark</li><li>A live preview of your name, colours and pattern on a stream screen and an alert</li><li>A brand check that spots anything off-colour, and a one-page brand guide</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/brand.webp"><img data-shot-img src="shots/brand.webp" alt="The Brand page: your logo family, colours and fonts with a live preview." loading="lazy"></figure>
-      </div>
-      <div class="scene-row flip">
         <div class="copy reveal">
           <h3>Overlays that drop into OBS</h3>
           <p>One click makes starting soon, be right back and thanks for watching screens, each with a looping version. Add to OBS sets them up as their own scenes and leaves yours alone.</p>
@@ -72,15 +68,15 @@
         </div>
         <figure class="shot reveal" data-shot="shots/stream-pack.webp"><img data-shot-img src="shots/stream-pack.webp" alt="The stream pack: starting soon, BRB and ending screens, panels, emotes and badges." loading="lazy"></figure>
       </div>
-      <div class="scene-row">
+      <div class="scene-row flip">
         <div class="copy reveal">
           <h3>A mascot, made on your own GPU</h3>
           <p>Drop in a few photos or describe what you want and PeakSense draws a mascot, then keeps it the same character from picture to picture. It runs on your graphics card with free image models, so nothing gets uploaded.</p>
           <ul><li>Start from scratch or from your own drawing</li><li>Details it should always keep, like which eye is which colour</li><li>Mascot emotes and logo variations from the same character</li></ul>
         </div>
-        <figure class="shot reveal" data-shot="shots/mascot.webp"><img data-shot-img src="shots/mascot.webp" alt="The mascot studio with a row of drawings of the same character." loading="lazy"></figure>
+        <figure class="shot narrow reveal" data-shot="shots/mascot.webp"><img data-shot-img src="shots/mascot.webp" alt="The mascot studio with a row of drawings of the same character." loading="lazy"></figure>
       </div>
-      <div class="scene-row flip">
+      <div class="scene-row">
         <div class="copy reveal">
           <h3>An intro and outro from your logo</h3>
           <p>Pick how your logo comes in, give it a look and a sound, and it's made in both shapes: wide for YouTube, tall for Shorts. Each video gets the one that fills its screen.</p>
@@ -100,21 +96,13 @@
       <header class="reveal"><span class="kicker">During the stream</span><h2>It's paying attention while you play</h2><p>You shouldn't have to scrub a four-hour VOD to find the ten seconds that mattered.</p></header>
       <div class="scene-row">
         <div class="copy reveal">
-          <h3>It watches the stream with you</h3>
-          <p>Connect OBS once, with no plugin. While you're live, PeakSense records and marks moments as they happen. When you stop, the recording is already sorted.</p>
-          <ul><li>Chat spikes, loud moments, hype lines and funny lines</li><li>Kills, clutches, wins and boss fights read from your game's HUD and sounds</li><li>Raids, tips, bits and channel points as moments of their own (Twitch, StreamElements, Streamlabs)</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/obs-live.webp"><img data-shot-img src="shots/obs-live.webp" alt="Connecting PeakSense to OBS: one switch, and it connects by itself whenever OBS is open." loading="lazy"></figure>
-      </div>
-      <div class="scene-row flip">
-        <div class="copy reveal">
           <h3>Mark one yourself</h3>
           <p>Something happened and you want it saved? Press your hotkey, tap a Stream Deck button, type <code>!clip</code> in chat, or hit the big button on your phone.</p>
           <ul><li>Your phone gets the whole dashboard over Tailscale</li><li>Free phone notifications through the ntfy app</li><li>Swipe through new clips on your phone to keep or skip</li></ul>
         </div>
         <figure class="shot tall reveal" data-shot="shots/phone.webp"><img data-shot-img src="shots/phone.webp" alt="The phone remote while live: a big Mark this moment button, Post this now, and quick Clutch, Funny and Fail marks." loading="lazy"></figure>
       </div>
-      <div class="scene-row">
+      <div class="scene-row flip">
         <div class="copy reveal">
           <h3>Or go through the stream yourself</h3>
           <p>Open the whole stream in the editor, scrub to anything PeakSense didn't pick, and clip it on the spot. Search what you said, mark the in and out, and it's a clip like any other.</p>
@@ -135,27 +123,11 @@
       <header class="reveal"><span class="kicker">After the stream</span><h2>An editor built for stream clips</h2><p>Everything you'd do in a big editor to turn a stream moment into a Short, without learning a big editor.</p></header>
       <div class="scene-row">
         <div class="copy reveal">
-          <h3>Review over coffee</h3>
-          <p>New clips play full screen, one after another. One key keeps it, queues it, bins it or opens it in the editor.</p>
-          <ul><li>Each clip says why it was picked</li><li>Stars and game tags for later</li><li>The same on your phone with a swipe</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/review.webp"><img data-shot-img src="shots/review.webp" alt="Review mode: a new clip playing full screen with keep, queue and bin." loading="lazy"></figure>
-      </div>
-      <div class="scene-row flip">
-        <div class="copy reveal">
-          <h3>Layouts that find your webcam</h3>
-          <p>Facecam on top and gameplay below, a corner cam, a split screen or a two-person duo. Your webcam is found for you and stays lined up for the whole stream.</p>
-          <ul><li>Drag the webcam or the gameplay to frame it yourself</li><li>Zooms and camera moves you set on the timeline</li><li>A crop that follows the action, with Pro</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/editor-look.webp"><img data-shot-img src="shots/editor-look.webp" alt="The editor: a clip with the facecam on top, gameplay below and captions on." loading="lazy"></figure>
-      </div>
-      <div class="scene-row">
-        <div class="copy reveal">
           <h3>Captions people read</h3>
           <p>Word by word, in styles you can preview on the clip before you pick one, or set the font, size, colours and position yourself.</p>
           <ul><li>Fix any word right on the timeline</li><li>A hook line across the top to stop the scroll</li><li>Captions in other languages, with Pro</li></ul>
         </div>
-        <figure class="shot reveal" data-shot="shots/captions.webp"><img data-shot-img src="shots/captions.webp" alt="The caption style gallery with several word-by-word styles shown on the clip." loading="lazy"></figure>
+        <figure class="shot narrow reveal" data-shot="shots/captions.webp"><img data-shot-img src="shots/captions.webp" alt="The caption style gallery with several word-by-word styles shown on the clip." loading="lazy"></figure>
       </div>
       <div class="scene-row flip">
         <div class="copy reveal">
@@ -186,22 +158,6 @@
       </div>
       <div class="scene-row flip">
         <div class="copy reveal">
-          <h3>A recap of the whole stream <span class="tag">Pro</span></h3>
-          <p>Hours of stream cut down to the stretches worth watching, as one long YouTube video with chapters already written. The same tabs and tools as a montage, for chapters.</p>
-          <ul><li>Chapters that end on the payoff, not before it</li><li>Swap or lengthen a chapter straight from the stream</li><li>YouTube chapters and captions filled in when it posts</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/recap.webp"><img data-shot-img src="shots/recap.webp" alt="A recap in the editor with its chapters as tabs on the timeline." loading="lazy"></figure>
-      </div>
-      <div class="scene-row">
-        <div class="copy reveal">
-          <h3>Pick what goes in</h3>
-          <p>Before a recap is made you see every part it'll use, in stream order, with what was said and where it came from. Play any of them, move them, swap one out, drop one, or add moments of your own. Set the length and it picks the best parts to fit.</p>
-          <ul><li>About 15 minutes, half an hour, or however long you want</li><li>Each part becomes a YouTube chapter</li><li>Rescan the stream for moments any time</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/recap-plan.webp"><img data-shot-img src="shots/recap-plan.webp" alt="Planning a recap: the parts of the stream it will use, each with a play button and controls to move, swap or remove it." loading="lazy"></figure>
-      </div>
-      <div class="scene-row flip">
-        <div class="copy reveal">
           <h3>An intro, an outro and the joins between</h3>
           <p>Put your intro and outro on anything long. Pick how each chapter or clip hands over to the next, and how the video leaves for the outro, like a slow fade to black.</p>
           <ul><li>Cuts, crossfades, whips, zooms, a long fade to black and more</li><li>Set them one join at a time or all at once</li><li>The intro and outro go on when it's posted, so your file stays clean</li></ul>
@@ -209,7 +165,7 @@
         <figure class="shot tall reveal" data-shot="shots/intro-outro.webp"><img data-shot-img src="shots/intro-outro.webp" alt="Intro and outro on the Publish tab: which intro and outro, how it goes into the video and how it goes out to the outro." loading="lazy"></figure>
       </div>
       <div class="minis">
-        <div class="reveal"><h3>Monthly Stream Wrapped <span class="tag">Pro</span></h3><p>Your month in streams: the best moments, how long you were live and what grew, as a video and a page to share.</p></div>
+        <div class="reveal"><h3>A recap of the whole stream <span class="tag">Pro</span></h3><p>The stream cut down to its best stretches, with YouTube chapters. <a href="pro.html#upclose">See it on the Pro page</a>.</p></div>
         <div class="reveal"><h3>Thumbnails</h3><p>Thumbnail ideas from the clip's best frames in your brand's template, with AI suggestions in Pro.</p></div>
         <div class="reveal"><h3>A multi-stream editor</h3><p>Put several streams or parts of one into a single video, with transitions between them.</p></div>
       </div>
@@ -218,29 +174,14 @@
       <header class="reveal"><span class="kicker">Every day after</span><h2>Getting it seen</h2><p>Making the clip is half of it. PeakSense puts it out at the right time and tells you what to do next.</p></header>
       <div class="scene-row">
         <div class="copy reveal">
-          <h3>A schedule that posts for you <span class="tag">Pro</span></h3>
-          <p>Line clips up and drag them onto days. With Pro they render and post on their own: YouTube, Instagram and Facebook directly, TikTok to your drafts.</p>
-          <ul><li>At the hours your audience actually shows up</li><li>Failed posts retry on their own and say why</li><li>A daily plan that fills gaps in the week</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/schedule.webp"><img data-shot-img src="shots/schedule.webp" alt="The posting schedule with clips placed across the week." loading="lazy"></figure>
-      </div>
-      <div class="scene-row flip">
-        <div class="copy reveal">
           <h3>Know what's working</h3>
           <p>See which kinds of moments get watched, how long people stay, and when they show up. PeakSense learns from your best posts and leans toward more like them.</p>
           <ul><li>What to post next, from what's getting views in your games</li><li>Title testing on YouTube, keeping the winner</li><li>Comments waiting for a reply, with a suggested answer</li></ul>
         </div>
         <figure class="shot reveal" data-shot="shots/analytics.webp"><img data-shot-img src="shots/analytics.webp" alt="Insights: views by post and by type of moment, and the best hours to post." loading="lazy"></figure>
       </div>
-      <div class="scene-row">
-        <div class="copy reveal">
-          <h3>Stream Wrapped <span class="tag">Pro</span></h3>
-          <p>Once a month, everything you streamed in one place: your top moments, hours live and how the channel grew. Ready to post.</p>
-          <ul><li>A short video and a shareable page</li><li>Your colours and logo on it</li><li>Made on its own at the end of the month</li></ul>
-        </div>
-        <figure class="shot reveal" data-shot="shots/wrapped.webp"><img data-shot-img src="shots/wrapped.webp" alt="Stream Wrapped: a month of streams with the top moments and stats." loading="lazy"></figure>
-      </div>
       <div class="minis">
+        <div class="reveal"><h3>A schedule that posts for you <span class="tag">Pro</span></h3><p>Set the days and times once and it renders and posts at the hours your viewers show up. <a href="pro.html#upclose">See it on the Pro page</a>.</p></div>
         <div class="reveal"><h3>YouTube</h3><p>Shorts with the title and description filled in. Playlists by game and series with Pro.</p></div>
         <div class="reveal"><h3>Instagram and Facebook</h3><p>Reels to a Creator or Business account and to your Facebook Page.</p></div>
         <div class="reveal"><h3>TikTok</h3><p>Post from the editor; scheduled clips land in your drafts to publish.</p></div>
