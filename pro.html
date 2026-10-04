@@ -48,7 +48,7 @@
 <section aria-labelledby="proTitle">
   <div class="wrap">
     <div class="section-head">
-      <h1 id="proTitle">Free makes clips. Pro makes them while you're away.</h1>
+      <h1 id="proTitle">Free does the work. Pro does it while you're away.</h1>
       <p>Every tool is in the free version, with no caps, watermark or trial clock. Pro is everything that runs without a click. Pay once and keep it.</p>
     </div>
     <div class="plans">
@@ -56,11 +56,13 @@
         <h2>Free</h2>
         <div class="price">$0</div>
         <ul>
-          <li>Every detection signal, plus local AI scoring</li>
-          <li>Captions, facecam layouts and reframing</li>
-          <li>The full editor, montages and keyword search</li>
+          <li>Your brand kit, overlays, panels, emotes, intro and mascot</li>
+          <li>Go-live cards for Discord and Instagram, and your own Discord bot</li>
+          <li>Every detection signal, live marking and local AI scoring</li>
+          <li>The full editor: layouts, captions, sound, effects and stickers</li>
+          <li>Montages with transitions, intros and outros</li>
           <li>Post to YouTube, TikTok, Instagram and Facebook yourself</li>
-          <li>New-stream alerts and one-click processing</li>
+          <li>Insights, title checks and what to post next</li>
           <li>Phone remote and phone notifications</li>
           <li>No caps, no watermark, no time limit</li>
         </ul>
@@ -70,14 +72,17 @@
         <div class="price">$69<small>once</small></div>
         <ul>
           <li>New streams processed on their own</li>
-          <li>Scheduled posting to YouTube, Instagram and Facebook; TikTok to drafts</li>
-          <li>Live auto-capture on Twitch</li>
+          <li>Scheduled posting at the hours your viewers show up</li>
+          <li>Chaptered recaps of whole streams</li>
+          <li>Monthly Stream Wrapped</li>
+          <li>Live capture on Twitch, and posting big moments while you're live</li>
           <li>An automatic second look at each stream</li>
-          <li>Weekly Peak reels on a schedule</li>
-          <li>Learns from how your posts did, with analytics</li>
-          <li>Bulk tools and a brand kit on everything</li>
-          <li>A morning report on your phone</li>
-          <li>Title testing and playlists on YouTube</li>
+          <li>Learns from how your posts did</li>
+          <li>Captions in other languages, music removal and a crop that follows the action</li>
+          <li>Sound effects and stickers placed on the moments for you</li>
+          <li>AI thumbnail ideas, title testing and YouTube playlists</li>
+          <li>Your brand on everything made for you, and bulk tools</li>
+          <li>A morning report, and logins for your editor or mods</li>
           <li>Every future update</li>
         </ul>
         <a class="btn btn-primary" href="./#notify">Get notified at launch</a>
@@ -92,14 +97,16 @@
   <div class="wrap">
     <div class="section-head"><h2 id="proMoreTitle">What each Pro feature does</h2></div>
     <div class="items">
-      <div><h3>New streams, processed</h3><p>PeakSense spots a new VOD and clips it, so you wake up to clips ready to review.</p></div>
-      <div><h3>Scheduled posting</h3><p>Set times once and it renders and uploads while you sleep, work or stream.</p></div>
-      <div><h3>Live auto-capture</h3><p>Raids, redemptions, bits and chat spikes become clips on Twitch without a button.</p></div>
-      <div><h3>A second look</h3><p>A few hours after processing, it runs again and adds only moments you haven't clipped.</p></div>
-      <div><h3>Learns from your winners</h3><p>Reads how your posted clips did and leans toward moments like your best ones.</p></div>
+      <div><h3>New streams, processed</h3><p>PeakSense spots a new stream and clips it, so you wake up to clips ready to review.</p></div>
+      <div><h3>Scheduled posting</h3><p>Set it once and it renders and uploads while you sleep, work or stream, at the hours your audience shows up.</p></div>
+      <div><h3>Recaps</h3><p>A whole stream cut down to its best stretches as one long video, with YouTube chapters written for you.</p></div>
+      <div><h3>Stream Wrapped</h3><p>Your month of streams as a video and a page to share, made on its own.</p></div>
+      <div><h3>Live capture</h3><p>Raids, redemptions, bits and chat spikes become clips on Twitch without a button, and a big moment can go out before you end.</p></div>
+      <div><h3>A second look</h3><p>A few hours after processing it runs again and adds only moments you haven't clipped.</p></div>
+      <div><h3>Learns from your winners</h3><p>Reads how your posts did and leans toward moments like your best ones.</p></div>
+      <div><h3>Title testing</h3><p>Each Short tries two titles and keeps the one that pulled more views.</p></div>
       <div><h3>Morning report</h3><p>One message a day with last night's clips, what posted and how it's doing.</p></div>
-      <div><h3>Title testing</h3><p>Each new Short tries two titles and keeps the one that pulled more views.</p></div>
-      <div><h3>Brand kit</h3><p>Your logo, caption style, cards and layout on everything made for you.</p></div>
+      <div><h3>Your brand, everywhere</h3><p>Your logo, caption style, cards and layout on everything made for you.</p></div>
     </div>
   </div>
 </section>
@@ -141,15 +148,6 @@
     <p class="legal">&copy; 2026 PeakSense. Twitch, YouTube, TikTok, Kick, Instagram and Facebook are trademarks of their owners; PeakSense isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
-<script>
-  (function () {
-    var nav = document.querySelector('.nav'), btn = nav && nav.querySelector('.nav-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  })();
-</script>
+<script src="site.js"></script>
 </body>
 </html>
