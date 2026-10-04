@@ -318,7 +318,7 @@ footer .legal { grid-column: 1 / -1; border-top: 1px solid var(--border); paddin
 .show-shots .shot.pending::after, .show-shots .tile .ph.pending::after { content: attr(data-shot); }
 .show-shots .shot.pending img, .show-shots .tile .ph.pending img { display: none; }
 .show-shots .scene-row:has(.shot.pending) { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-.minis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 28px; margin-top: 56px; }
+.minis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 28px; margin-top: 24px; }
 .minis div { display: grid; gap: 4px; align-content: start; }
 .minis h3 { font-size: 16px; }
 .minis p { color: var(--muted); font-size: 15px; }
@@ -357,3 +357,19 @@ footer .legal { grid-column: 1 / -1; border-top: 1px solid var(--border); paddin
 .more-all { margin-top: 56px; text-align: center; }
 /* FAQ and Pro: centred. */
 .head-center { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* Comparison on a phone: the row names stay put while the apps scroll. */
+.swipe-hint { display: none; color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+@media (max-width: 760px) {
+  .swipe-hint { display: block; }
+  .wide-table table { min-width: 640px; font-size: 14px; }
+  .wide-table tbody th, .wide-table thead th:first-child { position: sticky; left: 0; z-index: 1; background: var(--panel); min-width: 120px; box-shadow: 1px 0 0 var(--border); }
+}
+
+/* Features: each part's smaller items folded under one line. */
+.more-box { margin-top: 48px; border-top: 1px solid var(--border); padding-top: 20px; }
+.more-box > summary { cursor: pointer; list-style: none; font-weight: 600; color: var(--green); display: inline-flex; align-items: center; gap: 8px; }
+.more-box > summary::-webkit-details-marker { display: none; }
+.more-box > summary::before { content: "+"; display: inline-grid; place-items: center; width: 22px; height: 22px; border: 1px solid currentColor; border-radius: 6px; font-weight: 400; line-height: 1; }
+.more-box[open] > summary::before { content: "\2212"; }
+.scene-row + .scene-row { margin-top: 48px; }
