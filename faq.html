@@ -69,7 +69,7 @@
    "name": "What kind of computer do I need?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "A Windows 10 or 11 PC with about 20 GB free for the app and models, plus room for recordings. An NVIDIA GPU makes it fast. AMD and CPU-only PCs work too, just slower; pick a smaller transcription model in Settings if speed matters more than accuracy."
+    "text": "A Windows 10 or 11 PC with about 20 GB free for the app and models, plus room for recordings. A graphics card makes it fast: NVIDIA or AMD both work, and PeakSense picks settings that suit yours the first time it starts. CPU-only PCs work too, just slower. Making logos and a mascot with AI happens on your graphics card as well, and works best with 8 GB of graphics memory or more."
    }
   },
   {
@@ -133,7 +133,7 @@
    "name": "How is this different from other clip tools?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "It runs on your computer, so your footage never gets uploaded. There are no credits. And it's built for streamers: it watches your stream through OBS, reads your game's HUD, catches chat spikes and does facecam layouts. The comparison has the details."
+    "text": "Most clip tools start once the VOD exists and stop once the clip is cut. PeakSense covers the whole thing: your logo and overlays before you go live, marking moments while you play, then clips, montages, recaps, thumbnails and a posting schedule after. It runs on your computer, so your footage never gets uploaded, and there are no credits. The comparison has the details."
    }
   }
  ]
@@ -168,7 +168,7 @@
       <details><summary>Does PeakSense upload my videos anywhere?</summary><p>No. Recording, detection, clipping and captions all run on your computer. PeakSense only goes online to do things you set up: check your own channel for new streams, download one of your own VODs, or post a clip to your own account. The <a href="privacy.html">privacy policy</a> lists exactly what's sent where.</p></details>
       <details><summary>Where do my streams come from?</summary><p>The best way is to connect OBS: every stream lands in PeakSense when you stop, with moments already found. You can also drop in a file, watch a folder (YouTube Studio or Twitch downloads, ShadowPlay, ReLive), or pick a past broadcast from your own connected channel. Kick VODs work by pasting the link.</p></details>
       <details><summary>Won't recordings fill up my drive?</summary><p>By default PeakSense keeps the recordings it made for 30 days, then moves them to the Recycle Bin. You can change that, set a size limit, pin streams to keep, or shrink processed streams to a 720p copy plus full-quality footage around your clips. Your own files are never touched unless you allow it.</p></details>
-      <details><summary>What kind of computer do I need?</summary><p>A Windows 10 or 11 PC with about 20 GB free for the app and models, plus room for recordings. An NVIDIA GPU makes it fast. AMD and CPU-only PCs work too, just slower; pick a smaller transcription model in Settings if speed matters more than accuracy.</p></details>
+      <details><summary>What kind of computer do I need?</summary><p>A Windows 10 or 11 PC with about 20 GB free for the app and models, plus room for recordings. A graphics card makes it fast: NVIDIA or AMD both work, and PeakSense picks settings that suit yours the first time it starts. CPU-only PCs work too, just slower. Making logos and a mascot with AI happens on your graphics card as well, and works best with 8 GB of graphics memory or more.</p></details>
       <details><summary>Do I need to install anything else?</summary><p>No. Optional free extras unlock more: OBS Studio 28 or newer to record and watch your streams live, Ollama for AI scoring, and a Hugging Face account for labelling who's talking on co-streams.</p></details>
       <details><summary>How does the license work?</summary><p>You get a key that starts with PS-. Paste it into Settings and you're done. It never expires and is checked offline.</p></details>
       <details><summary>Should I record to MKV or MP4 in OBS?</summary><p>Keep OBS on MKV (or Hybrid MP4). MKV survives a crash or power cut. When your stream ends, PeakSense converts it to MP4 in seconds without re-encoding, so there's no quality loss.</p></details>
@@ -176,7 +176,7 @@
       <details><summary>Is there a limit on YouTube uploads?</summary><p>Not from us. YouTube limits how many videos an app can upload per day, and until PeakSense completes YouTube's review, uploads from it stay private. PeakSense shows how much of the daily limit is left.</p></details>
       <details><summary>Can it post to Instagram and Facebook?</summary><p>Yes, as Reels. Instagram needs a Creator or Business account, a free switch in Instagram's settings. Facebook Pages can be connected separately. Until Meta finishes reviewing PeakSense, posting there is limited to test accounts.</p></details>
       <details><summary>What about TikTok?</summary><p>Until PeakSense finishes TikTok's audit, posts land as private (only you can see them), and scheduled clips go to your drafts. The dashboard says so plainly.</p></details>
-      <details><summary>How is this different from other clip tools?</summary><p>It runs on your computer, so your footage never gets uploaded. There are no credits. And it's built for streamers: it watches your stream through OBS, reads your game's HUD, catches chat spikes and does facecam layouts. The <a href="compare.html">comparison</a> has the details.</p></details>
+      <details><summary>How is this different from other clip tools?</summary><p>Most clip tools start once the VOD exists and stop once the clip is cut. PeakSense covers the whole thing: your logo and overlays before you go live, marking moments while you play, then clips, montages, recaps, thumbnails and a posting schedule after. It runs on your computer, so your footage never gets uploaded, and there are no credits. The <a href="compare.html">comparison</a> has the details.</p></details>
     </div>
   </div>
 </section>
@@ -218,15 +218,6 @@
     <p class="legal">&copy; 2026 PeakSense. Twitch, YouTube, TikTok, Kick, Instagram and Facebook are trademarks of their owners; PeakSense isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
-<script>
-  (function () {
-    var nav = document.querySelector('.nav'), btn = nav && nav.querySelector('.nav-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  })();
-</script>
+<script src="site.js"></script>
 </body>
 </html>

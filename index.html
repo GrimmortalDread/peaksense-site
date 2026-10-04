@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PeakSense: your stream’s best moments, clipped for you</title>
-<meta name="description" content="PeakSense finds the best moments in your Twitch, YouTube and Kick streams and turns them into captioned Shorts, on your own Windows PC. Free, with a one-time $69 Pro.">
+<title>PeakSense: you stream, it does the rest</title>
+<meta name="description" content="PeakSense builds your stream's look, marks moments while you're live, and turns every stream into captioned Shorts, montages, a chaptered recap and a posting schedule. On your own Windows PC. Free, with a one-time $69 Pro.">
 <link rel="canonical" href="https://peaksense.net/">
 <meta name="theme-color" content="#0f0d13">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://peaksense.net/">
 <meta property="og:site_name" content="PeakSense">
-<meta property="og:title" content="PeakSense: the stream clipper that runs on your PC">
-<meta property="og:description" content="PeakSense finds the best moments in your Twitch, YouTube and Kick streams and turns them into captioned Shorts, on your own Windows PC. Free, with a one-time $69 Pro.">
+<meta property="og:title" content="PeakSense: everything around your stream, on your own PC">
+<meta property="og:description" content="PeakSense builds your stream's look, marks moments while you're live, and turns every stream into captioned Shorts, montages, a chaptered recap and a posting schedule. On your own Windows PC. Free, with a one-time $69 Pro.">
 <meta property="og:image" content="https://peaksense.net/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The PeakSense logo on black">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PeakSense: the stream clipper that runs on your PC">
-<meta name="twitter:description" content="PeakSense finds the best moments in your Twitch, YouTube and Kick streams and turns them into captioned Shorts, on your own Windows PC. Free, with a one-time $69 Pro.">
+<meta name="twitter:title" content="PeakSense: everything around your stream, on your own PC">
+<meta name="twitter:description" content="PeakSense builds your stream's look, marks moments while you're live, and turns every stream into captioned Shorts, montages, a chaptered recap and a posting schedule. On your own Windows PC. Free, with a one-time $69 Pro.">
 <meta name="twitter:image" content="https://peaksense.net/og.png">
 <link rel="icon" href="favicon.ico?v=3" sizes="any">
 <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
@@ -35,7 +35,7 @@
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Windows 10, Windows 11",
   "url": "https://peaksense.net/",
-  "description": "A highlight clipper for Twitch, YouTube and Kick streams that runs on your own PC.",
+  "description": "Everything around a Twitch, YouTube or Kick stream on your own PC: your brand and overlays, moments marked live, and clips, montages, recaps and posting after.",
   "offers": [
     {"@type": "Offer", "name": "PeakSense Free", "price": "0", "priceCurrency": "USD"},
     {"@type": "Offer", "name": "PeakSense Pro (one-time)", "price": "69", "priceCurrency": "USD"}
@@ -61,45 +61,109 @@
   </div>
 </header>
 <main id="main">
-<section class="hero" aria-labelledby="heroTitle">
+<section class="cine" aria-labelledby="heroTitle">
+  <div class="cine-backdrop" aria-hidden="true"></div>
+  <span class="cine-bars top" aria-hidden="true"></span><span class="cine-bars bottom" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <h1 id="heroTitle">Your stream&rsquo;s best moments, clipped for you.</h1>
-        <p class="lede">PeakSense finds the moments chat lost it and turns them into captioned Shorts, right on your PC. Record with OBS and your clips are waiting when you end the stream. Free for Windows. Pro is $69, once.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#notify">Get notified at launch</a>
-          <a class="btn" href="features.html">See what it does</a>
-          <!-- DEMO: once the 40-second recording exists, upload it (e.g. demo.mp4)
-               and swap the button above for:
-               <a class="btn" href="demo.mp4">Watch the 40-second demo</a> -->
-        </div>
-        <p class="fine">Windows 10 and 11. Works with OBS. Twitch, YouTube and Kick.</p>
+    <div class="cine-copy">
+      <h1 id="heroTitle">You stream. <span class="dim">PeakSense does the rest.</span></h1>
+      <p class="lede">Your overlays and go-live posts before you start. Moments marked while you play. Clips, montages, a chaptered recap, thumbnails and a posting schedule once you stop. All of it on your own Windows PC.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#notify">Get notified at launch</a>
+        <a class="btn" href="features.html">See everything it does</a>
       </div>
-      <!-- SCREENSHOT: the app's Home page. Swap app-home.webp for your own
-           screenshot any time (about 1600 px wide looks sharp). -->
-      <figure class="hero-shot">
-        <img src="app-home.webp" width="1600" height="784" alt="The PeakSense app on its Home page: new clips to review, your last stream, the posting queue and this week's views." fetchpriority="high">
-      </figure>
+      <p class="fine">Windows 10 and 11 &middot; Works with OBS &middot; Twitch, YouTube and Kick &middot; Free, with a one-time $69 Pro</p>
     </div>
-
+    <!-- The scene: a stream's activity drawn left to right; each peak becomes a Short.
+         (HERO VIDEO: if you record a short screen capture of the app, put it here as
+         <video class="cine-video" src="hero.mp4" autoplay muted loop playsinline></video>.) -->
+    <div class="scene" role="img" aria-label="A stream's activity line draws across the screen. Its three peaks light up green and a captioned Short rises out of each one.">
+      <svg viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="M0,65.6 L5,65.9 L10,71.1 L15,67.1 L20,70.9 L25,69.2 L30,66.0 L35,68.7 L40,63.9 L45,66.1 L50,62.4 L55,62.0 L60,64.5 L65,68.1 L70,63.2 L75,65.1 L80,69.7 L85,73.9 L90,72.6 L95,72.7 L100,78.7 L105,72.2 L110,79.2 L115,74.6 L120,72.7 L125,71.3 L130,71.0 L135,72.9 L140,65.4 L145,66.0 L150,63.8 L155,59.3 L160,58.6 L165,53.0 L170,51.8 L175,52.3 L180,55.9 L185,54.2 L190,53.9 L195,57.0 L200,56.9 L205,56.6 L210,61.3 L215,61.0 L220,57.4 L225,59.6 L230,58.4 L235,59.9 L240,56.9 L245,50.4 L250,49.9 L255,35.4 L260,25.3 L265,14.8 L270,10.0 L275,14.4 L280,23.6 L285,37.4 L290,47.1 L295,51.4 L300,57.5 L305,55.9 L310,61.6 L315,63.2 L320,65.2 L325,65.9 L330,70.2 L335,71.7 L340,68.1 L345,69.4 L350,64.0 L355,68.3 L360,66.9 L365,68.9 L370,66.8 L375,62.1 L380,63.0 L385,65.7 L390,61.4 L395,66.2 L400,65.5 L405,66.9 L410,68.3 L415,75.8 L420,72.3 L425,74.4 L430,76.3 L435,80.3 L440,73.6 L445,75.5 L450,74.8 L455,75.4 L460,72.6 L465,70.5 L470,63.3 L475,62.1 L480,59.6 L485,62.1 L490,61.4 L495,54.3 L500,54.3 L505,54.9 L510,55.5 L515,58.3 L520,60.0 L525,58.2 L530,56.7 L535,60.4 L540,59.9 L545,60.9 L550,63.1 L555,59.6 L560,56.5 L565,55.4 L570,53.9 L575,46.9 L580,51.7 L585,48.5 L590,45.8 L595,39.6 L600,30.3 L605,23.2 L610,20.0 L615,23.8 L620,31.8 L625,41.8 L630,50.9 L635,55.9 L640,60.5 L645,60.2 L650,61.0 L655,62.9 L660,62.8 L665,64.7 L670,61.5 L675,67.5 L680,64.6 L685,60.1 L690,60.3 L695,60.8 L700,61.1 L705,59.7 L710,66.5 L715,69.1 L720,66.7 L725,68.9 L730,67.8 L735,70.0 L740,73.7 L745,74.6 L750,80.1 L755,75.2 L760,73.9 L765,80.6 L770,75.9 L775,71.1 L780,72.1 L785,65.7 L790,67.4 L795,68.7 L800,65.8 L805,62.9 L810,58.2 L815,58.4 L820,56.5 L825,61.5 L830,60.1 L835,62.4 L840,58.3 L845,54.3 L850,49.6 L855,36.3 L860,21.9 L865,16.0 L870,21.7 L875,34.2 L880,43.0 L885,50.7 L890,50.8 L895,47.2 L900,45.6 L905,46.0 L910,44.7 L915,47.6 L920,49.7 L925,46.3 L930,51.4 L935,53.4 L940,55.2 L945,52.6 L950,53.7 L955,56.0 L960,57.6 L965,59.3 L970,63.8 L975,66.7 L980,66.4 L985,63.3 L990,64.2 L995,64.6 L1000,58.1 L1000,100 L0,100 Z"/><path class="line" pathLength="1" d="M0,65.6 L5,65.9 L10,71.1 L15,67.1 L20,70.9 L25,69.2 L30,66.0 L35,68.7 L40,63.9 L45,66.1 L50,62.4 L55,62.0 L60,64.5 L65,68.1 L70,63.2 L75,65.1 L80,69.7 L85,73.9 L90,72.6 L95,72.7 L100,78.7 L105,72.2 L110,79.2 L115,74.6 L120,72.7 L125,71.3 L130,71.0 L135,72.9 L140,65.4 L145,66.0 L150,63.8 L155,59.3 L160,58.6 L165,53.0 L170,51.8 L175,52.3 L180,55.9 L185,54.2 L190,53.9 L195,57.0 L200,56.9 L205,56.6 L210,61.3 L215,61.0 L220,57.4 L225,59.6 L230,58.4 L235,59.9 L240,56.9 L245,50.4 L250,49.9 L255,35.4 L260,25.3 L265,14.8 L270,10.0 L275,14.4 L280,23.6 L285,37.4 L290,47.1 L295,51.4 L300,57.5 L305,55.9 L310,61.6 L315,63.2 L320,65.2 L325,65.9 L330,70.2 L335,71.7 L340,68.1 L345,69.4 L350,64.0 L355,68.3 L360,66.9 L365,68.9 L370,66.8 L375,62.1 L380,63.0 L385,65.7 L390,61.4 L395,66.2 L400,65.5 L405,66.9 L410,68.3 L415,75.8 L420,72.3 L425,74.4 L430,76.3 L435,80.3 L440,73.6 L445,75.5 L450,74.8 L455,75.4 L460,72.6 L465,70.5 L470,63.3 L475,62.1 L480,59.6 L485,62.1 L490,61.4 L495,54.3 L500,54.3 L505,54.9 L510,55.5 L515,58.3 L520,60.0 L525,58.2 L530,56.7 L535,60.4 L540,59.9 L545,60.9 L550,63.1 L555,59.6 L560,56.5 L565,55.4 L570,53.9 L575,46.9 L580,51.7 L585,48.5 L590,45.8 L595,39.6 L600,30.3 L605,23.2 L610,20.0 L615,23.8 L620,31.8 L625,41.8 L630,50.9 L635,55.9 L640,60.5 L645,60.2 L650,61.0 L655,62.9 L660,62.8 L665,64.7 L670,61.5 L675,67.5 L680,64.6 L685,60.1 L690,60.3 L695,60.8 L700,61.1 L705,59.7 L710,66.5 L715,69.1 L720,66.7 L725,68.9 L730,67.8 L735,70.0 L740,73.7 L745,74.6 L750,80.1 L755,75.2 L760,73.9 L765,80.6 L770,75.9 L775,71.1 L780,72.1 L785,65.7 L790,67.4 L795,68.7 L800,65.8 L805,62.9 L810,58.2 L815,58.4 L820,56.5 L825,61.5 L830,60.1 L835,62.4 L840,58.3 L845,54.3 L850,49.6 L855,36.3 L860,21.9 L865,16.0 L870,21.7 L875,34.2 L880,43.0 L885,50.7 L890,50.8 L895,47.2 L900,45.6 L905,46.0 L910,44.7 L915,47.6 L920,49.7 L925,46.3 L930,51.4 L935,53.4 L940,55.2 L945,52.6 L950,53.7 L955,56.0 L960,57.6 L965,59.3 L970,63.8 L975,66.7 L980,66.4 L985,63.3 L990,64.2 L995,64.6 L1000,58.1"/></svg>
+<span class="peak" style="left:27.0%;--pk:0.90;animation-delay:1.96s"></span>
+<div class="short" style="left:27.0%;animation-delay:2.31s"><div class="cam"></div><div class="game"></div><span class="tm">1:12:40</span><p class="cap">NO WAY HE <b>HIT</b> THAT</p></div>
+<span class="peak" style="left:61.0%;--pk:0.80;animation-delay:3.05s"></span>
+<div class="short" style="left:61.0%;animation-delay:3.40s"><div class="cam"></div><div class="game"></div><span class="tm">2:47:05</span><p class="cap">CHAT LOST <b>IT</b></p></div>
+<span class="peak" style="left:86.5%;--pk:0.84;animation-delay:3.87s"></span>
+<div class="short" style="left:86.5%;animation-delay:4.22s"><div class="cam"></div><div class="game"></div><span class="tm">3:58:31</span><p class="cap">I'M NEVER <b>SAYING</b> THAT AGAIN</p></div>
+    </div>
     <ul class="facts">
-      <li>Runs on your PC. Your VODs never get uploaded.</li>
-      <li>No credits. Clip as much as you stream.</li>
+      <li>Runs on your PC. Your streams never get uploaded.</li>
+      <li>No credits. Make as much as you stream.</li>
       <li>No watermark on the free version.</li>
     </ul>
   </div>
 </section>
 
+<section aria-labelledby="arcTitle">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="arcTitle">Before, during and after the stream</h2>
+      <p>Most tools start once the VOD exists. PeakSense starts with how your stream looks and keeps going until the clips have been seen.</p>
+    </div>
+    <div class="three">
+      <article class="reveal">
+        <h3>Before you go live</h3>
+        <p>Build your look once: logo, colours and fonts, then starting soon, BRB and ending screens, panels, emotes and sub badges made from it. The screens drop straight into OBS. When you hit Go Live, a live card goes out to your Discord and your Instagram story.</p>
+        <a href="features.html#brand">Your brand</a>
+      </article>
+      <article class="reveal">
+        <h3>While you're live</h3>
+        <p>PeakSense records through OBS and marks moments as they happen. Mark one yourself with a hotkey, a Stream Deck button, <code>!clip</code> in chat or your phone. With Pro, raids, tips and channel points get caught too, and a big moment can be a Short before you've even ended.</p>
+        <a href="features.html#detection">Finding the moments</a>
+      </article>
+      <article class="reveal">
+        <h3>After you end it</h3>
+        <p>Captioned clips with your facecam on top, montages, a full recap with YouTube chapters, thumbnails and titles. Then a schedule that posts at the hours your viewers show up, and numbers that tell you what to make next.</p>
+        <a href="features.html#posting">Posting and growing</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="appTitle">
+  <div class="wrap stage">
+    <div class="section-head reveal">
+      <h2 id="appTitle">One app for all of it</h2>
+      <p>No exporting between tools, no browser tabs, no monthly bill. Home shows what came out of your last stream and what's going out next.</p>
+    </div>
+    <figure>
+      <div class="stage-shot"><img src="app-home.webp" width="1600" height="784" loading="lazy" alt="The PeakSense app on its Home page: new clips to review, your last stream, the posting queue and this week's views."></div>
+    </figure>
+  </div>
+</section>
+
+<section aria-labelledby="outTitle">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="outTitle">What one stream turns into</h2>
+      <p>A four-hour stream is a week of posts if somebody does the cutting. PeakSense does the cutting.</p>
+    </div>
+    <div class="tiles">
+      <a class="tile reveal" href="features.html#editing"><div class="ph" data-shot="shots/editor-look.webp"><img data-shot-img src="shots/editor-look.webp" alt="A clip in the editor with the facecam on top and captions on." loading="lazy"></div>
+        <div class="tx"><h3>Shorts</h3><p>Facecam on top, gameplay below, captions word by word.</p></div></a>
+      <a class="tile reveal" href="features.html#montages"><div class="ph" data-shot="shots/montage.webp"><img data-shot-img src="shots/montage.webp" alt="A montage in the editor, its clips laid out as tabs on the timeline." loading="lazy"></div>
+        <div class="tx"><h3>Montages</h3><p>Your best clips back to back, with transitions, an intro and an outro.</p></div></a>
+      <a class="tile reveal" href="features.html#montages"><div class="ph" data-shot="shots/recap.webp"><img data-shot-img src="shots/recap.webp" alt="A stream recap in the editor, its chapters laid out on the timeline." loading="lazy"></div>
+        <div class="tx"><h3>A recap</h3><p>The whole stream cut down to its best stretches, with YouTube chapters.</p></div></a>
+      <a class="tile reveal" href="features.html#brand"><div class="ph" data-shot="shots/brand.webp"><img data-shot-img src="shots/brand.webp" alt="The Brand page: your logo in every shape it's used, with your colours and fonts." loading="lazy"></div>
+        <div class="tx"><h3>Your look</h3><p>A logo family, a mascot, overlays and emotes, all from one brand kit.</p></div></a>
+      <a class="tile reveal" href="features.html#posting"><div class="ph" data-shot="shots/schedule.webp"><img data-shot-img src="shots/schedule.webp" alt="The posting schedule: clips placed on days of the week." loading="lazy"></div>
+        <div class="tx"><h3>A schedule</h3><p>YouTube, TikTok, Instagram and Facebook, lined up across the week.</p></div></a>
+      <a class="tile reveal" href="features.html#posting"><div class="ph" data-shot="shots/analytics.webp"><img data-shot-img src="shots/analytics.webp" alt="Insights: views by post, what kind of moment did best and when your viewers show up." loading="lazy"></div>
+        <div class="tx"><h3>Answers</h3><p>Which moments get watched, when to post, and what to make next.</p></div></a>
+    </div>
+  </div>
+</section>
+
 <section aria-labelledby="tlTitle">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="tlTitle">What it looks for in a stream</h2>
-      <p>Quiet stretches stay out. The spikes, where chat, your voice or the game went off, become clips.</p>
+    <div class="section-head reveal">
+      <h2 id="tlTitle">How it picks the moments</h2>
+      <p>The quiet stretches stay out. The spikes, where chat, your voice or the game went off, become clips.</p>
     </div>
     <!-- TIMELINE: an example. Replace the title, length, count and the three
          clips with the numbers from one of your own streams. -->
-    <figure class="timeline" style="margin:0">
+    <figure class="timeline reveal" style="margin:0">
       <figcaption class="tl-head"><span><b>Example stream</b> &middot; 4:12:08</span><span>23 moments found</span></figcaption>
       <svg class="tl-plot" viewBox="0 0 1000 120" preserveAspectRatio="none" role="img" aria-label="An example stream timeline: activity stays low with three sharp peaks, at 1:12:40, 2:47:05 and 3:58:31."><path d="M0.0,87.1 L4.6,85.9 L9.1,76.6 L13.7,81.1 L18.3,73.1 L22.8,73.8 L27.4,76.9 L32.0,71.3 L36.5,77.8 L41.1,74.0 L45.7,80.1 L50.2,81.6 L54.8,79.2 L59.4,75.7 L63.9,85.7 L68.5,85.2 L73.1,80.3 L77.6,76.0 L82.2,79.8 L86.8,80.9 L91.3,72.3 L95.9,82.4 L100.5,71.0 L105.0,77.0 L109.6,78.2 L114.2,78.1 L118.7,75.3 L123.3,68.2 L127.9,74.6 L132.4,67.5 L137.0,64.8 L141.6,67.6 L146.1,67.6 L150.7,78.7 L155.3,85.7 L159.8,91.0 L164.4,91.0 L168.9,98.0 L173.5,101.1 L178.1,97.8 L182.6,98.4 L187.2,98.6 L191.8,90.4 L196.3,89.5 L200.9,93.3 L205.5,87.5 L210.0,87.0 L214.6,82.0 L219.2,83.8 L223.7,89.7 L228.3,82.0 L232.9,93.8 L237.4,91.3 L242.0,88.2 L246.6,96.6 L251.1,92.8 L255.7,98.2 L260.3,89.4 L264.8,86.0 L269.4,83.3 L274.0,67.9 L278.5,54.1 L283.1,24.5 L287.7,10.8 L292.2,15.8 L296.8,35.7 L301.4,48.6 L305.9,57.2 L310.5,66.8 L315.1,65.9 L319.6,74.6 L324.2,68.0 L328.8,69.9 L333.3,66.2 L337.9,67.5 L342.5,72.0 L347.0,67.5 L351.6,61.2 L356.2,68.1 L360.7,64.1 L365.3,71.3 L369.9,76.4 L374.4,81.1 L379.0,74.9 L383.6,84.2 L388.1,83.1 L392.7,81.5 L397.3,75.8 L401.8,86.4 L406.4,83.1 L411.0,83.8 L415.5,82.0 L420.1,85.5 L424.7,87.9 L429.2,98.0 L433.8,98.9 L438.4,101.8 L442.9,96.8 L447.5,96.7 L452.1,106.8 L456.6,105.8 L461.2,103.6 L465.8,101.6 L470.3,95.9 L474.9,91.8 L479.5,93.1 L484.0,93.6 L488.6,85.8 L493.2,83.7 L497.7,78.4 L502.3,69.9 L506.8,68.8 L511.4,66.3 L516.0,61.2 L520.5,58.9 L525.1,68.1 L529.7,61.7 L534.2,68.7 L538.8,72.6 L543.4,77.1 L547.9,83.7 L552.5,83.4 L557.1,85.6 L561.6,76.8 L566.2,81.5 L570.8,78.9 L575.3,74.8 L579.9,73.5 L584.5,70.1 L589.0,73.1 L593.6,74.0 L598.2,73.1 L602.7,75.5 L607.3,74.5 L611.9,81.5 L616.4,73.9 L621.0,80.3 L625.6,89.0 L630.1,90.2 L634.7,90.9 L639.3,91.4 L643.8,92.2 L648.4,74.3 L653.0,54.4 L657.5,38.5 L662.1,25.2 L666.7,36.4 L671.2,55.9 L675.8,71.8 L680.4,83.5 L684.9,80.8 L689.5,90.9 L694.1,94.1 L698.6,84.2 L703.2,91.6 L707.8,98.6 L712.3,95.8 L716.9,104.2 L721.5,99.5 L726.0,94.9 L730.6,96.6 L735.2,98.2 L739.7,102.4 L744.3,99.1 L748.9,98.9 L753.4,88.0 L758.0,86.9 L762.6,78.8 L767.1,78.2 L771.7,72.4 L776.3,57.8 L780.8,49.6 L785.4,48.0 L790.0,49.2 L794.5,53.0 L799.1,59.9 L803.7,72.4 L808.2,74.0 L812.8,79.8 L817.4,86.3 L821.9,87.5 L826.5,84.8 L831.1,84.8 L835.6,78.6 L840.2,74.0 L844.7,78.6 L849.3,70.7 L853.9,68.2 L858.4,66.9 L863.0,73.0 L867.6,74.1 L872.1,74.0 L876.7,75.0 L881.3,76.4 L885.8,73.2 L890.4,72.5 L895.0,76.3 L899.5,84.1 L904.1,85.3 L908.7,86.6 L913.2,98.2 L917.8,93.1 L922.4,90.8 L926.9,90.3 L931.5,82.2 L936.1,67.7 L940.6,48.5 L945.2,26.7 L949.8,37.3 L954.3,50.3 L958.9,66.6 L963.5,84.3 L968.0,87.9 L972.6,82.2 L977.2,85.6 L981.7,93.5 L986.3,95.3 L990.9,96.5 L995.4,88.7 L1000.0,91.3 L1000,120 L0,120 Z" fill="#efebf6" fill-opacity="0.06"/><path d="M0.0,87.1 L4.6,85.9 L9.1,76.6 L13.7,81.1 L18.3,73.1 L22.8,73.8 L27.4,76.9 L32.0,71.3 L36.5,77.8 L41.1,74.0 L45.7,80.1 L50.2,81.6 L54.8,79.2 L59.4,75.7 L63.9,85.7 L68.5,85.2 L73.1,80.3 L77.6,76.0 L82.2,79.8 L86.8,80.9 L91.3,72.3 L95.9,82.4 L100.5,71.0 L105.0,77.0 L109.6,78.2 L114.2,78.1 L118.7,75.3 L123.3,68.2 L127.9,74.6 L132.4,67.5 L137.0,64.8 L141.6,67.6 L146.1,67.6 L150.7,78.7 L155.3,85.7 L159.8,91.0 L164.4,91.0 L168.9,98.0 L173.5,101.1 L178.1,97.8 L182.6,98.4 L187.2,98.6 L191.8,90.4 L196.3,89.5 L200.9,93.3 L205.5,87.5 L210.0,87.0 L214.6,82.0 L219.2,83.8 L223.7,89.7 L228.3,82.0 L232.9,93.8 L237.4,91.3 L242.0,88.2 L246.6,96.6 L251.1,92.8 L255.7,98.2 L260.3,89.4 L264.8,86.0 L269.4,83.3 L274.0,67.9 L278.5,54.1 L283.1,24.5 L287.7,10.8 L292.2,15.8 L296.8,35.7 L301.4,48.6 L305.9,57.2 L310.5,66.8 L315.1,65.9 L319.6,74.6 L324.2,68.0 L328.8,69.9 L333.3,66.2 L337.9,67.5 L342.5,72.0 L347.0,67.5 L351.6,61.2 L356.2,68.1 L360.7,64.1 L365.3,71.3 L369.9,76.4 L374.4,81.1 L379.0,74.9 L383.6,84.2 L388.1,83.1 L392.7,81.5 L397.3,75.8 L401.8,86.4 L406.4,83.1 L411.0,83.8 L415.5,82.0 L420.1,85.5 L424.7,87.9 L429.2,98.0 L433.8,98.9 L438.4,101.8 L442.9,96.8 L447.5,96.7 L452.1,106.8 L456.6,105.8 L461.2,103.6 L465.8,101.6 L470.3,95.9 L474.9,91.8 L479.5,93.1 L484.0,93.6 L488.6,85.8 L493.2,83.7 L497.7,78.4 L502.3,69.9 L506.8,68.8 L511.4,66.3 L516.0,61.2 L520.5,58.9 L525.1,68.1 L529.7,61.7 L534.2,68.7 L538.8,72.6 L543.4,77.1 L547.9,83.7 L552.5,83.4 L557.1,85.6 L561.6,76.8 L566.2,81.5 L570.8,78.9 L575.3,74.8 L579.9,73.5 L584.5,70.1 L589.0,73.1 L593.6,74.0 L598.2,73.1 L602.7,75.5 L607.3,74.5 L611.9,81.5 L616.4,73.9 L621.0,80.3 L625.6,89.0 L630.1,90.2 L634.7,90.9 L639.3,91.4 L643.8,92.2 L648.4,74.3 L653.0,54.4 L657.5,38.5 L662.1,25.2 L666.7,36.4 L671.2,55.9 L675.8,71.8 L680.4,83.5 L684.9,80.8 L689.5,90.9 L694.1,94.1 L698.6,84.2 L703.2,91.6 L707.8,98.6 L712.3,95.8 L716.9,104.2 L721.5,99.5 L726.0,94.9 L730.6,96.6 L735.2,98.2 L739.7,102.4 L744.3,99.1 L748.9,98.9 L753.4,88.0 L758.0,86.9 L762.6,78.8 L767.1,78.2 L771.7,72.4 L776.3,57.8 L780.8,49.6 L785.4,48.0 L790.0,49.2 L794.5,53.0 L799.1,59.9 L803.7,72.4 L808.2,74.0 L812.8,79.8 L817.4,86.3 L821.9,87.5 L826.5,84.8 L831.1,84.8 L835.6,78.6 L840.2,74.0 L844.7,78.6 L849.3,70.7 L853.9,68.2 L858.4,66.9 L863.0,73.0 L867.6,74.1 L872.1,74.0 L876.7,75.0 L881.3,76.4 L885.8,73.2 L890.4,72.5 L895.0,76.3 L899.5,84.1 L904.1,85.3 L908.7,86.6 L913.2,98.2 L917.8,93.1 L922.4,90.8 L926.9,90.3 L931.5,82.2 L936.1,67.7 L940.6,48.5 L945.2,26.7 L949.8,37.3 L954.3,50.3 L958.9,66.6 L963.5,84.3 L968.0,87.9 L972.6,82.2 L977.2,85.6 L981.7,93.5 L986.3,95.3 L990.9,96.5 L995.4,88.7 L1000.0,91.3" fill="none" stroke="#a59eb3" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><line x1="288.2" y1="10.8" x2="288.2" y2="120" stroke="#3be37a" stroke-width="2"/><circle cx="288.2" cy="10.8" r="5" fill="#3be37a" stroke="#19161f" stroke-width="2"/><line x1="662.7" y1="25.2" x2="662.7" y2="120" stroke="#3be37a" stroke-width="2"/><circle cx="662.7" cy="25.2" r="5" fill="#3be37a" stroke="#19161f" stroke-width="2"/><line x1="946.0" y1="26.7" x2="946.0" y2="120" stroke="#3be37a" stroke-width="2"/><circle cx="946.0" cy="26.7" r="5" fill="#3be37a" stroke="#19161f" stroke-width="2"/></svg>
       <div class="tl-axis" aria-hidden="true"><span style="left:0.00%">0:00</span><span style="left:23.80%">1:00</span><span style="left:47.59%">2:00</span><span style="left:71.39%">3:00</span><span style="right:0">4:12</span></div>
@@ -109,6 +173,20 @@
         <div class="tl-clip"><span class="t">3:58:31</span><span class="w">Funniest line</span></div>
       </div>
     </figure>
+  </div>
+</section>
+
+<section aria-labelledby="nightTitle">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="nightTitle">One night with PeakSense</h2>
+    </div>
+    <ol class="night reveal">
+      <li><span class="when">7:52 PM</span><h3>Getting ready</h3><p>PeakSense checks that OBS is recording properly. Your starting soon screen is already in OBS.</p></li>
+      <li><span class="when">8:00 PM</span><h3>You go live</h3><p>The live card hits Discord. Moments get marked as they happen while you play.</p></li>
+      <li><span class="when">12:03 AM</span><h3>You end it</h3><p>23 moments are cut and captioned before you've closed OBS. The recap starts building on its own.</p></li>
+      <li><span class="when">The next week</span><h3>It goes out</h3><p>Keep the good ones in review mode over coffee. The schedule posts them at the hours your viewers show up.</p></li>
+    </ol>
   </div>
 </section>
 
@@ -184,7 +262,7 @@
   <div class="wrap">
     <div>
       <a class="brand" href="./" aria-label="PeakSense home"><img src="brand/peaksense-logo-dark.svg" alt="PeakSense" width="152" height="26"></a>
-      <p style="margin-top:14px; max-width:320px;">A stream clipper that runs on your own Windows PC. Free, with a one-time Pro.</p>
+      <p style="margin-top:14px; max-width:320px;">Everything around your stream, on your own Windows PC. Free, with a one-time Pro.</p>
     </div>
     <div>
       <h2>Product</h2>
@@ -217,15 +295,6 @@
     <p class="legal">&copy; 2026 PeakSense. Twitch, YouTube, TikTok, Kick, Instagram and Facebook are trademarks of their owners; PeakSense isn't affiliated with or endorsed by them.</p>
   </div>
 </footer>
-<script>
-  (function () {
-    var nav = document.querySelector('.nav'), btn = nav && nav.querySelector('.nav-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  })();
-</script>
+<script src="site.js"></script>
 </body>
 </html>
