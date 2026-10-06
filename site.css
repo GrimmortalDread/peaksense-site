@@ -373,3 +373,16 @@ footer .legal { grid-column: 1 / -1; border-top: 1px solid var(--border); paddin
 .more-box > summary::before { content: "+"; display: inline-grid; place-items: center; width: 22px; height: 22px; border: 1px solid currentColor; border-radius: 6px; font-weight: 400; line-height: 1; }
 .more-box[open] > summary::before { content: "\2212"; }
 .scene-row + .scene-row { margin-top: 48px; }
+
+/* Calmer pages: the pictures smaller and the words wider, a little less of everything. */
+.scene-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+.scene-row + .scene-row { margin-top: 44px; }
+.scene-row > .shot { max-width: 480px; width: 100%; justify-self: center; box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+.scene-row > .shot.narrow { max-width: 340px; }
+.scene-row > .shot.tall { max-width: 220px; }
+.scene-row .copy p { font-size: 17px; }
+.chapter + .chapter { margin-top: 56px; padding-top: 56px; }
+.chapter > header { margin-bottom: 32px; }
+.stage-shot { max-width: 960px; margin-left: auto; margin-right: auto; }
+.page-hero-shot { max-width: 520px; justify-self: end; }
+@media (max-width: 900px) { .scene-row > .shot { max-width: 420px; } .page-hero-shot { justify-self: center; } }
