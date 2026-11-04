@@ -21,7 +21,7 @@
   }
   h1 { color: #3be37a; letter-spacing: 1px; font-size: 28px; }
   h2 { color: #3be37a; font-size: 18px; margin-top: 36px; border-bottom: 1px solid #2e2937; padding-bottom: 6px; }
-  a { color: #3be37a; }
+  a { color: #3be37a; overflow-wrap: anywhere; }
   .updated { color: #a59eb3; font-size: 13px; margin-bottom: 32px; }
   ol, ul { padding-left: 22px; }
   li { margin-bottom: 8px; }
@@ -31,32 +31,37 @@
 <body>
   <p><a href="./">← Back to PeakSense</a></p>
   <h1>PEAKSENSE — Data Deletion</h1>
-  <div class="updated">Last updated: September 26, 2026</div>
+  <div class="updated">Last updated: November 4, 2026</div>
 
-  <p>PeakSense runs on your computer and doesn't keep your videos, tokens or account data anywhere but your PC, so there is no PeakSense account or server copy to delete. Our sign-in relay for TikTok, Twitch, Instagram and Facebook passes requests through without storing anything. Your data lives on your PC. Deleting it there removes it completely.</p>
+  <p>PeakSense runs on your computer and keeps your videos, tokens and account data only on your PC, so there is no PeakSense account or server copy of them to delete. Deleting PeakSense's data on your PC removes it completely. The few things our relay can hold are listed in <a href="#ours">section 4</a>, with how to have them deleted.</p>
+  <p><strong>Deleting PeakSense's data never deletes anything on YouTube, TikTok or any other platform:</strong> your videos, playlists, captions and comments there stay as they are. Delete those on the platform itself.</p>
 
-  <h2>1. Revoke PeakSense's access to your accounts</h2>
+  <h2>1. Disconnect in PeakSense (deletes what came from YouTube and TikTok)</h2>
   <ol>
-    <li>In PeakSense, open <strong>Accounts</strong> and click <strong>Disconnect</strong> for each platform. This deletes the platform's token from your PC and, where the platform supports it (YouTube, TikTok, Facebook), revokes it there too.</li>
-    <li>To be sure, you can also remove PeakSense at each platform:
-      <ul>
-        <li>Google / YouTube: <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">security.google.com/settings/security/permissions</a></li>
-        <li>Twitch: Settings → Connections → PeakSense → Disconnect</li>
-        <li>TikTok: Settings and privacy → Security → Manage app permissions → PeakSense → Remove</li>
-        <li>Instagram: Settings → Website permissions → Apps and websites → PeakSense → Remove</li>
-        <li>Facebook: Settings &amp; privacy → Settings → Apps and websites → PeakSense → Remove (for Pages: Business integrations)</li>
-      </ul>
-    </li>
+    <li>In PeakSense, open <strong>Settings → Connections</strong> and click <strong>Disconnect</strong> on each platform's card.</li>
+    <li>This deletes the platform's sign-in token from your PC and, where the platform supports it (YouTube, TikTok, Facebook), revokes PeakSense's access there too.</li>
+    <li>For <strong>YouTube</strong> and <strong>TikTok</strong>, disconnecting also deletes, at once, what PeakSense got from them: post statistics and view readings, video and playlist lists, channel details, comments and YouTube watch-time reports. Your clips, montages and settings stay.</li>
+    <li>To remove only one YouTube extra (Title &amp; playlist edits, or Watch time), click <strong>Remove</strong> next to it on the YouTube card.</li>
   </ol>
 
-  <h2>2. Delete the data on your PC</h2>
+  <h2>2. Or remove PeakSense at each platform</h2>
+  <ul>
+    <li>Google / YouTube: <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">https://security.google.com/settings/security/permissions</a>. PeakSense then deletes the YouTube data it kept 7 days after it finds its access removed (so you can sign in again first if you didn't mean to).</li>
+    <li>Twitch: Settings → Connections → PeakSense → Disconnect</li>
+    <li>TikTok: Settings and privacy → Security → Manage app permissions → PeakSense → Remove</li>
+    <li>Instagram: Settings → Website permissions → Apps and websites → PeakSense → Remove</li>
+    <li>Facebook: Settings &amp; privacy → Settings → Apps and websites → PeakSense → Remove (for Pages: Business integrations)</li>
+  </ul>
+
+  <h2>3. Delete everything on your PC</h2>
   <ol>
+    <li>Disconnect your accounts first (section 1), so PeakSense's access is revoked at each platform.</li>
     <li>Close PeakSense (including its tray icon).</li>
     <li>Delete these folders:
       <ul>
-        <li><code>%LOCALAPPDATA%\PeakSense</code>: the app's database, settings, clips, logs, sign-in tokens and its sign-in window's data;</li>
-        <li><code>%APPDATA%\PeakSense</code>: YouTube sign-in files;</li>
-        <li>the <strong>download / library folder</strong> you set in PeakSense, if you want to remove downloaded or copied videos;</li>
+        <li><code>%LOCALAPPDATA%\PeakSense</code>: the app's database, settings, clips, logs and its window's data;</li>
+        <li><code>%APPDATA%\PeakSense</code>: sign-in files;</li>
+        <li>the <strong>library folder</strong> you set in PeakSense, if you want to remove the videos PeakSense recorded, downloaded from your Twitch channel or copied;</li>
         <li>any <code>_peaksense_kept</code> folders next to your recordings (720p copies and kept clip footage) and <code>*.live_chat.json</code> files next to OBS recordings (chat logs).</li>
       </ul>
     </li>
@@ -64,13 +69,16 @@
   </ol>
   <p>Your own recordings and imported videos stay where you keep them. PeakSense never moves them, so delete them yourself if you want them gone.</p>
 
-  <h2>3. Data we hold</h2>
-  <p>The only personal data we hold is:</p>
+  <h2 id="ours">4. Data we hold, and how to have it deleted</h2>
+  <p>We hold only:</p>
   <ul>
-    <li>your email address, if you joined the launch list (kept by our list provider, LaunchList);</li>
-    <li>emails you sent us.</li>
+    <li>if YouTube is connected: your channel ID and the IDs of your newest public videos, on our relay for new-video notifications (up to 30 days; it ends on its own within 30 days of disconnecting YouTube);</li>
+    <li>crash reports you sent or allowed (kept 90 days; no names, file paths or account details) and, if you turned them on, anonymous YouTube usage counts (no IDs at all);</li>
+    <li>if you bought Pro: your Pro key under a random install ID, for 30 days, so the app can activate it;</li>
+    <li>if you added the PeakSense Discord bot: its settings for your server and your last 10 announced posts (removing the bot in the app deletes them);</li>
+    <li>your email address, if you joined the launch list (kept by our list provider, LaunchList), and emails you sent us.</li>
   </ul>
-  <p>To delete it, email <a href="mailto:support@peaksense.net?subject=Data%20deletion%20request">support@peaksense.net</a> with the subject "Data deletion request" from the address concerned. We'll delete it within 30 days and confirm by email.</p>
+  <p>To have any of it deleted, email <a href="mailto:support@peaksense.net?subject=Data%20deletion%20request">support@peaksense.net</a> with the subject "Data deletion request" from the address concerned (for the relay, include your YouTube channel's link). We delete it as soon as possible and within 7 days, and confirm by email.</p>
 
   <p style="margin-top:40px; font-size:13px; color:#a59eb3;"><a href="./">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
 </body>

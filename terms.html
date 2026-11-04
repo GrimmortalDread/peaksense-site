@@ -21,7 +21,7 @@
   }
   h1 { color: #3be37a; letter-spacing: 1px; font-size: 28px; }
   h2 { color: #3be37a; font-size: 18px; margin-top: 36px; border-bottom: 1px solid #2e2937; padding-bottom: 6px; }
-  a { color: #3be37a; }
+  a { color: #3be37a; overflow-wrap: anywhere; }
   .updated { color: #a59eb3; font-size: 13px; margin-bottom: 32px; }
   ul { padding-left: 20px; }
   li { margin-bottom: 6px; }
@@ -30,7 +30,7 @@
 <body>
   <p><a href="./">← Back to PeakSense</a></p>
   <h1>PEAKSENSE — Terms of Service</h1>
-  <div class="updated">Last updated: September 26, 2026</div>
+  <div class="updated">Last updated: November 4, 2026</div>
 
   <p>These Terms govern your use of the PeakSense desktop app ("PeakSense", "the App") and peaksense.net. By installing or using PeakSense you agree to them. How the App handles your data is described in the <a href="privacy.html">Privacy Policy</a>.</p>
 
@@ -42,13 +42,13 @@
   <ul>
     <li><strong>OBS Studio</strong> (optional): while you stream, PeakSense can start and stop OBS's recording, find moments live, add chapter markers, save the Replay Buffer, and add the finished recording to its library;</li>
     <li><strong>your video files</strong>, imported by you or picked up from folders you choose to watch;</li>
-    <li><strong>your own channel:</strong> VODs from the YouTube or Twitch channel you connected, and Kick VODs you paste in (see section 4);</li>
-    <li><strong>posting</strong> to YouTube, TikTok, Instagram and Facebook Pages through their official APIs (see section 6).</li>
+    <li><strong>your own channel:</strong> VODs and clips from the Twitch channel you connected, and Kick VODs you paste in (see section 4). PeakSense never downloads videos from YouTube: for a YouTube stream it uses your OBS recording or the file you download from YouTube Studio;</li>
+    <li><strong>posting</strong> to YouTube, TikTok, Instagram and Facebook Pages through their official APIs (see section 6), and the YouTube extras you allow: playlists, caption tracks, title tests, the full stream's link on new Shorts, replies to comments, and watch-time numbers for Insights.</li>
   </ul>
 
   <h2>3. Connecting accounts</h2>
-  <p>You connect platforms through their official sign-in (OAuth) pages. Connect only accounts you own or are authorized to manage. You can disconnect at any time in PeakSense, which also revokes PeakSense's access at that platform.</p>
-  <p>Your use of each platform remains subject to its own terms. By using PeakSense's YouTube features you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a>. You also agree to follow, as applicable:</p>
+  <p>You connect platforms through their official sign-in (OAuth) pages. Connect only accounts you own or are authorized to manage. You can disconnect at any time in PeakSense (Settings → Connections), which also revokes PeakSense's access at that platform and, for YouTube and TikTok, deletes what PeakSense got from them.</p>
+  <p>Your use of each platform remains subject to its own terms. PeakSense uses YouTube API Services: by using PeakSense's YouTube features you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a>, and Google's handling of your data is described in the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>. You also agree to follow, as applicable:</p>
   <ul>
     <li><a href="https://www.tiktok.com/legal/page/us/terms-of-service/en" target="_blank" rel="noopener">TikTok's Terms of Service</a>, including the <a href="https://www.tiktok.com/community-guidelines" target="_blank" rel="noopener">Community Guidelines</a> and <a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank" rel="noopener">Music Usage Confirmation</a>;</li>
     <li><a href="https://legal.twitch.com/legal/terms-of-service/" target="_blank" rel="noopener">Twitch's Terms of Service</a>;</li>
@@ -59,7 +59,7 @@
   <h2>4. Your content and what you may process</h2>
   <p>You keep all rights to your content. Use PeakSense only with content you own or have permission to use:</p>
   <ul>
-    <li><strong>Platform downloads</strong> are limited to your own connected YouTube or Twitch channel. PeakSense checks ownership through the platform's API before downloading.</li>
+    <li><strong>Platform downloads</strong> are limited to your own connected Twitch channel. PeakSense checks ownership through the Twitch API before downloading. PeakSense never downloads from YouTube.</li>
     <li><strong>Kick links</strong> you paste must be VODs from your own channel. Kick offers no way for PeakSense to check this, so you are responsible for it.</li>
     <li><strong>Imported files</strong> must be yours, or you must have the rights needed to edit and publish them.</li>
   </ul>
@@ -79,7 +79,7 @@
   <p><strong>Manual posting:</strong> when you post from the editor, you review the clip, title and caption first. Instagram and Facebook Reels are posted publicly. For TikTok you also choose the privacy level and interaction settings (nothing is preselected), declare commercial content where it applies, and confirm before anything is sent.</p>
   <p><strong>Scheduled posting (PeakSense Pro):</strong> if you set posting days and times, you authorize PeakSense to upload clips from your posting queue to your connected account at those times.</p>
   <ul>
-    <li><strong>YouTube:</strong> clips are uploaded with the privacy and scheduling setting you chose. You can cancel or change a queued post before it goes out, or turn on manual approval so nothing posts without your click.</li>
+    <li><strong>YouTube:</strong> clips are uploaded with the privacy and scheduling setting you chose. You can cancel or change a queued post before it goes out, or turn on manual approval so nothing posts without your click. If PeakSense uploaded a post privately ahead of its time and you take it out of the queue, PeakSense deletes that private upload. After a Short goes up, PeakSense adds the full stream's link to its description (you can turn this off in Publish → Settings) and, only if you turn it on, posts a comment with that link from your channel.</li>
     <li><strong>TikTok:</strong> scheduled clips are only sent to your TikTok inbox as drafts. You finish and publish them in TikTok yourself.</li>
     <li><strong>Instagram and Facebook:</strong> clips are published as Reels with the caption generated or written for them. Instagram only allows posting to Creator or Business accounts. Facebook posts go to the Page you selected. You can cancel a queued post before it goes out, or turn on manual approval.</li>
   </ul>
